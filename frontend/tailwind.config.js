@@ -54,15 +54,15 @@ module.exports = {
       },
       // Typography system
       fontFamily: {
-        // Headings: Futura (with fallbacks)
-        heading: ['Futura', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        // Body text options
-        playfair: ['Playfair Display', 'serif'],
-        lora: ['Lora', 'serif'],
-        raleway: ['Raleway', 'sans-serif'],
+        // Headings: System fonts for now (to avoid Google Fonts timeout)
+        heading: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
+        // Body text options - using system fonts
+        playfair: ['Georgia', 'serif'],
+        lora: ['Georgia', 'serif'],
+        raleway: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         // Default sans and serif
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['ui-serif', 'Georgia', 'Cambria', 'serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Monaco', 'Consolas', 'monospace'],
       },
       // Spacing system
@@ -183,6 +183,15 @@ module.exports = {
         },
         '.neon-glow-gold': {
           boxShadow: `0 0 5px ${theme('colors.accent.gold')}, 0 0 10px ${theme('colors.accent.gold')}, 0 0 15px ${theme('colors.accent.gold')}`,
+        },
+        '.animation-delay-0': {
+          animationDelay: '0s',
+        },
+        '.animation-delay-200': {
+          animationDelay: '0.2s',
+        },
+        '.animation-delay-400': {
+          animationDelay: '0.4s',
         },
       };
       addUtilities(newUtilities);
