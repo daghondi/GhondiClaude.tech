@@ -71,7 +71,7 @@ GhondiClaude.tech/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/GhondiClaude.tech.git
+git clone https://github.com/daghondi/GhondiClaude.tech.git
 cd GhondiClaude.tech
 ```
 
@@ -175,7 +175,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 Ghondi Claude - [contact@ghondiclaude.tech](mailto:contact@ghondiclaude.tech)
 
-Project Link: [https://github.com/yourusername/GhondiClaude.tech](https://github.com/yourusername/GhondiClaude.tech)
+Project Link: [https://github.com/daghondi/GhondiClaude.tech](https://github.com/daghondi/GhondiClaude.tech)
 
 ---
 
