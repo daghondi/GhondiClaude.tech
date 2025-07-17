@@ -180,6 +180,7 @@ export async function getSiteSettings() {
       logo,
       favicon,
       socialImage,
+      professionalHeadshot,
       socialLinks,
       contactInfo,
       theme,

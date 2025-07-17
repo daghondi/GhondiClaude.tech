@@ -67,6 +67,23 @@ export default {
       ]
     },
     {
+      name: 'professionalHeadshot',
+      title: 'Professional Headshot',
+      type: 'image',
+      description: 'Upload your professional headshot (recommended: 800x1000px or higher)',
+      options: {
+        hotspot: true
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alt text',
+          initialValue: 'Ghondi Claude - Professional Headshot'
+        }
+      ]
+    },
+    {
       name: 'socialLinks',
       title: 'Social Links',
       type: 'object',

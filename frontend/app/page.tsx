@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { ArrowRight, Play, Sparkles, Layers, Code, Palette, Linkedin, Github, Facebook, Instagram } from 'lucide-react'
 import Modal from './components/Modal'
+import { getSiteSettings, urlFor } from '@/sanity/utils'
 
 // Note: For now we'll comment out metadata since we're using 'use client'
 // TODO: Move metadata to layout.tsx or use a separate metadata function
@@ -18,6 +19,7 @@ export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false)
   const [isArtistStatementOpen, setIsArtistStatementOpen] = useState(false)
   const [isTechnicalSpecsOpen, setIsTechnicalSpecsOpen] = useState(false)
+  const [siteSettings, setSiteSettings] = useState<any>(null)
   
   const roles = [
     { title: "Fine Artist", icon: Palette },
@@ -30,6 +32,19 @@ export default function HomePage() {
     const interval = setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % roles.length)
     }, 3000)
+    
+    // Fetch site settings
+    const fetchSiteSettings = async () => {
+      try {
+        const settings = await getSiteSettings()
+        setSiteSettings(settings)
+      } catch (error) {
+        console.error('Error fetching site settings:', error)
+      }
+    }
+    
+    fetchSiteSettings()
+    
     return () => clearInterval(interval)
   }, [])
 
@@ -205,20 +220,28 @@ export default function HomePage() {
                 {/* Image Container */}
                 <div className="relative w-80 h-96 md:w-96 md:h-[28rem] bg-gradient-to-br from-white/5 to-accent-blue/10 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
                   {/* Professional headshot */}
-                  <img 
-                    src="/images/ghondi-claude-headshot.jpg" 
-                    alt="Ghondi Claude - Professional Headshot"
-                    className="w-full h-full object-cover object-center"
-                    onError={(e) => {
-                      // Fallback to placeholder if image doesn't exist
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.nextElementSibling?.classList.remove('hidden');
-                    }}
-                  />
+                  {siteSettings?.professionalHeadshot ? (
+                    <img 
+                      src={urlFor(siteSettings.professionalHeadshot).url()} 
+                      alt={siteSettings.professionalHeadshot.alt || "Ghondi Claude - Professional Headshot"}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  ) : (
+                    <img 
+                      src="/images/ghondi-claude-headshot.jpg" 
+                      alt="Ghondi Claude - Professional Headshot"
+                      className="w-full h-full object-cover object-center"
+                      onError={(e) => {
+                        // Fallback to placeholder if image doesn't exist
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                  )}
                   
                   {/* Fallback placeholder */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-accent-blue/15 flex items-center justify-center hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-br from-white/5 to-accent-blue/15 flex items-center justify-center ${siteSettings?.professionalHeadshot ? 'hidden' : 'block'}`}>
                     <div className="text-center space-y-4 p-8">
                       <div className="w-24 h-24 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-full flex items-center justify-center">
                         <Sparkles className="w-12 h-12 text-white animate-pulse" />
