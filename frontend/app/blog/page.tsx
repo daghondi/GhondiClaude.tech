@@ -100,9 +100,13 @@ const mockBlogPosts = [
 const categories = ["All", "Fine Art", "Urban Planning", "Technology", "Philosophy"]
 
 export default async function BlogPage() {
-  const blogPosts = await getBlogData()
-  const featuredPost = blogPosts.find((post: any) => post.featured)
-  const regularPosts = blogPosts.filter((post: any) => !post.featured)
+  const sanityPosts = await getBlogData()
+  
+  // Use Sanity posts if available, otherwise fall back to mock data
+  const blogPosts = sanityPosts.length > 0 ? sanityPosts : mockBlogPosts
+  
+  const featuredPost = blogPosts.find((post: any) => post.featured || post.is_featured)
+  const regularPosts = blogPosts.filter((post: any) => !(post.featured || post.is_featured))
 
   return (
     <main className="min-h-screen pt-20">
@@ -161,27 +165,37 @@ export default async function BlogPage() {
             
             <article className="card p-0 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="aspect-video lg:aspect-square bg-gradient-to-br from-accent-blue/20 to-white/10 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Tag className="w-8 h-8 text-accent-blue" />
+                <div className="aspect-video lg:aspect-square relative overflow-hidden">
+                  {featuredPost.featuredImage || featuredPost.featured_image ? (
+                    <img
+                      src={featuredPost.featuredImage ? urlFor(featuredPost.featuredImage).url() : featuredPost.featured_image}
+                      alt={featuredPost.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-white/10 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Tag className="w-8 h-8 text-accent-blue" />
+                        </div>
+                        <p className="text-gray-400">Featured Image</p>
+                      </div>
                     </div>
-                    <p className="text-gray-400">Featured Image</p>
-                  </div>
+                  )}
                 </div>
                 
                 <div className="p-8 lg:p-12">
                   <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
                     <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full">
-                      {featuredPost.category}
+                      {featuredPost.category?.name || featuredPost.category}
                     </span>
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
-                      {new Date(featuredPost.published_at).toLocaleDateString()}
+                      {new Date(featuredPost.publishedAt || featuredPost.published_at).toLocaleDateString()}
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="w-4 h-4" />
-                      {featuredPost.reading_time} min read
+                      {featuredPost.readingTime || featuredPost.reading_time} min read
                     </div>
                   </div>
                   
@@ -194,18 +208,18 @@ export default async function BlogPage() {
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {featuredPost.tags.map((tag) => (
+                    {(featuredPost.tags || []).map((tag: any) => (
                       <span
-                        key={tag}
+                        key={typeof tag === 'string' ? tag : tag.name}
                         className="px-3 py-1 bg-dark-tertiary text-gray-300 rounded-full text-sm"
                       >
-                        #{tag}
+                        #{typeof tag === 'string' ? tag : tag.name}
                       </span>
                     ))}
                   </div>
                   
                   <Link
-                    href={`/blog/${featuredPost.slug}`}
+                    href={`/blog/${featuredPost.slug?.current || featuredPost.slug}`}
                     className="btn-primary inline-flex"
                   >
                     Read Full Article
@@ -224,30 +238,40 @@ export default async function BlogPage() {
           <h2 className="text-3xl font-heading mb-8">Latest Articles</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post) => (
-              <article key={post.id} className="card group">
-                {/* Image Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-accent-blue/20 to-white/10 rounded-lg mb-6 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Tag className="w-6 h-6 text-accent-blue" />
+            {regularPosts.map((post: any) => (
+              <article key={post._id || post.id} className="card group">
+                {/* Image */}
+                <div className="aspect-video rounded-lg mb-6 overflow-hidden">
+                  {post.featuredImage || post.featured_image ? (
+                    <img
+                      src={post.featuredImage ? urlFor(post.featuredImage).url() : post.featured_image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-white/10 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                          <Tag className="w-6 h-6 text-accent-blue" />
+                        </div>
+                        <p className="text-gray-400 text-sm">Article Image</p>
+                      </div>
                     </div>
-                    <p className="text-gray-400 text-sm">Article Image</p>
-                  </div>
+                  )}
                 </div>
                 
                 {/* Meta Information */}
                 <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
                   <span className="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">
-                    {post.category}
+                    {post.category?.name || post.category}
                   </span>
                   <div className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
-                    {new Date(post.published_at).toLocaleDateString()}
+                    {new Date(post.publishedAt || post.published_at).toLocaleDateString()}
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
-                    {post.reading_time}m
+                    {post.readingTime || post.reading_time}m
                   </div>
                 </div>
                 
@@ -263,19 +287,19 @@ export default async function BlogPage() {
                 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1 mb-4">
-                  {post.tags.slice(0, 3).map((tag) => (
+                  {(post.tags || []).slice(0, 3).map((tag: any) => (
                     <span
-                      key={tag}
+                      key={typeof tag === 'string' ? tag : tag.name}
                       className="px-2 py-1 bg-dark-tertiary text-gray-400 rounded text-xs"
                     >
-                      #{tag}
+                      #{typeof tag === 'string' ? tag : tag.name}
                     </span>
                   ))}
                 </div>
                 
                 {/* Read More Link */}
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug?.current || post.slug}`}
                   className="text-accent-blue hover:text-white transition-colors inline-flex items-center gap-1 text-sm font-medium"
                 >
                   Read More

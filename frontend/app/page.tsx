@@ -204,25 +204,31 @@ export default function HomePage() {
                 
                 {/* Image Container */}
                 <div className="relative w-80 h-96 md:w-96 md:h-[28rem] bg-gradient-to-br from-white/5 to-accent-blue/10 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
-                  {/* Placeholder for professional headshot */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-accent-blue/15 flex items-center justify-center">
+                  {/* Professional headshot */}
+                  <img 
+                    src="/images/ghondi-claude-headshot.jpg" 
+                    alt="Ghondi Claude - Professional Headshot"
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      // Fallback to placeholder if image doesn't exist
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                  
+                  {/* Fallback placeholder */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-accent-blue/15 flex items-center justify-center hidden">
                     <div className="text-center space-y-4 p-8">
                       <div className="w-24 h-24 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-full flex items-center justify-center">
                         <Sparkles className="w-12 h-12 text-white animate-pulse" />
                       </div>
                       <div className="space-y-2">
                         <p className="text-white font-medium">Professional Headshot</p>
-                        <p className="text-gray-300 text-sm">Coming Soon</p>
+                        <p className="text-gray-300 text-sm">Upload your photo in Sanity CMS</p>
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Uncomment and replace with your actual headshot */}
-                  {/* <img 
-                    src="/images/ghondi-claude-headshot.jpg" 
-                    alt="Ghondi Claude - Professional Headshot"
-                    className="w-full h-full object-cover object-center"
-                  /> */}
                   
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/20 via-transparent to-transparent" />
