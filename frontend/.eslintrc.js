@@ -1,6 +1,4 @@
-const { defineConfig } = require('eslint-define-config');
-
-module.exports = defineConfig({
+module.exports = {
   extends: ['next/core-web-vitals', '@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
@@ -54,4 +52,4 @@ module.exports = defineConfig({
     'dist/',
     '*.config.js',
   ],
-});
+};

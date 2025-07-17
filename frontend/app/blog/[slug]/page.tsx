@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Calendar, Clock, Tag, ArrowLeft, Share2, Twitter, Linkedin, Copy } from 'lucide-react'
+import { Calendar, Clock, Tag, ArrowLeft, Twitter, Linkedin, Copy } from 'lucide-react'
 
 // Mock blog data - replace with actual data from Supabase
 const blogPosts = [
@@ -174,30 +174,30 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             ))}
           </div>
 
-          {/* Share Buttons */}
+          {/* Share Buttons - Static for now */}
           <div className="flex items-center gap-4 pb-8 border-b border-white/10">
             <span className="text-gray-400 text-sm">Share:</span>
-            <button
-              onClick={() => handleShare('twitter')}
+            <a
+              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent('https://ghondiclaude.me/blog/' + post.slug)}&text=${encodeURIComponent(post.title)}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 bg-dark-tertiary hover:bg-accent-blue/20 rounded-lg flex items-center justify-center transition-colors"
               aria-label="Share on Twitter"
             >
               <Twitter className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => handleShare('linkedin')}
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://ghondiclaude.me/blog/' + post.slug)}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 bg-dark-tertiary hover:bg-accent-blue/20 rounded-lg flex items-center justify-center transition-colors"
               aria-label="Share on LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => handleShare('copy')}
-              className="w-10 h-10 bg-dark-tertiary hover:bg-accent-blue/20 rounded-lg flex items-center justify-center transition-colors"
-              aria-label="Copy link"
-            >
-              <Copy className="w-5 h-5" />
-            </button>
+            </a>
+            <div className="w-10 h-10 bg-dark-tertiary rounded-lg flex items-center justify-center">
+              <Copy className="w-5 h-5 text-gray-400" />
+            </div>
           </div>
         </header>
 
