@@ -19,12 +19,15 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./*"],
       "@/components/*": ["./components/*"],
       "@/lib/*": ["./lib/*"],
+      "@/types": ["./types"],
       "@/types/*": ["./types/*"],
       "@/styles/*": ["./styles/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "@/app/*": ["./app/*"],
+      "@/sanity/*": ["./sanity/*"]
     },
     "target": "es2017",
     "forceConsistentCasingInFileNames": true
