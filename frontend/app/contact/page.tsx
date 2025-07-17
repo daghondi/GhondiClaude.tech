@@ -65,7 +65,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-              <span className="text-gradient">Contact</span>
+              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">Contact</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
               Let's collaborate and create something extraordinary together
@@ -95,8 +95,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-accent-magenta/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-accent-magenta" />
+                  <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-accent-blue" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">Schedule</h3>
@@ -106,8 +106,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-accent-gold/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-accent-gold" />
+                  <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-accent-blue" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">Location</h3>
@@ -127,11 +127,11 @@ export default function ContactPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Project Proposals:</span>
-                    <span className="text-accent-magenta">48 hours</span>
+                    <span className="text-accent-blue">48 hours</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Collaborations:</span>
-                    <span className="text-accent-gold">72 hours</span>
+                    <span className="text-white">72 hours</span>
                   </div>
                 </div>
               </div>

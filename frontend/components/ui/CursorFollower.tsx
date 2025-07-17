@@ -84,7 +84,7 @@ const CursorFollower: React.FC<CursorFollowerProps> = ({ className = '' }) => {
         }}
       >
         <div
-          className={`w-24 h-24 bg-gradient-to-r from-accent-blue/20 to-accent-magenta/20 rounded-full blur-xl transition-all duration-500 ${
+          className={`w-24 h-24 bg-gradient-to-r from-accent-blue/20 to-white/10 rounded-full blur-xl transition-all duration-500 ${
             isHovering ? 'scale-125 opacity-80' : 'scale-100 opacity-40'
           }`}
         />

@@ -97,7 +97,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-              <span className="text-gradient">Insights</span>
+              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">Insights</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
               Thoughts on art, technology, urban planning, and the beautiful intersections between them
@@ -147,7 +147,7 @@ export default function BlogPage() {
             
             <article className="card p-0 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="aspect-video lg:aspect-square bg-gradient-to-br from-accent-blue/20 to-accent-magenta/20 flex items-center justify-center">
+                <div className="aspect-video lg:aspect-square bg-gradient-to-br from-accent-blue/20 to-white/10 flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Tag className="w-8 h-8 text-accent-blue" />
@@ -213,10 +213,10 @@ export default function BlogPage() {
             {regularPosts.map((post) => (
               <article key={post.id} className="card group">
                 {/* Image Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-accent-magenta/20 to-accent-gold/20 rounded-lg mb-6 flex items-center justify-center">
+                <div className="aspect-video bg-gradient-to-br from-accent-blue/20 to-white/10 rounded-lg mb-6 flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Tag className="w-6 h-6 text-accent-magenta" />
+                      <Tag className="w-6 h-6 text-accent-blue" />
                     </div>
                     <p className="text-gray-400 text-sm">Article Image</p>
                   </div>
@@ -224,7 +224,7 @@ export default function BlogPage() {
                 
                 {/* Meta Information */}
                 <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
-                  <span className="px-2 py-1 bg-accent-magenta/20 text-accent-magenta rounded-full text-xs">
+                  <span className="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">
                     {post.category}
                   </span>
                   <div className="flex items-center gap-1">
@@ -262,7 +262,7 @@ export default function BlogPage() {
                 {/* Read More Link */}
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-accent-blue hover:text-accent-magenta transition-colors inline-flex items-center gap-1 text-sm font-medium"
+                  className="text-accent-blue hover:text-white transition-colors inline-flex items-center gap-1 text-sm font-medium"
                 >
                   Read More
                   <ArrowRight className="w-4 h-4" />

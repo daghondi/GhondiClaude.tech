@@ -158,7 +158,7 @@
 
   /* Typography utilities */
   .text-gradient {
-    @apply bg-gradient-to-r from-accent-blue via-accent-magenta to-accent-gold bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white via-accent-blue to-white bg-clip-text text-transparent;
   }
 
   .text-glow {

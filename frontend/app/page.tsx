@@ -3,7 +3,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { ArrowRight, Play, Sparkles, Layers, Code, Palette } from 'lucide-react'
+import { ArrowRight, Play, Sparkles, Layers, Code, Palette, Linkedin, Github, Facebook, Instagram } from 'lucide-react'
 
 // Note: For now we'll comment out metadata since we're using 'use client'
 // TODO: Move metadata to layout.tsx or use a separate metadata function
@@ -17,9 +17,9 @@ export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false)
   
   const roles = [
-    { title: "Fine Artist", color: "text-accent-blue", icon: Palette },
-    { title: "Urban Planner", color: "text-accent-magenta", icon: Layers },
-    { title: "Tech Innovator", color: "text-accent-gold", icon: Code }
+    { title: "Fine Artist", icon: Palette },
+    { title: "Urban Planner", icon: Layers },
+    { title: "Tech-Preneur", icon: Code }
   ]
 
   useEffect(() => {
@@ -40,15 +40,15 @@ export default function HomePage() {
         {/* Animated geometric patterns */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-2 h-2 bg-accent-blue rounded-full animate-ping" />
-          <div className="absolute top-40 right-32 w-1 h-1 bg-accent-magenta rounded-full animate-pulse" />
-          <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-accent-gold rounded-full animate-bounce" />
-          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-accent-indigo rounded-full animate-pulse delay-1000" />
+          <div className="absolute top-40 right-32 w-1 h-1 bg-white rounded-full animate-pulse" />
+          <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-accent-blue rounded-full animate-bounce" />
+          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-white/60 rounded-full animate-pulse delay-1000" />
         </div>
         
-        {/* Floating orbs - subtle */}
+        {/* Floating orbs - minimal and sophisticated */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-blue/10 to-transparent rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-l from-accent-magenta/8 to-transparent rounded-full blur-3xl animate-float animation-delay-2000" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-blue/5 to-transparent rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-l from-white/3 to-transparent rounded-full blur-3xl animate-float animation-delay-2000" />
         </div>
         
         {/* Main Content Container */}
@@ -65,7 +65,7 @@ export default function HomePage() {
                 
                 {/* Name - Single Line */}
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight">
-                  <span className="text-gradient bg-gradient-to-r from-accent-blue via-accent-magenta to-accent-gold bg-clip-text text-transparent animate-gradient">
+                  <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
                     I'm Ghondi Claude
                   </span>
                 </h1>
@@ -74,14 +74,14 @@ export default function HomePage() {
               {/* Professional Tags */}
               <div className="space-y-4">
                 <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-sm md:text-base">
-                  <span className="px-4 py-2 bg-accent-blue/20 border border-accent-blue/30 rounded-full text-accent-blue font-medium">
+                  <span className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-accent-blue/20 hover:border-accent-blue/30 hover:text-accent-blue transition-all duration-300">
                     Fine Artist
                   </span>
-                  <span className="px-4 py-2 bg-accent-magenta/20 border border-accent-magenta/30 rounded-full text-accent-magenta font-medium">
+                  <span className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-accent-blue/20 hover:border-accent-blue/30 hover:text-accent-blue transition-all duration-300">
                     Urban Planner (MEng)
                   </span>
-                  <span className="px-4 py-2 bg-accent-gold/20 border border-accent-gold/30 rounded-full text-accent-gold font-medium">
-                    Tech Innovator
+                  <span className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-accent-blue/20 hover:border-accent-blue/30 hover:text-accent-blue transition-all duration-300">
+                    Tech-Preneur
                   </span>
                 </div>
               </div>
@@ -90,9 +90,9 @@ export default function HomePage() {
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
                   I'm a multi-dimensional creative professional who bridges the worlds of 
-                  <span className="text-accent-blue font-semibold"> artistic expression</span>, 
-                  <span className="text-accent-magenta font-semibold"> urban design</span>, and 
-                  <span className="text-accent-gold font-semibold"> technological innovation</span>. 
+                  <span className="text-white font-semibold"> artistic expression</span>, 
+                  <span className="text-white font-semibold"> urban design</span>, and 
+                  <span className="text-accent-blue font-semibold"> technological innovation</span>. 
                   My unique perspective emerges at the intersection of creativity, spatial planning, and digital exploration.
                 </p>
                 
@@ -106,7 +106,7 @@ export default function HomePage() {
               <div className="flex items-center justify-center lg:justify-start">
                 <div className="text-lg md:text-xl font-lora">
                   <span className="text-gray-300">Currently focusing as a </span>
-                  <span className={`font-bold transition-all duration-500 ${roles[currentRole].color}`}>
+                  <span className="text-accent-blue font-bold transition-all duration-500">
                     {roles[currentRole].title}
                   </span>
                 </div>
@@ -128,21 +128,83 @@ export default function HomePage() {
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
+              
+              {/* Social Media Links */}
+              <div className="pt-6">
+                <div className="flex items-center justify-center lg:justify-start">
+                  <div className="flex items-center gap-1">
+                    <span className="text-gray-400 text-sm mr-4">Connect with me:</span>
+                    <div className="flex gap-3">
+                      {/* LinkedIn */}
+                      <a 
+                        href="https://linkedin.com/in/your-profile" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="group relative w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-blue/20 hover:border-accent-blue/30 transition-all duration-300 cursor-hover"
+                      >
+                        <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-accent-blue transition-colors" />
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-dark-primary border border-white/10 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                          LinkedIn
+                        </div>
+                      </a>
+                      
+                      {/* GitHub */}
+                      <a 
+                        href="https://github.com/your-username" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="group relative w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-blue/20 hover:border-accent-blue/30 transition-all duration-300 cursor-hover"
+                      >
+                        <Github className="w-5 h-5 text-gray-400 group-hover:text-accent-blue transition-colors" />
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-dark-primary border border-white/10 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                          GitHub
+                        </div>
+                      </a>
+                      
+                      {/* Facebook */}
+                      <a 
+                        href="https://facebook.com/your-profile" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="group relative w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-blue/20 hover:border-accent-blue/30 transition-all duration-300 cursor-hover"
+                      >
+                        <Facebook className="w-5 h-5 text-gray-400 group-hover:text-accent-blue transition-colors" />
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-dark-primary border border-white/10 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                          Facebook
+                        </div>
+                      </a>
+                      
+                      {/* Instagram */}
+                      <a 
+                        href="https://instagram.com/your-username" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="group relative w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-blue/20 hover:border-accent-blue/30 transition-all duration-300 cursor-hover"
+                      >
+                        <Instagram className="w-5 h-5 text-gray-400 group-hover:text-accent-blue transition-colors" />
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-dark-primary border border-white/10 rounded text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                          Instagram
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Right Column - Professional Headshot */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
               <div className="relative group">
                 {/* Background decorative elements */}
-                <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-accent-blue/20 to-accent-magenta/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
-                <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-tl from-accent-gold/20 to-accent-indigo/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-accent-blue/10 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-tl from-white/5 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
                 
                 {/* Image Container */}
-                <div className="relative w-80 h-96 md:w-96 md:h-[28rem] bg-gradient-to-br from-accent-blue/10 to-accent-magenta/10 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                <div className="relative w-80 h-96 md:w-96 md:h-[28rem] bg-gradient-to-br from-white/5 to-accent-blue/10 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
                   {/* Placeholder for professional headshot */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 via-accent-magenta/20 to-accent-gold/20 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-accent-blue/15 flex items-center justify-center">
                     <div className="text-center space-y-4 p-8">
-                      <div className="w-24 h-24 mx-auto bg-gradient-to-br from-accent-blue to-accent-magenta rounded-full flex items-center justify-center">
+                      <div className="w-24 h-24 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-full flex items-center justify-center">
                         <Sparkles className="w-12 h-12 text-white animate-pulse" />
                       </div>
                       <div className="space-y-2">
@@ -163,10 +225,10 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/20 via-transparent to-transparent" />
                 </div>
                 
-                {/* Floating accent elements */}
-                <div className="absolute -top-6 -right-6 w-4 h-4 bg-accent-blue rounded-full animate-bounce" />
-                <div className="absolute -bottom-6 -left-6 w-3 h-3 bg-accent-magenta rounded-full animate-pulse" />
-                <div className="absolute top-1/2 -left-8 w-2 h-2 bg-accent-gold rounded-full animate-ping" />
+                {/* Floating accent elements - more sophisticated */}
+                <div className="absolute -top-6 -right-6 w-3 h-3 bg-accent-blue/60 rounded-full animate-pulse" />
+                <div className="absolute -bottom-6 -left-6 w-2 h-2 bg-white/40 rounded-full animate-bounce" />
+                <div className="absolute top-1/2 -left-8 w-1 h-1 bg-accent-blue/80 rounded-full animate-ping" />
               </div>
             </div>
           </div>
@@ -195,7 +257,7 @@ export default function HomePage() {
         <div className="section-container relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-heading mb-6">
-              <span className="text-gradient bg-gradient-to-r from-accent-blue to-accent-magenta bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
                 Three Worlds, One Vision
               </span>
             </h2>
@@ -209,12 +271,12 @@ export default function HomePage() {
             <Link href="/work?category=art" className="group cursor-hover">
               <div className="card-hover relative overflow-hidden">
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Icon container with animation */}
-                <div className="relative h-64 bg-gradient-to-br from-accent-blue/20 to-accent-blue/5 rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <div className="relative h-64 bg-gradient-to-br from-white/5 to-accent-blue/10 rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                   <Palette className="w-20 h-20 text-accent-blue group-hover:animate-pulse" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent-blue/10 group-hover:from-accent-blue/10 transition-all duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent-blue/5 group-hover:from-accent-blue/10 transition-all duration-300" />
                 </div>
                 
                 <div className="relative z-10">
@@ -235,21 +297,21 @@ export default function HomePage() {
             {/* Urban Planning - Enhanced */}
             <Link href="/work?category=urban" className="group cursor-hover">
               <div className="card-hover relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-magenta/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className="relative h-64 bg-gradient-to-br from-accent-magenta/20 to-accent-magenta/5 rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <Layers className="w-20 h-20 text-accent-magenta group-hover:animate-pulse" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent-magenta/10 group-hover:from-accent-magenta/10 transition-all duration-300" />
+                <div className="relative h-64 bg-gradient-to-br from-white/5 to-accent-blue/10 rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <Layers className="w-20 h-20 text-accent-blue group-hover:animate-pulse" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent-blue/5 group-hover:from-accent-blue/10 transition-all duration-300" />
                 </div>
                 
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-heading mb-4 group-hover:text-accent-magenta transition-colors duration-300">
+                  <h3 className="text-2xl font-heading mb-4 group-hover:text-accent-blue transition-colors duration-300">
                     Urban Planning
                   </h3>
                   <p className="text-gray-400 mb-6 leading-relaxed">
                     Discover innovative approaches to city design, sustainable development, and community-centered planning solutions.
                   </p>
-                  <div className="flex items-center text-accent-magenta opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="text-sm font-medium">View Projects</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -260,21 +322,21 @@ export default function HomePage() {
             {/* Tech Lab - Enhanced */}
             <Link href="/work?category=tech" className="group cursor-hover">
               <div className="card-hover relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className="relative h-64 bg-gradient-to-br from-accent-gold/20 to-accent-gold/5 rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <Code className="w-20 h-20 text-accent-gold group-hover:animate-pulse" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent-gold/10 group-hover:from-accent-gold/10 transition-all duration-300" />
+                <div className="relative h-64 bg-gradient-to-br from-white/5 to-accent-blue/10 rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <Code className="w-20 h-20 text-accent-blue group-hover:animate-pulse" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent-blue/5 group-hover:from-accent-blue/10 transition-all duration-300" />
                 </div>
                 
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-heading mb-4 group-hover:text-accent-gold transition-colors duration-300">
+                  <h3 className="text-2xl font-heading mb-4 group-hover:text-accent-blue transition-colors duration-300">
                     Tech Innovation
                   </h3>
                   <p className="text-gray-400 mb-6 leading-relaxed">
                     Dive into AI experiments, AR projects, and cybersecurity innovations that shape the future of digital interaction.
                   </p>
-                  <div className="flex items-center text-accent-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="text-sm font-medium">Explore Lab</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -288,18 +350,18 @@ export default function HomePage() {
       {/* Featured Work - Enhanced */}
       <section id="work" className="section relative overflow-hidden">
         {/* Background elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-accent-blue/5 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-accent-magenta/5 to-transparent" />
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-accent-blue/3 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-white/2 to-transparent" />
         
         <div className="section-container relative">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 mb-4">
-              <Sparkles className="w-6 h-6 text-accent-gold" />
-              <span className="text-accent-gold font-medium tracking-wider uppercase text-sm">Featured Work</span>
-              <Sparkles className="w-6 h-6 text-accent-gold" />
+              <Sparkles className="w-6 h-6 text-accent-blue" />
+              <span className="text-accent-blue font-medium tracking-wider uppercase text-sm">Featured Work</span>
+              <Sparkles className="w-6 h-6 text-accent-blue" />
             </div>
             <h2 className="text-5xl lg:text-6xl font-heading mb-6">
-              <span className="text-gradient bg-gradient-to-r from-accent-blue via-accent-magenta to-accent-gold bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
                 Where Worlds Collide
               </span>
             </h2>
@@ -309,45 +371,46 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="space-y-24">
-            {/* Project 1 - Enhanced */}
+          <div className="space-y-32">
+            {/* 01. Fine Art */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="order-2 lg:order-1 space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-blue to-accent-magenta rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-white/20 to-accent-blue rounded-full flex items-center justify-center">
                       <span className="text-white font-bold">01</span>
                     </div>
                     <div className="h-px bg-gradient-to-r from-accent-blue to-transparent flex-1" />
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-heading font-bold">
-                    Digital Urban Canvas
-                  </h3>
-                  <p className="text-accent-blue font-medium">Interactive Data Visualization • Mixed Media Art</p>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Palette className="w-6 h-6 text-accent-blue" />
+                    <h3 className="text-3xl lg:text-4xl font-heading font-bold">Fine Art</h3>
+                  </div>
+                  <p className="text-accent-blue font-medium">Featured Collection • "Urban Reflections"</p>
                 </div>
                 
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  An immersive installation that transforms urban data streams into living, breathing art. 
-                  Real-time city metrics—traffic patterns, energy consumption, social media sentiment—
-                  are interpreted through generative algorithms that paint the pulse of the city in light and color.
+                  Explore my artistic journey through paintings and mixed media that capture the essence 
+                  of human experience. This featured collection examines the intersection of city life 
+                  and emotion through color, form, and visual poetry.
                 </p>
                 
                 <div className="space-y-4">
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-4 py-2 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">Data Art</span>
-                    <span className="px-4 py-2 bg-accent-magenta/20 text-accent-magenta rounded-full text-sm font-medium">Urban Analytics</span>
-                    <span className="px-4 py-2 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-medium">Generative AI</span>
+                    <span className="px-4 py-2 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">Oil on Canvas</span>
+                    <span className="px-4 py-2 bg-white/20 text-white rounded-full text-sm font-medium">Mixed Media</span>
+                    <span className="px-4 py-2 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">2023-2024</span>
                   </div>
                   
                   <div className="flex gap-4">
-                    <Link href="/work/digital-urban-canvas" className="btn-primary group">
-                      <Play className="w-4 h-4 mr-2" />
-                      View Project
+                    <Link href="/portfolio/fine-art" className="btn-primary group">
+                      <Palette className="w-4 h-4 mr-2" />
+                      View Gallery
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <button className="btn-ghost group">
-                      <Layers className="w-4 h-4 mr-2" />
-                      Case Study
+                      <Play className="w-4 h-4 mr-2" />
+                      Artist Statement
                     </button>
                   </div>
                 </div>
@@ -355,53 +418,133 @@ export default function HomePage() {
               
               <div className="order-1 lg:order-2">
                 <div className="relative group cursor-pointer">
-                  <div className="aspect-video bg-gradient-to-br from-accent-blue/20 via-accent-magenta/20 to-accent-gold/20 rounded-2xl overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-dark-tertiary/80 to-dark-quaternary/80" />
-                      <div className="relative text-center">
-                        <Play className="w-16 h-16 text-white mb-4 mx-auto group-hover:scale-110 transition-transform" />
-                        <p className="text-white font-medium">Interactive Demo</p>
+                  <div className="aspect-[4/5] bg-gradient-to-br from-white/10 via-accent-blue/10 to-white/5 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-accent-blue/15 flex items-center justify-center">
+                      <div className="text-center space-y-4 p-8">
+                        <div className="w-20 h-20 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-2xl flex items-center justify-center">
+                          <Palette className="w-10 h-10 text-white" />
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="text-xl font-heading font-bold text-white">Featured Painting</h4>
+                          <p className="text-gray-300">"Convergence of Dreams"</p>
+                          <p className="text-sm text-gray-400">Oil on Canvas • 36" x 48"</p>
+                        </div>
                       </div>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-accent-magenta/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Floating accent elements */}
+                  <div className="absolute -top-4 -right-4 w-3 h-3 bg-accent-blue/60 rounded-full animate-pulse" />
+                  <div className="absolute -bottom-4 -left-4 w-2 h-2 bg-white/40 rounded-full animate-bounce" />
                 </div>
               </div>
             </div>
             
-            {/* Project 2 - Enhanced */}
+            {/* 02. Tech Projects */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="space-y-6">
+              <div className="order-2 lg:order-1 relative group cursor-pointer">
+                <div className="aspect-video bg-gradient-to-br from-accent-blue/20 via-white/10 to-accent-blue/20 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-dark-tertiary/80 to-dark-quaternary/80 flex items-center justify-center">
+                    <div className="text-center space-y-4">
+                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-2xl flex items-center justify-center">
+                        <Code className="w-10 h-10 text-white" />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="text-xl font-heading font-bold text-white">AI Innovation Lab</h4>
+                        <p className="text-gray-300 text-sm">Interactive Demos & Case Studies</p>
+                      </div>
+                      <div className="flex items-center justify-center gap-2 text-accent-blue text-sm">
+                        <Play className="w-4 h-4" />
+                        <span>Explore Projects</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                
+                {/* Tech accent elements */}
+                <div className="absolute -top-4 -left-4 w-4 h-4 bg-white/60 rounded-full animate-ping" />
+                <div className="absolute -bottom-4 -right-4 w-3 h-3 bg-accent-blue/80 rounded-full animate-bounce" />
+              </div>
+              
+              <div className="order-1 lg:order-2 space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-magenta to-accent-gold rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-white/20 to-accent-blue rounded-full flex items-center justify-center">
                       <span className="text-white font-bold">02</span>
                     </div>
-                    <div className="h-px bg-gradient-to-r from-accent-magenta to-transparent flex-1" />
+                    <div className="h-px bg-gradient-to-r from-accent-blue to-transparent flex-1" />
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-heading font-bold">
-                    Smart City Symphony
-                  </h3>
-                  <p className="text-accent-magenta font-medium">Urban Planning • AI Systems • Community Design</p>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Code className="w-6 h-6 text-accent-blue" />
+                    <h3 className="text-3xl lg:text-4xl font-heading font-bold">Tech Projects</h3>
+                  </div>
+                  <p className="text-accent-blue font-medium">AI Innovation • Machine Learning • Web Applications</p>
                 </div>
                 
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  A comprehensive urban planning framework that orchestrates AI-driven traffic optimization 
-                  with community-centered design principles. This project reimagines how technology can serve 
-                  human needs while preserving the cultural fabric of neighborhoods.
+                  Dive into my technology laboratory where AI experiments, machine learning models, 
+                  and innovative software solutions come to life. Each project represents a step 
+                  toward the future of human-computer interaction.
                 </p>
                 
                 <div className="space-y-4">
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-4 py-2 bg-accent-magenta/20 text-accent-magenta rounded-full text-sm font-medium">Smart Cities</span>
-                    <span className="px-4 py-2 bg-accent-gold/20 text-accent-gold rounded-full text-sm font-medium">AI Planning</span>
-                    <span className="px-4 py-2 bg-accent-indigo/20 text-accent-indigo rounded-full text-sm font-medium">Community Focus</span>
+                    <span className="px-4 py-2 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">AI & ML</span>
+                    <span className="px-4 py-2 bg-white/20 text-white rounded-full text-sm font-medium">Neural Networks</span>
+                    <span className="px-4 py-2 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">Full-Stack</span>
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    <Link href="/portfolio/tech-projects" className="btn-primary group">
+                      <Code className="w-4 h-4 mr-2" />
+                      Explore Lab
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                    <button className="btn-ghost group">
+                      <Layers className="w-4 h-4 mr-2" />
+                      Case Studies
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 03. Smart City Symphony */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-white/20 to-accent-blue rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold">03</span>
+                    </div>
+                    <div className="h-px bg-gradient-to-r from-accent-blue to-transparent flex-1" />
+                  </div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Layers className="w-6 h-6 text-accent-blue" />
+                    <h3 className="text-3xl lg:text-4xl font-heading font-bold">Smart City Symphony</h3>
+                  </div>
+                  <p className="text-accent-blue font-medium">Urban Planning • AI Systems • Community Design</p>
+                </div>
+                
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  A comprehensive urban planning framework that orchestrates AI-driven traffic optimization 
+                  with community-centered design principles. This flagship project demonstrates how technology 
+                  can serve human needs while preserving cultural identity.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-4 py-2 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">Smart Cities</span>
+                    <span className="px-4 py-2 bg-white/20 text-white rounded-full text-sm font-medium">AI Planning</span>
+                    <span className="px-4 py-2 bg-accent-blue/20 text-accent-blue rounded-full text-sm font-medium">Community Focus</span>
                   </div>
                   
                   <div className="flex gap-4">
                     <Link href="/work/smart-city-symphony" className="btn-primary group">
                       <Layers className="w-4 h-4 mr-2" />
-                      Explore Plan
+                      View Project
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <button className="btn-ghost group">
@@ -414,16 +557,29 @@ export default function HomePage() {
               
               <div className="lg:order-2">
                 <div className="relative group cursor-pointer">
-                  <div className="aspect-video bg-gradient-to-br from-accent-magenta/20 via-accent-gold/20 to-accent-indigo/20 rounded-2xl overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-dark-tertiary/80 to-dark-quaternary/80" />
-                      <div className="relative text-center">
-                        <Layers className="w-16 h-16 text-white mb-4 mx-auto group-hover:scale-110 transition-transform" />
-                        <p className="text-white font-medium">3D Visualization</p>
+                  <div className="aspect-video bg-gradient-to-br from-accent-blue/20 via-white/10 to-accent-blue/20 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-br from-dark-tertiary/80 to-dark-quaternary/80 flex items-center justify-center">
+                      <div className="text-center space-y-4">
+                        <div className="w-20 h-20 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-2xl flex items-center justify-center">
+                          <Layers className="w-10 h-10 text-white" />
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="text-xl font-heading font-bold text-white">3D City Visualization</h4>
+                          <p className="text-gray-300 text-sm">Interactive Urban Planning Model</p>
+                        </div>
+                        <div className="flex items-center justify-center gap-2 text-accent-blue text-sm">
+                          <Play className="w-4 h-4" />
+                          <span>Explore Model</span>
+                        </div>
                       </div>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent-magenta/20 to-accent-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Urban planning accent elements */}
+                  <div className="absolute -top-6 -right-6 w-3 h-3 bg-white/60 rounded-full animate-pulse" />
+                  <div className="absolute -bottom-6 -left-6 w-2 h-2 bg-accent-blue/80 rounded-full animate-bounce" />
+                  <div className="absolute top-1/2 -left-8 w-1 h-1 bg-white/40 rounded-full animate-ping" />
                 </div>
               </div>
             </div>
@@ -447,15 +603,15 @@ export default function HomePage() {
       <section id="blog" className="section bg-gradient-to-b from-dark-secondary/30 to-dark-primary relative">
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/6 w-2 h-2 bg-accent-blue rounded-full animate-ping" />
-          <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-accent-magenta rounded-full animate-pulse" />
-          <div className="absolute top-1/2 right-1/6 w-3 h-3 bg-accent-gold rounded-full animate-bounce" />
+          <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-white/40 rounded-full animate-pulse" />
+          <div className="absolute top-1/2 right-1/6 w-3 h-3 bg-accent-blue/60 rounded-full animate-bounce" />
         </div>
         
         <div className="section-container relative">
           <div className="max-w-4xl mx-auto text-center">
             <div className="space-y-8">
               <h2 className="text-4xl lg:text-5xl font-heading font-bold">
-                <span className="text-gradient bg-gradient-to-r from-accent-blue to-accent-magenta bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
                   Bridging Worlds, Building Futures
                 </span>
               </h2>
@@ -468,18 +624,18 @@ export default function HomePage() {
                 <p>
                   Where the intuitive flow of artistic creation meets the systematic rigor of urban planning. 
                   Where human-centered design principles guide technological advancement. 
-                  Where beauty and function unite to create spaces that don&apos;t just work—they <span className="text-accent-magenta font-semibold">inspire</span>.
+                  Where beauty and function unite to create spaces that don&apos;t just work—they <span className="text-accent-blue font-semibold">inspire</span>.
                 </p>
               </div>
               
               <div className="pt-8">
                 <blockquote className="text-2xl lg:text-3xl font-playfair italic text-gray-200 relative">
-                  <span className="text-6xl text-accent-gold/30 absolute -top-8 -left-4">&ldquo;</span>
+                  <span className="text-6xl text-white/30 absolute -top-8 -left-4">&ldquo;</span>
                   The future belongs to those who can see the poetry in data, 
                   the artistry in algorithms, and the humanity in every line of code.
-                  <span className="text-6xl text-accent-gold/30 absolute -bottom-4 -right-4">&rdquo;</span>
+                  <span className="text-6xl text-white/30 absolute -bottom-4 -right-4">&rdquo;</span>
                 </blockquote>
-                <p className="text-accent-gold font-medium mt-6">— Ghondi Claude</p>
+                <p className="text-accent-blue font-medium mt-6">— Ghondi Claude</p>
               </div>
             </div>
           </div>
@@ -488,7 +644,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section id="contact" className="section relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/10 via-accent-magenta/10 to-accent-gold/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/5 via-white/3 to-accent-blue/5" />
         <div className="absolute inset-0">
           <div className="grid grid-cols-8 h-full opacity-5">
             {Array.from({ length: 32 }).map((_, i) => (
@@ -502,7 +658,7 @@ export default function HomePage() {
             <div className="space-y-6">
               <h2 className="text-5xl lg:text-6xl font-heading font-bold">
                 <span className="text-white">Ready to </span>
-                <span className="text-gradient bg-gradient-to-r from-accent-blue via-accent-magenta to-accent-gold bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
                   Collaborate?
                 </span>
               </h2>

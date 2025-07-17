@@ -62,7 +62,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-accent-blue to-accent-magenta rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <div className="w-10 h-10 bg-gradient-to-br from-white to-accent-blue rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               <Sparkles className="h-5 w-5 text-white" />
             </div>
             <div className="flex flex-col">

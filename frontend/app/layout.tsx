@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Lora, Raleway } from 'next/font/google'
 import './globals.css'
-import CursorFollower from '@/components/ui/CursorFollower'
-import Taskbar from '@/components/ui/Taskbar'
+import ClientComponents from '@/components/ClientComponents'
 
 // Font configurations
 const inter = Inter({ 
@@ -145,8 +144,7 @@ export default function RootLayout({
           {children}
           
           {/* Interactive UI Components */}
-          <CursorFollower />
-          <Taskbar />
+          <ClientComponents />
         </div>
         
         {/* Scripts for analytics and other third-party services */}

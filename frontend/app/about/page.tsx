@@ -15,13 +15,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-                <span className="text-gradient">About</span>
+                <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">About</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8">
                 A creative professional at the intersection of 
-                <span className="text-accent-blue"> Fine Art</span>,
-                <span className="text-accent-magenta"> Urban Planning</span>, and
-                <span className="text-accent-gold"> Technology</span>
+                <span className="text-white"> Fine Art</span>,
+                <span className="text-white"> Urban Planning</span>, and
+                <span className="text-accent-blue"> Technology</span>
               </p>
               <div className="space-y-4 text-lg text-gray-400">
                 <p>
@@ -33,9 +33,9 @@ export default function AboutPage() {
             </div>
             
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-accent-blue/20 to-accent-magenta/20 rounded-2xl flex items-center justify-center">
+              <div className="aspect-square bg-gradient-to-br from-white/5 to-accent-blue/20 rounded-2xl flex items-center justify-center">
                 <div className="text-center text-gray-400">
-                  <div className="w-32 h-32 bg-gradient-to-br from-accent-blue to-accent-magenta rounded-full mx-auto mb-4"></div>
+                  <div className="w-32 h-32 bg-gradient-to-br from-white/20 to-accent-blue rounded-full mx-auto mb-4"></div>
                   <p>Profile Image Placeholder</p>
                 </div>
               </div>
@@ -80,10 +80,10 @@ export default function AboutPage() {
               {/* Timeline Item */}
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="md:w-1/4 flex-shrink-0">
-                  <div className="w-16 h-16 bg-accent-magenta rounded-full flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 bg-accent-blue rounded-full flex items-center justify-center mb-4">
                     <span className="text-white font-bold text-xl">🏙️</span>
                   </div>
-                  <div className="text-accent-magenta font-semibold">Urban Planner</div>
+                  <div className="text-accent-blue font-semibold">Urban Planner</div>
                   <div className="text-gray-500 text-sm">2018 - Present</div>
                 </div>
                 <div className="md:w-3/4">
@@ -94,9 +94,9 @@ export default function AboutPage() {
                     development and community-centered design principles.
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-accent-magenta/20 text-accent-magenta rounded-full text-sm">Sustainable Design</span>
-                    <span className="px-3 py-1 bg-accent-magenta/20 text-accent-magenta rounded-full text-sm">Community Planning</span>
-                    <span className="px-3 py-1 bg-accent-magenta/20 text-accent-magenta rounded-full text-sm">Smart Cities</span>
+                    <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm">Sustainable Design</span>
+                    <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm">Community Planning</span>
+                    <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm">Smart Cities</span>
                   </div>
                 </div>
               </div>
@@ -104,10 +104,10 @@ export default function AboutPage() {
               {/* Timeline Item */}
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="md:w-1/4 flex-shrink-0">
-                  <div className="w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4">
                     <span className="text-white font-bold text-xl">💻</span>
                   </div>
-                  <div className="text-accent-gold font-semibold">Tech Enthusiast</div>
+                  <div className="text-white font-semibold">Tech Enthusiast</div>
                   <div className="text-gray-500 text-sm">2020 - Present</div>
                 </div>
                 <div className="md:w-3/4">
@@ -118,9 +118,9 @@ export default function AboutPage() {
                     experiences and solve complex urban challenges.
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm">AI/ML</span>
-                    <span className="px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm">AR/VR</span>
-                    <span className="px-3 py-1 bg-accent-gold/20 text-accent-gold rounded-full text-sm">Cybersecurity</span>
+                    <span className="px-3 py-1 bg-white/20 text-white rounded-full text-sm">AI/ML</span>
+                    <span className="px-3 py-1 bg-white/20 text-white rounded-full text-sm">AR/VR</span>
+                    <span className="px-3 py-1 bg-white/20 text-white rounded-full text-sm">Cybersecurity</span>
                   </div>
                 </div>
               </div>
@@ -150,15 +150,15 @@ export default function AboutPage() {
                 <p className="text-gray-400">Every project serves a greater purpose in improving human experience and community well-being.</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-accent-magenta/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-accent-magenta text-2xl">🌱</span>
+                <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-accent-blue text-2xl">🌱</span>
                 </div>
                 <h3 className="text-xl font-heading mb-3">Sustainable</h3>
                 <p className="text-gray-400">Committed to creating solutions that consider environmental impact and long-term sustainability.</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-accent-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-accent-gold text-2xl">🚀</span>
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl">🚀</span>
                 </div>
                 <h3 className="text-xl font-heading mb-3">Innovation</h3>
                 <p className="text-gray-400">Constantly exploring emerging technologies to push the boundaries of what's possible.</p>
@@ -191,11 +191,11 @@ export default function AboutPage() {
 
             {/* Urban Planning Skills */}
             <div className="card">
-              <h3 className="text-2xl font-heading mb-6 text-accent-magenta">Urban Planning</h3>
+              <h3 className="text-2xl font-heading mb-6 text-accent-blue">Urban Planning</h3>
               <ul className="space-y-3">
                 {['Sustainable Design', 'Community Engagement', 'GIS Analysis', 'Policy Development', 'Traffic Planning', 'Environmental Impact'].map((skill) => (
                   <li key={skill} className="flex items-center text-gray-300">
-                    <div className="w-2 h-2 bg-accent-magenta rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-accent-blue rounded-full mr-3"></div>
                     {skill}
                   </li>
                 ))}

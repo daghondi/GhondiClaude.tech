@@ -103,7 +103,7 @@ const Taskbar: React.FC = () => {
                   className={cn(
                     'flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 cursor-hover relative overflow-hidden',
                     isActive
-                      ? 'bg-gradient-to-br from-accent-blue to-accent-magenta text-white shadow-lg scale-110'
+                      ? 'bg-gradient-to-br from-white to-accent-blue text-dark-primary shadow-lg scale-110'
                       : 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white hover:scale-105'
                   )}
                 >
@@ -111,7 +111,7 @@ const Taskbar: React.FC = () => {
                   
                   {/* Active indicator */}
                   {isActive && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-accent-magenta/20 animate-pulse" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-accent-blue/20 animate-pulse" />
                   )}
                   
                   {/* Ripple effect */}
@@ -138,7 +138,7 @@ const Taskbar: React.FC = () => {
         {/* Progress indicator */}
         <div className="absolute -left-1 top-3 bottom-3 w-1 bg-white/10 rounded-full overflow-hidden">
           <div 
-            className="w-full bg-gradient-to-b from-accent-blue to-accent-magenta rounded-full transition-all duration-500"
+            className="w-full bg-gradient-to-b from-white to-accent-blue rounded-full transition-all duration-500"
             style={{
               height: `${((taskbarItems.findIndex(item => item.id === activeSection) + 1) / taskbarItems.length) * 100}%`
             }}

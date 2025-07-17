@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
       name: 'Email',
       href: 'mailto:contact@ghondiclaude.tech',
       icon: Mail,
-      color: 'hover:text-accent-gold'
+      color: 'hover:text-accent-blue'
     }
   ]
 
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-accent-blue to-accent-magenta rounded-md flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-white to-accent-blue rounded-md flex items-center justify-center">
                 <span className="text-white font-bold text-sm">GC</span>
               </div>
               <span className="font-heading font-bold text-xl text-white">
