@@ -115,7 +115,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Link
           href="/blog"
-          className="inline-flex items-center text-accent-blue hover:text-accent-magenta transition-colors"
+          className="inline-flex items-center text-accent-blue hover:text-white transition-colors"
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Blog
@@ -145,7 +145,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 text-gray-400 text-sm mb-8">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-accent-blue to-accent-magenta rounded-full"></div>
+              <div className="w-8 h-8 bg-gradient-to-r from-accent-blue to-white rounded-full"></div>
               <span className="text-white">{post.author.name}</span>
             </div>
             <div className="flex items-center gap-1">
@@ -202,7 +202,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         {/* Featured Image */}
-        <div className="aspect-video bg-gradient-to-br from-accent-blue/20 to-accent-magenta/20 rounded-lg mb-12 flex items-center justify-center">
+        <div className="aspect-video bg-gradient-to-br from-accent-blue/20 to-white/10 rounded-lg mb-12 flex items-center justify-center">
           <div className="text-center">
             <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <Tag className="w-8 h-8 text-accent-blue" />
@@ -242,13 +242,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Author Bio */}
         <div className="mt-16 p-8 bg-dark-secondary/50 rounded-lg border border-white/10">
           <div className="flex items-start gap-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-accent-blue to-accent-magenta rounded-full flex-shrink-0"></div>
+            <div className="w-16 h-16 bg-gradient-to-r from-accent-blue to-white rounded-full flex-shrink-0"></div>
             <div>
               <h3 className="text-xl font-heading font-bold mb-2">{post.author.name}</h3>
               <p className="text-gray-300 mb-4">{post.author.bio}</p>
               <Link
                 href="/about"
-                className="text-accent-blue hover:text-accent-magenta transition-colors"
+                className="text-accent-blue hover:text-white transition-colors"
               >
                 Learn more about me →
               </Link>
@@ -266,8 +266,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 href={`/blog/${relatedPost.slug}`}
                 className="card group hover:border-accent-blue/50 transition-colors"
               >
-                <div className="aspect-video bg-gradient-to-br from-accent-magenta/20 to-accent-gold/20 rounded-lg mb-4 flex items-center justify-center">
-                  <Tag className="w-8 h-8 text-accent-magenta" />
+                <div className="aspect-video bg-gradient-to-br from-accent-blue/20 to-white/10 rounded-lg mb-4 flex items-center justify-center">
+                  <Tag className="w-8 h-8 text-accent-blue" />
                 </div>
                 <h4 className="font-heading font-bold mb-2 group-hover:text-accent-blue transition-colors">
                   {relatedPost.title}

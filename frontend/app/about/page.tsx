@@ -204,11 +204,11 @@ export default function AboutPage() {
 
             {/* Technology Skills */}
             <div className="card">
-              <h3 className="text-2xl font-heading mb-6 text-accent-gold">Technology</h3>
+              <h3 className="text-2xl font-heading mb-6 text-accent-blue">Technology</h3>
               <ul className="space-y-3">
                 {['React/Next.js', 'Python/AI', 'Three.js/WebGL', 'AR/VR Development', 'Cybersecurity', 'Data Visualization'].map((skill) => (
                   <li key={skill} className="flex items-center text-gray-300">
-                    <div className="w-2 h-2 bg-accent-gold rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-accent-blue rounded-full mr-3"></div>
                     {skill}
                   </li>
                 ))}
