@@ -38,87 +38,136 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary" />
         
         {/* Animated geometric patterns */}
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-2 h-2 bg-accent-blue rounded-full animate-ping" />
           <div className="absolute top-40 right-32 w-1 h-1 bg-accent-magenta rounded-full animate-pulse" />
           <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-accent-gold rounded-full animate-bounce" />
           <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-accent-indigo rounded-full animate-pulse delay-1000" />
         </div>
         
-        {/* Floating orbs - more sophisticated */}
+        {/* Floating orbs - subtle */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-blue/20 to-transparent rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-l from-accent-magenta/15 to-transparent rounded-full blur-3xl animate-float animation-delay-2000" />
-          <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-gradient-to-t from-accent-gold/10 to-transparent rounded-full blur-3xl animate-float animation-delay-4000" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-blue/10 to-transparent rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-l from-accent-magenta/8 to-transparent rounded-full blur-3xl animate-float animation-delay-2000" />
         </div>
         
-        {/* Main Content */}
-        <div className={`relative z-10 text-center max-w-6xl mx-auto px-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="space-y-8">
-            {/* Enhanced heading with sparkle effect */}
-            <div className="relative">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-bold tracking-tight">
-                <span className="block text-gradient bg-gradient-to-r from-accent-blue via-accent-magenta to-accent-gold bg-clip-text text-transparent animate-gradient">
-                  Ghondi
-                </span>
-                <span className="block text-white">Claude</span>
-              </h1>
-              <Sparkles className="absolute -top-4 -right-4 w-8 h-8 text-accent-gold animate-pulse" />
-            </div>
+        {/* Main Content Container */}
+        <div className={`relative z-10 max-w-7xl mx-auto px-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Dynamic role display */}
-            <div className="h-16 flex items-center justify-center">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-lora">
-                <span className="text-gray-300">I am a </span>
-                <span className={`font-bold transition-all duration-500 ${roles[currentRole].color}`}>
-                  {roles[currentRole].title}
-                </span>
+            {/* Left Column - Text Content */}
+            <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+              {/* Greeting */}
+              <div className="space-y-2">
+                <p className="text-lg md:text-xl text-accent-blue font-medium tracking-wide uppercase">
+                  Hello, World!
+                </p>
+                
+                {/* Name - Single Line */}
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight">
+                  <span className="text-gradient bg-gradient-to-r from-accent-blue via-accent-magenta to-accent-gold bg-clip-text text-transparent animate-gradient">
+                    I'm Ghondi Claude
+                  </span>
+                </h1>
+              </div>
+              
+              {/* Professional Tags */}
+              <div className="space-y-4">
+                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-sm md:text-base">
+                  <span className="px-4 py-2 bg-accent-blue/20 border border-accent-blue/30 rounded-full text-accent-blue font-medium">
+                    Fine Artist
+                  </span>
+                  <span className="px-4 py-2 bg-accent-magenta/20 border border-accent-magenta/30 rounded-full text-accent-magenta font-medium">
+                    Urban Planner (MEng)
+                  </span>
+                  <span className="px-4 py-2 bg-accent-gold/20 border border-accent-gold/30 rounded-full text-accent-gold font-medium">
+                    Tech Innovator
+                  </span>
+                </div>
+              </div>
+              
+              {/* Professional Introduction */}
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
+                  I'm a multi-dimensional creative professional who bridges the worlds of 
+                  <span className="text-accent-blue font-semibold"> artistic expression</span>, 
+                  <span className="text-accent-magenta font-semibold"> urban design</span>, and 
+                  <span className="text-accent-gold font-semibold"> technological innovation</span>. 
+                  My unique perspective emerges at the intersection of creativity, spatial planning, and digital exploration.
+                </p>
+                
+                <p className="text-base md:text-lg text-gray-400 leading-relaxed max-w-xl">
+                  With a Master's in Engineering and a passion for both traditional and digital arts, 
+                  I create solutions that are not just functional, but beautifully human-centered.
+                </p>
+              </div>
+              
+              {/* Dynamic role display - keeping the animation */}
+              <div className="flex items-center justify-center lg:justify-start">
+                <div className="text-lg md:text-xl font-lora">
+                  <span className="text-gray-300">Currently focusing as a </span>
+                  <span className={`font-bold transition-all duration-500 ${roles[currentRole].color}`}>
+                    {roles[currentRole].title}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Call to Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link href="/work" className="btn-primary group cursor-hover">
+                  <Sparkles className="w-5 h-5 mr-2 group-hover:animate-spin" />
+                  Explore My Work
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link href="/about" className="btn-secondary group cursor-hover">
+                  <Play className="w-5 h-5 mr-2" />
+                  My Journey
+                </Link>
+                <Link href="/contact" className="btn-ghost group cursor-hover">
+                  Let's Collaborate
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
             
-            {/* Enhanced subtitle with icons */}
-            <div className="flex flex-wrap justify-center items-center gap-8 text-lg md:text-xl text-gray-300">
-              {roles.map((role, index) => {
-                const Icon = role.icon
-                return (
-                  <div 
-                    key={role.title}
-                    className={`flex items-center gap-2 transition-all duration-300 ${
-                      index === currentRole ? role.color + ' scale-110' : 'hover:text-white'
-                    }`}
-                  >
-                    <Icon className="w-6 h-6" />
-                    <span>{role.title}</span>
+            {/* Right Column - Professional Headshot */}
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative group">
+                {/* Background decorative elements */}
+                <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-accent-blue/20 to-accent-magenta/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-tl from-accent-gold/20 to-accent-indigo/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                
+                {/* Image Container */}
+                <div className="relative w-80 h-96 md:w-96 md:h-[28rem] bg-gradient-to-br from-accent-blue/10 to-accent-magenta/10 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                  {/* Placeholder for professional headshot */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 via-accent-magenta/20 to-accent-gold/20 flex items-center justify-center">
+                    <div className="text-center space-y-4 p-8">
+                      <div className="w-24 h-24 mx-auto bg-gradient-to-br from-accent-blue to-accent-magenta rounded-full flex items-center justify-center">
+                        <Sparkles className="w-12 h-12 text-white animate-pulse" />
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-white font-medium">Professional Headshot</p>
+                        <p className="text-gray-300 text-sm">Coming Soon</p>
+                      </div>
+                    </div>
                   </div>
-                )
-              })}
-            </div>
-            
-            {/* Enhanced poetic introduction */}
-            <div className="max-w-3xl mx-auto">
-              <blockquote className="text-xl md:text-2xl font-playfair text-gray-300 leading-relaxed italic relative">
-                <span className="text-6xl text-accent-blue/20 absolute -top-4 -left-4">&ldquo;</span>
-                Where brushstrokes meet blueprints, where urban dreams are coded into reality, 
-                and where technology becomes the canvas for tomorrow&apos;s cities.
-                <span className="text-6xl text-accent-blue/20 absolute -bottom-8 -right-4">&rdquo;</span>
-              </blockquote>
-            </div>
-            
-            {/* Enhanced call to action buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-12">
-              <Link href="/work" className="btn-primary group cursor-hover">
-                <Sparkles className="w-5 h-5 mr-2 group-hover:animate-spin" />
-                Explore Portfolio
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link href="/about" className="btn-secondary group cursor-hover">
-                <Play className="w-5 h-5 mr-2" />
-                My Journey
-              </Link>
-              <Link href="/contact" className="btn-ghost group cursor-hover">
-                Let&apos;s Collaborate
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                  
+                  {/* Uncomment and replace with your actual headshot */}
+                  {/* <img 
+                    src="/images/ghondi-claude-headshot.jpg" 
+                    alt="Ghondi Claude - Professional Headshot"
+                    className="w-full h-full object-cover object-center"
+                  /> */}
+                  
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/20 via-transparent to-transparent" />
+                </div>
+                
+                {/* Floating accent elements */}
+                <div className="absolute -top-6 -right-6 w-4 h-4 bg-accent-blue rounded-full animate-bounce" />
+                <div className="absolute -bottom-6 -left-6 w-3 h-3 bg-accent-magenta rounded-full animate-pulse" />
+                <div className="absolute top-1/2 -left-8 w-2 h-2 bg-accent-gold rounded-full animate-ping" />
+              </div>
             </div>
           </div>
         </div>
