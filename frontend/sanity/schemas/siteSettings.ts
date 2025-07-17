@@ -129,25 +129,49 @@ export default {
         {
           name: 'primaryColor',
           title: 'Primary Color',
-          type: 'color',
+          type: 'string',
           options: {
-            disableAlpha: true
+            list: [
+              { title: 'Blue', value: '#3B82F6' },
+              { title: 'Green', value: '#10B981' },
+              { title: 'Purple', value: '#8B5CF6' },
+              { title: 'Red', value: '#EF4444' },
+              { title: 'Yellow', value: '#F59E0B' },
+              { title: 'Pink', value: '#EC4899' },
+              { title: 'Indigo', value: '#6366F1' }
+            ]
           }
         },
         {
           name: 'secondaryColor',
           title: 'Secondary Color',
-          type: 'color',
+          type: 'string',
           options: {
-            disableAlpha: true
+            list: [
+              { title: 'Blue', value: '#3B82F6' },
+              { title: 'Green', value: '#10B981' },
+              { title: 'Purple', value: '#8B5CF6' },
+              { title: 'Red', value: '#EF4444' },
+              { title: 'Yellow', value: '#F59E0B' },
+              { title: 'Pink', value: '#EC4899' },
+              { title: 'Indigo', value: '#6366F1' }
+            ]
           }
         },
         {
           name: 'accentColor',
           title: 'Accent Color',
-          type: 'color',
+          type: 'string',
           options: {
-            disableAlpha: true
+            list: [
+              { title: 'Blue', value: '#3B82F6' },
+              { title: 'Green', value: '#10B981' },
+              { title: 'Purple', value: '#8B5CF6' },
+              { title: 'Red', value: '#EF4444' },
+              { title: 'Yellow', value: '#F59E0B' },
+              { title: 'Pink', value: '#EC4899' },
+              { title: 'Indigo', value: '#6366F1' }
+            ]
           }
         }
       ]

@@ -51,18 +51,32 @@ export default {
           ]
         },
         {
-          type: 'code',
-          options: {
-            language: 'javascript',
-            languageAlternatives: [
-              { title: 'JavaScript', value: 'javascript' },
-              { title: 'TypeScript', value: 'typescript' },
-              { title: 'HTML', value: 'html' },
-              { title: 'CSS', value: 'css' },
-              { title: 'Python', value: 'python' },
-              { title: 'SQL', value: 'sql' }
-            ]
-          }
+          type: 'object',
+          name: 'codeBlock',
+          title: 'Code Block',
+          fields: [
+            {
+              name: 'language',
+              title: 'Language',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'JavaScript', value: 'javascript' },
+                  { title: 'TypeScript', value: 'typescript' },
+                  { title: 'HTML', value: 'html' },
+                  { title: 'CSS', value: 'css' },
+                  { title: 'Python', value: 'python' },
+                  { title: 'SQL', value: 'sql' }
+                ]
+              }
+            },
+            {
+              name: 'code',
+              title: 'Code',
+              type: 'text',
+              rows: 10
+            }
+          ]
         }
       ]
     },
