@@ -1,9 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, Tag, ArrowRight, Search } from 'lucide-react'
+import { getBlogPosts } from '@/sanity/utils'
+import { urlFor } from '@/sanity/utils'
 
-// Mock blog data - replace with actual data from Supabase
-const blogPosts = [
+// Get blog posts from Sanity
+async function getBlogData() {
+  try {
+    const posts = await getBlogPosts()
+    return posts || []
+  } catch (error) {
+    console.error('Error fetching blog posts:', error)
+    return []
+  }
+}
+
+// Fallback mock data in case Sanity is not available
+const mockBlogPosts = [
   {
     id: 1,
     title: "The Intersection of Art and Urban Planning: Creating Livable Cities",
@@ -86,9 +99,10 @@ const blogPosts = [
 
 const categories = ["All", "Fine Art", "Urban Planning", "Technology", "Philosophy"]
 
-export default function BlogPage() {
-  const featuredPost = blogPosts.find(post => post.is_featured)
-  const regularPosts = blogPosts.filter(post => !post.is_featured)
+export default async function BlogPage() {
+  const blogPosts = await getBlogData()
+  const featuredPost = blogPosts.find((post: any) => post.featured)
+  const regularPosts = blogPosts.filter((post: any) => !post.featured)
 
   return (
     <main className="min-h-screen pt-20">
