@@ -119,6 +119,11 @@
     @apply btn hover:bg-white/10 hover:text-accent-blue px-6 py-3;
   }
 
+  /* Button sizes */
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
   /* Card styles */
   .card {
     @apply bg-dark-tertiary/50 backdrop-blur-sm border border-white/10 rounded-lg p-6;

@@ -85,6 +85,7 @@ module.exports = {
         'typewriter': 'typewriter 2s steps(20) forwards',
         'glow': 'glow 2s ease-in-out infinite alternate',
         'float': 'float 3s ease-in-out infinite',
+        'gradient': 'gradient 6s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -122,6 +123,10 @@ module.exports = {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
       // Layout and sizing
@@ -192,6 +197,12 @@ module.exports = {
         },
         '.animation-delay-400': {
           animationDelay: '0.4s',
+        },
+        '.animation-delay-2000': {
+          animationDelay: '-2s',
+        },
+        '.animation-delay-4000': {
+          animationDelay: '-4s',
         },
       };
       addUtilities(newUtilities);
