@@ -131,10 +131,7 @@ export default {
       title: 'Author',
       type: 'reference',
       to: { type: 'author' },
-      initialValue: () => ({
-        _type: 'reference',
-        _ref: 'ghondi-claude' // Default author reference
-      })
+      validation: (Rule: any) => Rule.required()
     },
     {
       name: 'metaTitle',
