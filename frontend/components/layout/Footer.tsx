@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
     },
     {
       name: 'Email',
-      href: 'mailto:contact@ghondiclaude.tech',
+      href: 'mailto:contact@ghondiclaude.me',
       icon: Mail,
       color: 'hover:text-accent-blue'
     }
@@ -161,7 +161,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-400 text-sm">
-            © {currentYear} GhondiClaude.tech. All rights reserved.
+            © {currentYear} GhondiClaude.me. All rights reserved.
           </div>
           
           <div className="flex space-x-6 text-sm">

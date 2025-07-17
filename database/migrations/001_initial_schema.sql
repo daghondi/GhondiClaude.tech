@@ -1,4 +1,4 @@
--- Initial database schema for GhondiClaude.tech
+-- Initial database schema for GhondiClaude.me
 -- This creates the foundational tables for the portfolio platform
 
 -- Enable necessary extensions

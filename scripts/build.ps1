@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
-# Build script for GhondiClaude.tech
+# Build script for GhondiClaude.me
 
-Write-Host "🏗️ Building GhondiClaude.tech for production..." -ForegroundColor Cyan
+Write-Host "🏗️ Building GhondiClaude.me for production..." -ForegroundColor Cyan
 
 # Change to frontend directory
 Set-Location frontend

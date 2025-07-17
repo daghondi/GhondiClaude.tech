@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
-# Development setup script for GhondiClaude.tech
+# Development setup script for GhondiClaude.me
 
-Write-Host "🎨 Setting up GhondiClaude.tech development environment..." -ForegroundColor Cyan
+Write-Host "🎨 Setting up GhondiClaude.me development environment..." -ForegroundColor Cyan
 
 # Check if Node.js is installed
 if (!(Get-Command node -ErrorAction SilentlyContinue)) {

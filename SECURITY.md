@@ -1,4 +1,4 @@
-# Security Policy for GhondiClaude.tech
+# Security Policy for GhondiClaude.me
 
 ## Supported Versions
 
@@ -10,7 +10,7 @@ We release security updates for the following versions:
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within GhondiClaude.tech, please send an email to [security@ghondiclaude.tech](mailto:security@ghondiclaude.tech). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within GhondiClaude.me, please send an email to [security@ghondiclaude.me](mailto:security@ghondiclaude.me). All security vulnerabilities will be promptly addressed.
 
 ### What to Include
 
@@ -56,5 +56,5 @@ Our platform implements several security measures:
 
 For any security-related questions or concerns, please contact:
 
-**Security Team**: [security@ghondiclaude.tech](mailto:security@ghondiclaude.tech)
-**General Contact**: [contact@ghondiclaude.tech](mailto:contact@ghondiclaude.tech)
+**Security Team**: [security@ghondiclaude.me](mailto:security@ghondiclaude.me)
+**General Contact**: [contact@ghondiclaude.me](mailto:contact@ghondiclaude.me)

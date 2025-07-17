@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft, Download, ExternalLink, Play, Palette, Calendar, Tag } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Fine Art Portfolio | GhondiClaude.tech',
+  title: 'Fine Art Portfolio | GhondiClaude.me',
   description: 'Explore Ghondi Claude\'s fine art collection - paintings, mixed media, and artistic expressions that capture the essence of human experience.',
 }
 

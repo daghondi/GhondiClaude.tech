@@ -1,4 +1,4 @@
-# Database Setup for GhondiClaude.tech
+# Database Setup for GhondiClaude.me
 
 This directory contains database migrations, seeds, and configuration for the Supabase backend.
 

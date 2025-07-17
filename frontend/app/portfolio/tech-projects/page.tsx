@@ -8,7 +8,7 @@ import Modal from '../../components/Modal'
 
 // Note: Commenting out metadata since we're using 'use client'
 // export const metadata: Metadata = {
-//   title: 'Tech Projects Portfolio | GhondiClaude.tech',
+//   title: 'Tech Projects Portfolio | GhondiClaude.me',
 //   description: 'Explore Ghondi Claude\'s technology projects - AI experiments, web applications, and innovative software solutions.',
 // }
 

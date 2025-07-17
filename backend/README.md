@@ -1,4 +1,4 @@
-# Backend API Structure for GhondiClaude.tech
+# Backend API Structure for GhondiClaude.me
 
 This directory contains server-side logic, API routes, and backend utilities for the portfolio platform.
 

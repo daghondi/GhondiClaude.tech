@@ -9,7 +9,7 @@ import Modal from './components/Modal'
 // Note: For now we'll comment out metadata since we're using 'use client'
 // TODO: Move metadata to layout.tsx or use a separate metadata function
 // export const metadata: Metadata = {
-//   title: 'GhondiClaude.tech | Multi-Dimensional Creative Portfolio',
+//   title: 'GhondiClaude.me | Multi-Dimensional Creative Portfolio',
 //   description: 'Welcome to Ghondi Claude\'s universe - where Fine Art, Urban Planning, and Technology converge in a symphony of creativity.',
 // }
 

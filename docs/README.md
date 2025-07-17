@@ -1,4 +1,4 @@
-# Documentation for GhondiClaude.tech
+# Documentation for GhondiClaude.me
 
 This directory contains comprehensive documentation for the multi-dimensional creative portfolio platform.
 

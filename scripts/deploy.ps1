@@ -1,5 +1,5 @@
 #!/usr/bin/env pwsh
-# Deployment script for GhondiClaude.tech
+# Deployment script for GhondiClaude.me
 
 param(
     [Parameter(Mandatory=$true)]
@@ -7,7 +7,7 @@ param(
     [string]$Environment
 )
 
-Write-Host "🚀 Deploying GhondiClaude.tech to $Environment..." -ForegroundColor Cyan
+Write-Host "🚀 Deploying GhondiClaude.me to $Environment..." -ForegroundColor Cyan
 
 # Verify environment variables
 if ($Environment -eq "production") {

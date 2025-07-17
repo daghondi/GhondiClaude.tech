@@ -8,7 +8,7 @@ import Modal from '../components/Modal'
 
 // Note: Commenting out metadata since we're using 'use client'
 // export const metadata: Metadata = {
-//   title: 'Portfolio | GhondiClaude.tech',
+//   title: 'Portfolio | GhondiClaude.me',
 //   description: 'Explore my multidisciplinary work across Fine Art, Urban Planning, and Technology.',
 // }
 

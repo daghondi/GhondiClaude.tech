@@ -86,7 +86,7 @@ export async function GET(request: NextRequest) {
       GET: 'Get contact information'
     },
     contact_info: {
-      email: 'contact@ghondiclaude.tech',
+      email: 'contact@ghondiclaude.me',
       response_time: '24 hours',
       availability: 'Global, Remote',
     }

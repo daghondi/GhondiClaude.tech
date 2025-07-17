@@ -23,7 +23,7 @@ import Modal from '../../components/Modal'
 
 // Note: Commenting out metadata since we're using 'use client'
 // export const metadata: Metadata = {
-//   title: 'Smart City Symphony | GhondiClaude.tech',
+//   title: 'Smart City Symphony | GhondiClaude.me',
 //   description: 'A comprehensive urban planning framework that orchestrates AI-driven traffic optimization with community-centered design principles.',
 // }
 

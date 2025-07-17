@@ -89,7 +89,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">Email</h3>
-                    <p className="text-gray-400">contact@ghondiclaude.tech</p>
+                    <p className="text-gray-400">contact@ghondiclaude.me</p>
                     <p className="text-gray-400">Available 24/7</p>
                   </div>
                 </div>

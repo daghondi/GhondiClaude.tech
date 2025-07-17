@@ -1,10 +1,10 @@
-# GhondiClaude.tech: Multi-Dimensional Creative Portfolio Platform
+# GhondiClaude.me: Multi-Dimensional Creative Portfolio Platform
 
 A sophisticated, multi-page portfolio website showcasing Ghondi Claude's unique trinity of expertise: Fine Artist, Urban Planner (MEng), and Tech Enthusiast. The platform serves as both a professional portfolio and an expressive digital archive, combining artistic depth with technical innovation.
 
 ## 🎨 Project Overview
 
-GhondiClaude.tech creates an immersive, poetic experience that reflects the intersection of creativity, urban vision, and technological exploration. The platform addresses the need for creative professionals to present their multidisciplinary work in a cohesive, engaging format that goes beyond traditional portfolio sites.
+GhondiClaude.me creates an immersive, poetic experience that reflects the intersection of creativity, urban vision, and technological exploration. The platform addresses the need for creative professionals to present their multidisciplinary work in a cohesive, engaging format that goes beyond traditional portfolio sites.
 
 ## 🚀 Tech Stack
 
@@ -34,7 +34,7 @@ GhondiClaude.tech creates an immersive, poetic experience that reflects the inte
 ## 📁 Project Structure
 
 ```
-GhondiClaude.tech/
+GhondiClaude.me/
 ├── frontend/                 # Next.js application
 ├── backend/                  # API routes and server logic
 ├── database/                 # Supabase migrations and seeds
@@ -71,8 +71,8 @@ GhondiClaude.tech/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/daghondi/GhondiClaude.tech.git
-cd GhondiClaude.tech
+git clone https://github.com/daghondi/GhondiClaude.me.git
+cd GhondiClaude.me
 ```
 
 2. Install frontend dependencies:
@@ -173,9 +173,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 📞 Contact
 
-Ghondi Claude - [contact@ghondiclaude.tech](mailto:contact@ghondiclaude.tech)
+Ghondi Claude - [contact@ghondiclaude.me](mailto:contact@ghondiclaude.me)
 
-Project Link: [https://github.com/daghondi/GhondiClaude.tech](https://github.com/daghondi/GhondiClaude.tech)
+Project Link: [https://github.com/daghondi/GhondiClaude.me](https://github.com/daghondi/GhondiClaude.me)
 
 ---
 

@@ -30,8 +30,8 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   title: {
-    default: 'GhondiClaude.tech | Multi-Dimensional Creative Portfolio',
-    template: '%s | GhondiClaude.tech'
+    default: 'GhondiClaude.me | Multi-Dimensional Creative Portfolio',
+    template: '%s | GhondiClaude.me'
   },
   description: 'Ghondi Claude\'s unique trinity of expertise: Fine Artist, Urban Planner (MEng), and Tech Enthusiast. A sophisticated portfolio showcasing the intersection of creativity, urban vision, and technological exploration.',
   keywords: [
@@ -49,26 +49,26 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Ghondi Claude' }],
   creator: 'Ghondi Claude',
-  publisher: 'GhondiClaude.tech',
+  publisher: 'GhondiClaude.me',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ghondiclaude.tech',
-    siteName: 'GhondiClaude.tech',
-    title: 'GhondiClaude.tech | Multi-Dimensional Creative Portfolio',
+    url: 'https://ghondiclaude.me',
+    siteName: 'GhondiClaude.me',
+    title: 'GhondiClaude.me | Multi-Dimensional Creative Portfolio',
     description: 'Explore the unique intersection of Fine Art, Urban Planning, and Technology through Ghondi Claude\'s creative portfolio.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'GhondiClaude.tech - Multi-Dimensional Creative Portfolio',
+        alt: 'GhondiClaude.me - Multi-Dimensional Creative Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GhondiClaude.tech | Multi-Dimensional Creative Portfolio',
+    title: 'GhondiClaude.me | Multi-Dimensional Creative Portfolio',
     description: 'Explore the unique intersection of Fine Art, Urban Planning, and Technology.',
     images: ['/og-image.jpg'],
     creator: '@ghondiclaude',
@@ -124,7 +124,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#1E1E1E" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://ghondiclaude.tech" />
+        <link rel="canonical" href="https://ghondiclaude.me" />
         
         {/* DNS prefetch for external domains */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />

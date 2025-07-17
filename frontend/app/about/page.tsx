@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About | GhondiClaude.tech',
+  title: 'About | GhondiClaude.me',
   description: 'Learn about Ghondi Claude\'s journey across Fine Art, Urban Planning, and Technology.',
 }
 
