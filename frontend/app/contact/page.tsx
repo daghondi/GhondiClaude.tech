@@ -40,7 +40,7 @@ export default function ContactPage() {
 
   if (submitted) {
     return (
-      <main className="min-h-screen pt-16 flex items-center justify-center">
+      <main className="min-h-screen pt-20 flex items-center justify-center">
         <div className="text-center">
           <CheckCircle className="w-16 h-16 text-accent-blue mx-auto mb-6" />
           <h1 className="text-4xl font-heading mb-4">Thank You!</h1>
@@ -59,7 +59,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen pt-16">
+    <main className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

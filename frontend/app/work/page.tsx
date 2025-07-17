@@ -15,7 +15,7 @@ import Modal from '../components/Modal'
 export default function WorkPage() {
   const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false)
   return (
-    <main className="min-h-screen pt-16">
+    <main className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary">
         {/* Background Elements */}

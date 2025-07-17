@@ -34,7 +34,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <main id="main-content" className="min-h-screen overflow-hidden">
+    <main id="main-content" className="min-h-screen overflow-hidden pt-20">
       {/* Hero Section - Enhanced */}
       <section id="home" className="relative min-h-screen flex items-center justify-center">
         {/* Dynamic Background */}

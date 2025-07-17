@@ -110,7 +110,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main className="min-h-screen pt-16">
+    <main className="min-h-screen pt-20">
       {/* Back Navigation */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Link
