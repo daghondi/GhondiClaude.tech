@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'About | GhondiClaude.tech',
@@ -229,12 +230,12 @@ export default function AboutPage() {
             or innovative technology solutions, I'd love to hear about your vision.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Get in Touch
-            </button>
-            <button className="btn-secondary">
+            </Link>
+            <Link href="/work" className="btn-secondary">
               View My Work
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { ArrowRight, Play, Sparkles, Layers, Code, Palette, Linkedin, Github, Facebook, Instagram } from 'lucide-react'
+import Modal from './components/Modal'
 
 // Note: For now we'll comment out metadata since we're using 'use client'
 // TODO: Move metadata to layout.tsx or use a separate metadata function
@@ -15,6 +16,8 @@ import { ArrowRight, Play, Sparkles, Layers, Code, Palette, Linkedin, Github, Fa
 export default function HomePage() {
   const [currentRole, setCurrentRole] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [isArtistStatementOpen, setIsArtistStatementOpen] = useState(false)
+  const [isTechnicalSpecsOpen, setIsTechnicalSpecsOpen] = useState(false)
   
   const roles = [
     { title: "Fine Artist", icon: Palette },
@@ -408,7 +411,10 @@ export default function HomePage() {
                       View Gallery
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <button className="btn-ghost group">
+                    <button 
+                      onClick={() => setIsArtistStatementOpen(true)}
+                      className="btn-ghost group"
+                    >
                       <Play className="w-4 h-4 mr-2" />
                       Artist Statement
                     </button>
@@ -547,7 +553,10 @@ export default function HomePage() {
                       View Project
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <button className="btn-ghost group">
+                    <button 
+                      onClick={() => setIsTechnicalSpecsOpen(true)}
+                      className="btn-ghost group"
+                    >
                       <Code className="w-4 h-4 mr-2" />
                       Technical Specs
                     </button>
@@ -692,6 +701,154 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Artist Statement Modal */}
+      <Modal
+        isOpen={isArtistStatementOpen}
+        onClose={() => setIsArtistStatementOpen(false)}
+        title="Artist Statement"
+        size="lg"
+      >
+        <div className="space-y-6 text-gray-300 leading-relaxed">
+          <p className="text-lg">
+            My artistic journey is deeply rooted in the exploration of human connection within 
+            the context of modern urban life. Through painting and mixed media, I seek to capture 
+            the subtle emotions that emerge from our relationship with the built environment.
+          </p>
+          <p>
+            Each piece begins with observation—watching how light falls on concrete, how people 
+            move through spaces, how technology shapes our interactions. I'm fascinated by the 
+            paradoxes of city life: isolation within crowds, stillness within movement, 
+            nature within artifice.
+          </p>
+          <p>
+            My work bridges traditional techniques with contemporary themes, using oil and acrylic 
+            alongside digital elements to create layered narratives. The urban landscape becomes 
+            a canvas for exploring deeper questions about identity, belonging, and our collective future.
+          </p>
+          
+          <div className="mt-8 pt-6 border-t border-white/10">
+            <blockquote className="text-xl font-playfair italic text-gray-200 mb-4">
+              "Art is not what you see, but what you make others see through the lens of shared humanity."
+            </blockquote>
+            <p className="text-accent-blue font-medium">— Ghondi Claude</p>
+          </div>
+          
+          <div className="mt-8 flex gap-4">
+            <Link href="/portfolio/fine-art" className="btn-primary">
+              <Palette className="w-4 h-4 mr-2" />
+              View Full Gallery
+            </Link>
+            <Link href="/contact" className="btn-secondary">
+              Commission Artwork
+            </Link>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Technical Specs Modal */}
+      <Modal
+        isOpen={isTechnicalSpecsOpen}
+        onClose={() => setIsTechnicalSpecsOpen(false)}
+        title="Smart City Symphony - Technical Specifications"
+        size="xl"
+      >
+        <div className="space-y-8">
+          {/* Overview */}
+          <div>
+            <h3 className="text-xl font-heading text-white mb-4">Architecture Overview</h3>
+            <p className="text-gray-300 mb-4">
+              Smart City Symphony is built on a microservices architecture utilizing cutting-edge 
+              technologies for real-time data processing, AI-driven insights, and scalable urban management.
+            </p>
+          </div>
+
+          {/* Technical Stack */}
+          <div>
+            <h3 className="text-xl font-heading text-white mb-4">Technology Stack</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <h4 className="text-accent-blue font-semibold">Backend & Processing</h4>
+                <ul className="space-y-2 text-gray-300">
+                  <li>• Node.js & Express.js for API services</li>
+                  <li>• Python for AI/ML processing</li>
+                  <li>• Apache Kafka for real-time data streaming</li>
+                  <li>• PostgreSQL with PostGIS for spatial data</li>
+                  <li>• Redis for caching and session management</li>
+                </ul>
+              </div>
+              <div className="space-y-3">
+                <h4 className="text-accent-blue font-semibold">Frontend & Visualization</h4>
+                <ul className="space-y-2 text-gray-300">
+                  <li>• React with TypeScript</li>
+                  <li>• Three.js for 3D city modeling</li>
+                  <li>• D3.js for data visualizations</li>
+                  <li>• Mapbox GL for interactive mapping</li>
+                  <li>• WebGL for real-time rendering</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* AI Components */}
+          <div>
+            <h3 className="text-xl font-heading text-white mb-4">AI & Machine Learning</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-white/5 rounded-lg p-4">
+                <h4 className="text-accent-blue font-semibold mb-2">Predictive Analytics</h4>
+                <p className="text-gray-400 text-sm">
+                  TensorFlow-based models for traffic pattern prediction and resource optimization
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-lg p-4">
+                <h4 className="text-accent-blue font-semibold mb-2">Computer Vision</h4>
+                <p className="text-gray-400 text-sm">
+                  OpenCV and PyTorch for real-time monitoring and safety analysis
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-lg p-4">
+                <h4 className="text-accent-blue font-semibold mb-2">NLP Processing</h4>
+                <p className="text-gray-400 text-sm">
+                  BERT models for citizen feedback analysis and sentiment monitoring
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Performance Metrics */}
+          <div>
+            <h3 className="text-xl font-heading text-white mb-4">Performance Specifications</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div className="bg-accent-blue/10 rounded-lg p-4">
+                <div className="text-2xl font-bold text-accent-blue">10ms</div>
+                <div className="text-gray-400 text-sm">API Response Time</div>
+              </div>
+              <div className="bg-accent-blue/10 rounded-lg p-4">
+                <div className="text-2xl font-bold text-accent-blue">1M+</div>
+                <div className="text-gray-400 text-sm">Data Points/Hour</div>
+              </div>
+              <div className="bg-accent-blue/10 rounded-lg p-4">
+                <div className="text-2xl font-bold text-accent-blue">99.9%</div>
+                <div className="text-gray-400 text-sm">Uptime SLA</div>
+              </div>
+              <div className="bg-accent-blue/10 rounded-lg p-4">
+                <div className="text-2xl font-bold text-accent-blue">50K</div>
+                <div className="text-gray-400 text-sm">Concurrent Users</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-8 flex gap-4">
+            <Link href="/work/smart-city-symphony" className="btn-primary">
+              <Layers className="w-4 h-4 mr-2" />
+              View Full Project
+            </Link>
+            <Link href="/contact" className="btn-secondary">
+              Discuss Implementation
+            </Link>
+          </div>
+        </div>
+      </Modal>
     </main>
   )
 }
