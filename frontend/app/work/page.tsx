@@ -1,24 +1,29 @@
-'use client'
-
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { useState } from 'react'
-import { ArrowRight, Palette, Code, Layers, Play, ExternalLink } from 'lucide-react'
-import Modal from '../components/Modal'
+import { ArrowRight, Palette, Code, Layers, ExternalLink, Calendar, Tag } from 'lucide-react'
+import { getProjects, getSiteSettings, urlFor } from '@/sanity/utils'
 
-// Note: Commenting out metadata since we're using 'use client'
-// export const metadata: Metadata = {
-//   title: 'Portfolio | GhondiClaude.me',
-//   description: 'Explore my multidisciplinary work across Fine Art, Urban Planning, and Technology.',
-// }
+export const metadata: Metadata = {
+  title: 'Portfolio | GhondiClaude.me',
+  description: 'Explore my multidisciplinary work across Fine Art, Urban Planning, and Technology.',
+}
 
-export default function WorkPage() {
-  const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false)
+export default async function WorkPage() {
+  // Fetch all projects and site settings
+  const allProjects = await getProjects()
+  const siteSettings = await getSiteSettings()
+  
+  // Group projects by type for stats
+  const projectsByType = {
+    'fine-art': allProjects.filter((p: any) => p.projectType === 'fine-art'),
+    'technology': allProjects.filter((p: any) => p.projectType === 'technology'),
+    'urban-planning': allProjects.filter((p: any) => p.projectType === 'urban-planning')
+  }
+
   return (
     <main className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary">
-        {/* Background Elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-2 h-2 bg-accent-blue rounded-full animate-ping" />
           <div className="absolute top-40 right-32 w-1 h-1 bg-white rounded-full animate-pulse" />
@@ -37,498 +42,193 @@ export default function WorkPage() {
             
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
               <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                Three Worlds, One Vision
+                {siteSettings?.workPageContent?.workTitle || "My Work"}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Journey through my multidisciplinary portfolio where 
-              <span className="text-white font-semibold"> artistic expression</span>, 
-              <span className="text-accent-blue font-semibold"> technological innovation</span>, and 
-              <span className="text-white font-semibold"> urban planning expertise</span> converge 
-              to create solutions that are both beautiful and functional.
+              {siteSettings?.workPageContent?.workSubtitle || 
+                "A curated collection of projects spanning Fine Art, Urban Planning, and Technology"
+              }
             </p>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Sections */}
-      <section className="section relative">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="grid grid-cols-6 h-full">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div key={i} className="border border-white/10" />
-            ))}
-          </div>
-        </div>
-        
-        <div className="section-container relative">
-          <div className="space-y-32">
-            
-            {/* 01. Fine Art */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-white/20 to-accent-blue rounded-2xl flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">01</span>
-                  </div>
-                  <div className="h-px bg-gradient-to-r from-accent-blue to-transparent flex-1" />
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Palette className="w-8 h-8 text-accent-blue" />
-                    <h2 className="text-4xl lg:text-5xl font-heading font-bold">Fine Art</h2>
-                  </div>
-                  
-                  <p className="text-xl text-gray-300 leading-relaxed">
-                    Explore my artistic journey through paintings, mixed media, and digital art that captures 
-                    the essence of human experience. Each piece tells a story of emotion, color, and form 
-                    converging to create visual poetry.
-                  </p>
-                  
-                  <div className="space-y-4">
-                    <div className="bg-dark-tertiary/30 backdrop-blur-sm border border-white/10 rounded-lg p-6">
-                      <h3 className="text-xl font-semibold text-white mb-2">Featured Collection</h3>
-                      <p className="text-gray-400 mb-4">
-                        "Urban Reflections" - A series exploring the intersection of city life and human emotion
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm">Oil on Canvas</span>
-                        <span className="px-3 py-1 bg-white/20 text-white rounded-full text-sm">Mixed Media</span>
-                        <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm">2023-2024</span>
-                      </div>
-                    </div>
-                    
-                    <Link href="/portfolio/fine-art" className="btn-primary group inline-flex">
-                      <Palette className="w-5 h-5 mr-2" />
-                      View Art Portfolio
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
+      {/* Projects Overview Stats */}
+      <section className="section border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Palette className="w-8 h-8 text-accent-blue" />
               </div>
-              
-              <div className="relative group">
-                {/* Featured Artwork Placeholder */}
-                <div className="aspect-[4/5] bg-gradient-to-br from-white/10 via-accent-blue/10 to-white/5 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-accent-blue/15 flex items-center justify-center">
-                    <div className="text-center space-y-6 p-8">
-                      <div className="w-24 h-24 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-2xl flex items-center justify-center">
-                        <Palette className="w-12 h-12 text-white" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="text-2xl font-heading font-bold text-white">Featured Painting</h3>
-                        <p className="text-gray-300">"Convergence of Dreams"</p>
-                        <p className="text-sm text-gray-400">Oil on Canvas • 36" x 48" • 2024</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Overlay for interactivity */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                
-                {/* Floating accent elements */}
-                <div className="absolute -top-6 -right-6 w-3 h-3 bg-accent-blue/60 rounded-full animate-pulse" />
-                <div className="absolute -bottom-6 -left-6 w-2 h-2 bg-white/40 rounded-full animate-bounce" />
-              </div>
+              <h3 className="text-2xl font-heading font-bold mb-2">{projectsByType['fine-art'].length}</h3>
+              <p className="text-gray-400">Fine Art Projects</p>
             </div>
-
-            {/* 02. Tech Projects */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1 relative group">
-                <div className="aspect-video bg-gradient-to-br from-accent-blue/20 via-white/10 to-accent-blue/20 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-dark-tertiary/80 to-dark-quaternary/80 flex items-center justify-center">
-                    <div className="text-center space-y-4">
-                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-2xl flex items-center justify-center">
-                        <Code className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-heading font-bold text-white">AI Innovation Lab</h3>
-                        <p className="text-gray-300 text-sm">Interactive Demos & Case Studies</p>
-                      </div>
-                      <div className="flex items-center justify-center gap-2 text-accent-blue text-sm">
-                        <Play className="w-4 h-4" />
-                        <span>Explore Projects</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Interactive overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                
-                {/* Tech accent elements */}
-                <div className="absolute -top-4 -left-4 w-4 h-4 bg-white/60 rounded-full animate-ping" />
-                <div className="absolute -bottom-4 -right-4 w-3 h-3 bg-accent-blue/80 rounded-full animate-bounce" />
+            <div className="text-center">
+              <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Code className="w-8 h-8 text-accent-blue" />
               </div>
-              
-              <div className="order-1 lg:order-2 space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-white/20 to-accent-blue rounded-2xl flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">02</span>
-                  </div>
-                  <div className="h-px bg-gradient-to-r from-accent-blue to-transparent flex-1" />
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Code className="w-8 h-8 text-accent-blue" />
-                    <h2 className="text-4xl lg:text-5xl font-heading font-bold">Tech Projects</h2>
-                  </div>
-                  
-                  <p className="text-xl text-gray-300 leading-relaxed">
-                    Dive into my technology laboratory where AI experiments, machine learning models, 
-                    and innovative software solutions come to life. Each project represents a step 
-                    toward the future of human-computer interaction.
-                  </p>
-                  
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="bg-dark-tertiary/30 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-                        <h4 className="font-semibold text-white mb-2">AI & Machine Learning</h4>
-                        <p className="text-gray-400 text-sm">Neural networks, computer vision, and intelligent systems</p>
-                      </div>
-                      <div className="bg-dark-tertiary/30 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-                        <h4 className="font-semibold text-white mb-2">Web Applications</h4>
-                        <p className="text-gray-400 text-sm">Full-stack solutions and interactive experiences</p>
-                      </div>
-                    </div>
-                    
-                    <Link href="/portfolio/tech-projects" className="btn-primary group inline-flex">
-                      <Code className="w-5 h-5 mr-2" />
-                      Explore Tech Lab
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <h3 className="text-2xl font-heading font-bold mb-2">{projectsByType['technology'].length}</h3>
+              <p className="text-gray-400">Tech Projects</p>
             </div>
-
-            {/* 03. Smart City Symphony */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-white/20 to-accent-blue rounded-2xl flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">03</span>
-                  </div>
-                  <div className="h-px bg-gradient-to-r from-accent-blue to-transparent flex-1" />
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Layers className="w-8 h-8 text-accent-blue" />
-                    <h2 className="text-4xl lg:text-5xl font-heading font-bold">Smart City Symphony</h2>
-                  </div>
-                  
-                  <p className="text-xl text-gray-300 leading-relaxed">
-                    A comprehensive urban planning framework that orchestrates AI-driven traffic optimization 
-                    with community-centered design principles. This flagship project demonstrates how technology 
-                    can serve human needs while preserving cultural identity.
-                  </p>
-                  
-                  <div className="space-y-4">
-                    <div className="bg-dark-tertiary/30 backdrop-blur-sm border border-white/10 rounded-lg p-6">
-                      <h3 className="text-xl font-semibold text-white mb-4">Project Highlights</h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-accent-blue rounded-full"></div>
-                          <span className="text-gray-300">AI Traffic Optimization</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-white rounded-full"></div>
-                          <span className="text-gray-300">Community Integration</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-accent-blue rounded-full"></div>
-                          <span className="text-gray-300">Sustainable Design</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-white rounded-full"></div>
-                          <span className="text-gray-300">Real-time Analytics</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-4">
-                      <Link href="/work/smart-city-symphony" className="btn-primary group">
-                        <Layers className="w-5 h-5 mr-2" />
-                        View Project
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                      <button 
-                        onClick={() => setIsCaseStudyOpen(true)}
-                        className="btn-ghost group"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Case Study
-                      </button>
-                    </div>
-                  </div>
-                </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Layers className="w-8 h-8 text-accent-blue" />
               </div>
-              
-              <div className="relative group">
-                <div className="aspect-video bg-gradient-to-br from-accent-blue/20 via-white/10 to-accent-blue/20 rounded-2xl border border-white/10 overflow-hidden group-hover:scale-105 transition-all duration-500 shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-dark-tertiary/80 to-dark-quaternary/80 flex items-center justify-center">
-                    <div className="text-center space-y-4">
-                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-white/20 to-accent-blue/30 rounded-2xl flex items-center justify-center">
-                        <Layers className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-heading font-bold text-white">3D City Visualization</h3>
-                        <p className="text-gray-300 text-sm">Interactive Urban Planning Model</p>
-                      </div>
-                      <div className="flex items-center justify-center gap-2 text-accent-blue text-sm">
-                        <Play className="w-4 h-4" />
-                        <span>Explore Model</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                
-                {/* Urban planning accent elements */}
-                <div className="absolute -top-6 -right-6 w-3 h-3 bg-white/60 rounded-full animate-pulse" />
-                <div className="absolute -bottom-6 -left-6 w-2 h-2 bg-accent-blue/80 rounded-full animate-bounce" />
-                <div className="absolute top-1/2 -left-8 w-1 h-1 bg-white/40 rounded-full animate-ping" />
-              </div>
+              <h3 className="text-2xl font-heading font-bold mb-2">{projectsByType['urban-planning'].length}</h3>
+              <p className="text-gray-400">Urban Planning Projects</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Philosophy & Approach */}
-      <section className="section bg-gradient-to-b from-dark-secondary/30 to-dark-primary relative">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/6 w-2 h-2 bg-accent-blue rounded-full animate-ping" />
-          <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-white/40 rounded-full animate-pulse" />
-          <div className="absolute top-1/2 right-1/6 w-3 h-3 bg-accent-blue/60 rounded-full animate-bounce" />
-        </div>
-        
-        <div className="section-container relative">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-heading font-bold">
-              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                Where Disciplines Converge
+      {/* All Projects Grid */}
+      <section className="section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-heading mb-6">
+              <span className="text-gradient">
+                {siteSettings?.workPageContent?.featuredSectionTitle || "Featured Projects"}
               </span>
             </h2>
-            
-            <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">
-              Each project in my portfolio represents more than individual expertise—they showcase the 
-              <span className="text-accent-blue font-semibold"> transformative power</span> that emerges 
-              when artistic vision, technical innovation, and urban planning methodology 
-              <span className="text-white font-semibold"> unite</span> to solve complex challenges.
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              {siteSettings?.workPageContent?.featuredSectionSubtitle || 
+                "Explore my latest work across different disciplines"
+              }
             </p>
-            
-            <div className="pt-8">
-              <blockquote className="text-xl lg:text-2xl font-playfair italic text-gray-200 relative">
-                <span className="text-4xl text-white/30 absolute -top-4 -left-2">&ldquo;</span>
-                True innovation happens at the intersections—where different ways of thinking 
-                collide and create something entirely new.
-                <span className="text-4xl text-white/30 absolute -bottom-2 -right-2">&rdquo;</span>
-              </blockquote>
-            </div>
           </div>
+
+          {allProjects.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {allProjects.map((project: any) => (
+                <article key={project._id} className="card group overflow-hidden">
+                  {/* Project Image */}
+                  <div className="aspect-video rounded-lg mb-6 overflow-hidden relative">
+                    {project.featuredImage ? (
+                      <img
+                        src={urlFor(project.featuredImage).url()}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-white/10 flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                            {project.projectType === 'fine-art' && <Palette className="w-6 h-6 text-accent-blue" />}
+                            {project.projectType === 'technology' && <Code className="w-6 h-6 text-accent-blue" />}
+                            {project.projectType === 'urban-planning' && <Layers className="w-6 h-6 text-accent-blue" />}
+                          </div>
+                          <p className="text-gray-400 text-sm">Project Image</p>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Project Type Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-dark-primary/80 backdrop-blur-sm text-accent-blue rounded-full text-sm font-medium capitalize">
+                        {project.projectType?.replace('-', ' ')}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Project Info */}
+                  <div className="space-y-4">
+                    {/* Meta Information */}
+                    <div className="flex items-center gap-4 text-sm text-gray-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {new Date(project.publishedAt).getFullYear()}
+                      </div>
+                      {project.technologies && project.technologies.length > 0 && (
+                        <div className="flex items-center gap-1">
+                          <Tag className="w-3 h-3" />
+                          {project.technologies[0]}
+                          {project.technologies.length > 1 && ` +${project.technologies.length - 1}`}
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-xl font-heading font-bold group-hover:text-accent-blue transition-colors">
+                      {project.title}
+                    </h3>
+                    
+                    {/* Excerpt */}
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {project.excerpt}
+                    </p>
+                    
+                    {/* Actions */}
+                    <div className="flex items-center justify-between pt-4">
+                      <Link
+                        href={`/projects/${project.slug.current}`}
+                        className="text-accent-blue hover:text-white transition-colors inline-flex items-center gap-1 text-sm font-medium"
+                      >
+                        View Project
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                      
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-white transition-colors"
+                          title="View Live Project"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            /* No Projects Fallback */
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-gradient-to-br from-white/5 to-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Palette className="w-12 h-12 text-accent-blue/60" />
+              </div>
+              <h3 className="text-2xl font-heading mb-4 text-gray-300">
+                {siteSettings?.workPageContent?.noProjectsTitle || "More Projects Upon Request"}
+              </h3>
+              <p className="text-gray-400 mb-8 max-w-md mx-auto">
+                {siteSettings?.workPageContent?.noProjectsDescription || 
+                  "I'm constantly working on new projects across art, technology, and urban planning. Reach out to see my latest work or discuss potential collaborations."
+                }
+              </p>
+              <Link href="/contact" className="btn-primary">
+                Get in Touch
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="section relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/5 via-white/3 to-accent-blue/5" />
-        <div className="absolute inset-0">
-          <div className="grid grid-cols-8 h-full opacity-5">
-            {Array.from({ length: 32 }).map((_, i) => (
-              <div key={i} className="border border-white/20" />
-            ))}
-          </div>
-        </div>
-        
-        <div className="section-container relative">
-          <div className="text-center space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-heading font-bold">
-              <span className="text-white">Ready to </span>
-              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                Collaborate?
-              </span>
-            </h2>
-            
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Whether you're interested in commissioning artwork, need urban planning consultation, 
-              or want to explore cutting-edge technology solutions—let's create something extraordinary together.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/contact" className="btn-primary btn-lg group">
-                <Code className="w-6 h-6 mr-3 group-hover:animate-pulse" />
-                Start a Project
-                <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link href="/about" className="btn-secondary btn-lg group">
-                <Play className="w-5 h-5 mr-2" />
-                My Process
-              </Link>
-            </div>
+      <section className="section bg-dark-secondary/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-heading mb-6">
+            {siteSettings?.workPageContent?.ctaTitle || "Interested in"} <span className="text-gradient">Collaboration</span>?
+          </h2>
+          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            {siteSettings?.workPageContent?.ctaDescription || 
+              "Whether you are looking for artistic collaboration, urban planning insights, or innovative technology solutions, let's create something amazing together."
+            }
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="btn-primary">
+              Start a Project
+            </Link>
+            <Link href="/about" className="btn-secondary">
+              Learn More About Me
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* Smart City Symphony Case Study Modal */}
-      <Modal
-        isOpen={isCaseStudyOpen}
-        onClose={() => setIsCaseStudyOpen(false)}
-        title="Smart City Symphony - Case Study"
-        size="xl"
-      >
-        <div className="space-y-8">
-          {/* Project Overview */}
-          <div>
-            <h3 className="text-xl font-heading text-white mb-4">Project Challenge</h3>
-            <p className="text-gray-300 mb-4">
-              Urban planning departments across major cities were struggling with fragmented data systems, 
-              lack of real-time insights, and difficulty engaging citizens in the planning process. 
-              Traditional tools couldn't handle the complexity of modern urban challenges.
-            </p>
-            <div className="bg-white/5 rounded-lg p-4">
-              <h4 className="text-accent-blue font-semibold mb-2">Problem Statement</h4>
-              <p className="text-gray-400 text-sm">
-                How might we create an integrated platform that enables data-driven urban planning 
-                while fostering meaningful community engagement and ensuring sustainable development?
-              </p>
-            </div>
-          </div>
-
-          {/* Research & Discovery */}
-          <div>
-            <h3 className="text-xl font-heading text-white mb-4">Research & Discovery</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-accent-blue font-semibold mb-3">User Research</h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• Interviewed 50+ urban planners across 5 cities</li>
-                  <li>• Conducted citizen focus groups</li>
-                  <li>• Analyzed existing city data workflows</li>
-                  <li>• Studied successful smart city implementations</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-accent-blue font-semibold mb-3">Key Insights</h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• 78% of planning decisions lack real-time data</li>
-                  <li>• Citizen engagement drops 60% without visualization</li>
-                  <li>• Interdepartmental collaboration is fragmented</li>
-                  <li>• Environmental impact often considered too late</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Solution Design */}
-          <div>
-            <h3 className="text-xl font-heading text-white mb-4">Solution Design</h3>
-            <div className="space-y-4">
-              <div className="bg-white/5 rounded-lg p-4">
-                <h4 className="text-accent-blue font-semibold mb-2">AI-Powered Planning Engine</h4>
-                <p className="text-gray-400 text-sm">
-                  Machine learning algorithms analyze traffic patterns, demographic data, and environmental 
-                  factors to predict the impact of proposed developments before implementation.
-                </p>
-              </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <h4 className="text-accent-blue font-semibold mb-2">3D Visualization Platform</h4>
-                <p className="text-gray-400 text-sm">
-                  Interactive 3D city models allow planners and citizens to visualize proposed changes, 
-                  explore different scenarios, and understand spatial relationships in real-time.
-                </p>
-              </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <h4 className="text-accent-blue font-semibold mb-2">Citizen Engagement Hub</h4>
-                <p className="text-gray-400 text-sm">
-                  Mobile-first platform enabling citizens to submit feedback, vote on proposals, 
-                  and participate in virtual town halls with augmented reality features.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Implementation Results */}
-          <div>
-            <h3 className="text-xl font-heading text-white mb-4">Implementation Results</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-6">
-              <div className="bg-accent-blue/10 rounded-lg p-4">
-                <div className="text-2xl font-bold text-accent-blue">3</div>
-                <div className="text-gray-400 text-sm">Cities Deployed</div>
-              </div>
-              <div className="bg-accent-blue/10 rounded-lg p-4">
-                <div className="text-2xl font-bold text-accent-blue">85%</div>
-                <div className="text-gray-400 text-sm">Planning Efficiency</div>
-              </div>
-              <div className="bg-accent-blue/10 rounded-lg p-4">
-                <div className="text-2xl font-bold text-accent-blue">12K+</div>
-                <div className="text-gray-400 text-sm">Citizens Engaged</div>
-              </div>
-              <div className="bg-accent-blue/10 rounded-lg p-4">
-                <div className="text-2xl font-bold text-accent-blue">40%</div>
-                <div className="text-gray-400 text-sm">Cost Reduction</div>
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <h4 className="text-accent-blue font-semibold">Success Stories</h4>
-              <div className="text-gray-300 text-sm space-y-2">
-                <p>
-                  <strong>Barcelona:</strong> Reduced traffic congestion by 30% through AI-optimized traffic flow modeling
-                </p>
-                <p>
-                  <strong>Singapore:</strong> Improved citizen satisfaction with urban development by 65% through enhanced engagement
-                </p>
-                <p>
-                  <strong>Toronto:</strong> Accelerated planning approval processes by 50% while maintaining quality standards
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Lessons Learned */}
-          <div>
-            <h3 className="text-xl font-heading text-white mb-4">Lessons Learned</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-accent-blue font-semibold mb-3">What Worked</h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• Visual storytelling increased citizen engagement</li>
-                  <li>• Real-time data improved decision accuracy</li>
-                  <li>• Cross-department collaboration enhanced</li>
-                  <li>• AI predictions reduced costly mistakes</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-accent-blue font-semibold mb-3">Areas for Improvement</h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• Need stronger data privacy protections</li>
-                  <li>• Training requirements exceeded estimates</li>
-                  <li>• Integration with legacy systems challenging</li>
-                  <li>• Cultural change management critical</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-8 flex gap-4">
-            <Link href="/work/smart-city-symphony" className="btn-primary">
-              <Layers className="w-4 h-4 mr-2" />
-              View Full Project
-            </Link>
-            <Link href="/contact" className="btn-secondary">
-              Discuss Your City's Needs
-            </Link>
-          </div>
-        </div>
-      </Modal>
     </main>
   )
 }

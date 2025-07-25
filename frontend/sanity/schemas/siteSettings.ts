@@ -403,6 +403,70 @@ export default {
       ]
     },
 
+    // Work Page Content
+    {
+      name: 'workPageContent',
+      title: 'Work Page Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'workTitle',
+          title: 'Work Page Title',
+          type: 'string',
+          initialValue: 'My Work'
+        },
+        {
+          name: 'workSubtitle',
+          title: 'Work Page Subtitle',
+          type: 'text',
+          rows: 3,
+          initialValue: 'A curated collection of projects spanning Fine Art, Urban Planning, and Technology'
+        },
+        {
+          name: 'featuredSectionTitle',
+          title: 'Featured Section Title',
+          type: 'string',
+          initialValue: 'Featured Projects'
+        },
+        {
+          name: 'featuredSectionSubtitle',
+          title: 'Featured Section Subtitle',
+          type: 'string',
+          initialValue: 'Explore my latest work across different disciplines'
+        },
+        {
+          name: 'noProjectsTitle',
+          title: 'No Projects Title',
+          type: 'string',
+          initialValue: 'More Projects Upon Request'
+        },
+        {
+          name: 'noProjectsDescription',
+          title: 'No Projects Description',
+          type: 'text',
+          rows: 3,
+          initialValue: "I'm constantly working on new projects across art, technology, and urban planning. Reach out to see my latest work or discuss potential collaborations."
+        },
+        {
+          name: 'ctaTitle',
+          title: 'Call-to-Action Title',
+          type: 'string',
+          initialValue: 'Interested in Collaboration?'
+        },
+        {
+          name: 'ctaDescription',
+          title: 'Call-to-Action Description',
+          type: 'text',
+          rows: 3,
+          initialValue: "Whether you are looking for artistic collaboration, urban planning insights, or innovative technology solutions, let's create something amazing together."
+        }
+      ]
+    },
+
     {
       name: 'analytics',
       title: 'Analytics',
