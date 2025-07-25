@@ -24,23 +24,36 @@ interface TopNavItem {
   }[]
 }
 
-const navItems: TopNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { 
-    label: 'Work', 
-    href: '/work',
-    subItems: [
-      { label: 'Fine Art Portfolio', href: '/portfolio/fine-art' },
-      { label: 'Tech Projects', href: '/portfolio/tech-projects' },
-      { label: 'Smart City Symphony', href: '/work/smart-city-symphony' }
-    ]
-  },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-]
+interface TopNavigationProps {
+  siteSettings?: any
+}
 
-const TopNavigation: React.FC = () => {
+const TopNavigation: React.FC<TopNavigationProps> = ({ siteSettings }) => {
+  // Create navigation from site settings with fallbacks
+  const navItems: TopNavItem[] = [
+    { label: siteSettings?.globalContent?.navigation?.homeLabel || 'Home', href: '/' },
+    { label: siteSettings?.globalContent?.navigation?.aboutLabel || 'About', href: '/about' },
+    { 
+      label: siteSettings?.globalContent?.navigation?.workLabel || 'Work', 
+      href: '/work',
+      subItems: [
+        { 
+          label: siteSettings?.globalContent?.navigation?.fineArtLabel || 'Fine Art Portfolio', 
+          href: '/portfolio/fine-art' 
+        },
+        { 
+          label: siteSettings?.globalContent?.navigation?.techLabLabel || 'Tech Projects', 
+          href: '/portfolio/tech-projects' 
+        },
+        { 
+          label: 'Smart City Symphony', 
+          href: '/work/smart-city-symphony' 
+        }
+      ]
+    },
+    { label: siteSettings?.globalContent?.navigation?.blogLabel || 'Blog', href: '/blog' },
+    { label: siteSettings?.globalContent?.navigation?.contactLabel || 'Contact', href: '/contact' },
+  ]
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [expandedDropdowns, setExpandedDropdowns] = useState<Set<string>>(new Set())
@@ -98,9 +111,13 @@ const TopNavigation: React.FC = () => {
             className="flex items-center space-x-2 text-xl font-heading font-bold text-white hover:text-accent-blue transition-colors"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-white to-accent-blue rounded-lg flex items-center justify-center">
-              <span className="text-dark-primary font-bold text-sm">GC</span>
+              <span className="text-dark-primary font-bold text-sm">
+                {siteSettings?.globalContent?.brandShort || 'GC'}
+              </span>
             </div>
-            <span className="hidden sm:block">Ghondi Claude</span>
+            <span className="hidden sm:block">
+              {siteSettings?.globalContent?.brandName || 'Ghondi Claude'}
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

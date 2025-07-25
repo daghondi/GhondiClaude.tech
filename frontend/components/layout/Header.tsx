@@ -13,23 +13,39 @@ interface NavItem {
   icon?: React.ComponentType<{ className?: string }>
 }
 
-const navigation: NavItem[] = [
-  { label: 'Home', href: '/' },
-  {
-    label: 'Work',
-    href: '/work',
-    children: [
-      { label: 'Fine Art', href: '/work?category=art', icon: Palette },
-      { label: 'Urban Planning', href: '/work?category=urban', icon: Layers },
-      { label: 'Tech Lab', href: '/work?category=tech', icon: Code }
-    ]
-  },
-  { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' }
-]
+interface HeaderProps {
+  siteSettings?: any
+}
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ siteSettings }) => {
+  // Create navigation from site settings with fallbacks
+  const navigation: NavItem[] = [
+    { label: siteSettings?.globalContent?.navigation?.homeLabel || 'Home', href: '/' },
+    {
+      label: siteSettings?.globalContent?.navigation?.workLabel || 'Work',
+      href: '/work',
+      children: [
+        { 
+          label: siteSettings?.globalContent?.navigation?.fineArtLabel || 'Fine Art', 
+          href: '/work?category=art', 
+          icon: Palette 
+        },
+        { 
+          label: siteSettings?.globalContent?.navigation?.urbanPlanningLabel || 'Urban Planning', 
+          href: '/work?category=urban', 
+          icon: Layers 
+        },
+        { 
+          label: siteSettings?.globalContent?.navigation?.techLabLabel || 'Tech Lab', 
+          href: '/work?category=tech', 
+          icon: Code 
+        }
+      ]
+    },
+    { label: siteSettings?.globalContent?.navigation?.blogLabel || 'Blog', href: '/blog' },
+    { label: siteSettings?.globalContent?.navigation?.aboutLabel || 'About', href: '/about' },
+    { label: siteSettings?.globalContent?.navigation?.contactLabel || 'Contact', href: '/contact' }
+  ]
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
@@ -67,7 +83,7 @@ const Header: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <span className="font-heading font-bold text-xl text-white group-hover:text-accent-blue transition-colors">
-                GhondiClaude
+                {siteSettings?.globalContent?.brandName || 'GhondiClaude'}
               </span>
               <span className="text-xs text-gray-400 -mt-1">Tech Innovator</span>
             </div>

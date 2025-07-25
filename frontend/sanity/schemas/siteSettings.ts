@@ -194,6 +194,272 @@ export default {
       ]
     },
     
+    // Global Navigation & UI Content
+    {
+      name: 'globalContent',
+      title: 'Global Navigation & UI',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'brandName',
+          title: 'Brand Name',
+          type: 'string',
+          initialValue: 'GhondiClaude'
+        },
+        {
+          name: 'brandShort',
+          title: 'Brand Short Name (for logo)',
+          type: 'string',
+          initialValue: 'GC'
+        },
+        {
+          name: 'navigation',
+          title: 'Navigation Menu',
+          type: 'object',
+          fields: [
+            {
+              name: 'homeLabel',
+              title: 'Home Menu Label',
+              type: 'string',
+              initialValue: 'Home'
+            },
+            {
+              name: 'workLabel',
+              title: 'Work Menu Label',
+              type: 'string',
+              initialValue: 'Work'
+            },
+            {
+              name: 'blogLabel',
+              title: 'Blog Menu Label',
+              type: 'string',
+              initialValue: 'Blog'
+            },
+            {
+              name: 'aboutLabel',
+              title: 'About Menu Label',
+              type: 'string',
+              initialValue: 'About'
+            },
+            {
+              name: 'contactLabel',
+              title: 'Contact Menu Label',
+              type: 'string',
+              initialValue: 'Contact'
+            },
+            {
+              name: 'fineArtLabel',
+              title: 'Fine Art Submenu Label',
+              type: 'string',
+              initialValue: 'Fine Art'
+            },
+            {
+              name: 'urbanPlanningLabel',
+              title: 'Urban Planning Submenu Label',
+              type: 'string',
+              initialValue: 'Urban Planning'
+            },
+            {
+              name: 'techLabLabel',
+              title: 'Tech Lab Submenu Label',
+              type: 'string',
+              initialValue: 'Tech Lab'
+            }
+          ]
+        },
+        {
+          name: 'commonButtons',
+          title: 'Common Button Labels',
+          type: 'object',
+          fields: [
+            {
+              name: 'getInTouch',
+              title: 'Get In Touch Button',
+              type: 'string',
+              initialValue: 'Get in Touch'
+            },
+            {
+              name: 'learnMore',
+              title: 'Learn More Button',
+              type: 'string',
+              initialValue: 'Learn More'
+            },
+            {
+              name: 'viewProject',
+              title: 'View Project Button',
+              type: 'string',
+              initialValue: 'View Project'
+            },
+            {
+              name: 'readMore',
+              title: 'Read More Button',  
+              type: 'string',
+              initialValue: 'Read More'
+            },
+            {
+              name: 'startProject',
+              title: 'Start Project Button',
+              type: 'string',
+              initialValue: 'Start a Project'
+            },
+            {
+              name: 'sendMessage',
+              title: 'Send Message Button',
+              type: 'string',
+              initialValue: 'Send Message'
+            }
+          ]
+        }
+      ]
+    },
+
+    // Footer Content
+    {
+      name: 'footerContent',
+      title: 'Footer Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'brandDescription',
+          title: 'Brand Description',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Multidisciplinary creator exploring the intersections of art, technology, and urban innovation.'
+        },
+        {
+          name: 'portfolioSection',
+          title: 'Portfolio Section',
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'Section Title',
+              type: 'string',
+              initialValue: 'Portfolio'
+            },
+            {
+              name: 'fineArtLink',
+              title: 'Fine Art Link Text',
+              type: 'string',
+              initialValue: 'Fine Art'
+            },
+            {
+              name: 'urbanPlanningLink',
+              title: 'Urban Planning Link Text',
+              type: 'string',
+              initialValue: 'Urban Planning'
+            },
+            {
+              name: 'techLabLink',
+              title: 'Tech Lab Link Text',
+              type: 'string',
+              initialValue: 'Tech Lab'
+            },
+            {
+              name: 'allWorkLink',
+              title: 'All Work Link Text',
+              type: 'string',
+              initialValue: 'All Work'
+            }
+          ]
+        },
+        {
+          name: 'contentSection',
+          title: 'Content Section',
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'Section Title',
+              type: 'string',
+              initialValue: 'Content'
+            },
+            {
+              name: 'blogLink',
+              title: 'Blog Link Text',
+              type: 'string',
+              initialValue: 'Blog'
+            },
+            {
+              name: 'urbanFlowLink',
+              title: 'Urban Flow Link Text',
+              type: 'string',
+              initialValue: 'Urban Flow'
+            },
+            {
+              name: 'artSoulLink',
+              title: 'Art & Soul Link Text',
+              type: 'string',
+              initialValue: 'Art & Soul'
+            },
+            {
+              name: 'techExplorationsLink',
+              title: 'Tech Explorations Link Text',
+              type: 'string',
+              initialValue: 'Tech Explorations'
+            }
+          ]
+        },
+        {
+          name: 'connectSection',
+          title: 'Connect Section',
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'Section Title',
+              type: 'string',
+              initialValue: 'Connect'
+            },
+            {
+              name: 'aboutLink',
+              title: 'About Link Text',
+              type: 'string',
+              initialValue: 'About'
+            },
+            {
+              name: 'contactLink',
+              title: 'Contact Link Text',
+              type: 'string',
+              initialValue: 'Contact'
+            },
+            {
+              name: 'collaborateLink',
+              title: 'Collaborate Link Text',
+              type: 'string',
+              initialValue: 'Collaborate'
+            },
+            {
+              name: 'speakingLink',
+              title: 'Speaking Link Text',
+              type: 'string',
+              initialValue: 'Speaking'
+            }
+          ]
+        },
+        {
+          name: 'copyrightText',
+          title: 'Copyright Text',
+          type: 'string',
+          initialValue: 'All rights reserved.'
+        },
+        {
+          name: 'madeWithLove',
+          title: 'Made With Love Text',
+          type: 'string',
+          initialValue: 'Made with ❤️ and lots of caffeine'
+        }
+      ]
+    },
+    
     // Homepage Content
     {
       name: 'homepageContent',

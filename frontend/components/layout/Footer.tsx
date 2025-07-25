@@ -4,7 +4,11 @@ import React from 'react'
 import Link from 'next/link'
 import { Github, Linkedin, Twitter, Mail, MapPin, Calendar } from 'lucide-react'
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  siteSettings?: any
+}
+
+const Footer: React.FC<FooterProps> = ({ siteSettings }) => {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
@@ -36,30 +40,66 @@ const Footer: React.FC = () => {
 
   const footerSections = [
     {
-      title: 'Portfolio',
+      title: siteSettings?.footerContent?.portfolioSection?.title || 'Portfolio',
       links: [
-        { label: 'Fine Art', href: '/work/fine-art' },
-        { label: 'Urban Planning', href: '/work/urban-planning' },
-        { label: 'Tech Lab', href: '/work/tech-lab' },
-        { label: 'All Work', href: '/work' }
+        { 
+          label: siteSettings?.footerContent?.portfolioSection?.fineArtLink || 'Fine Art', 
+          href: '/work/fine-art' 
+        },
+        { 
+          label: siteSettings?.footerContent?.portfolioSection?.urbanPlanningLink || 'Urban Planning', 
+          href: '/work/urban-planning' 
+        },
+        { 
+          label: siteSettings?.footerContent?.portfolioSection?.techLabLink || 'Tech Lab', 
+          href: '/work/tech-lab' 
+        },
+        { 
+          label: siteSettings?.footerContent?.portfolioSection?.allWorkLink || 'All Work', 
+          href: '/work' 
+        }
       ]
     },
     {
-      title: 'Content',
+      title: siteSettings?.footerContent?.contentSection?.title || 'Content',
       links: [
-        { label: 'Blog', href: '/blog' },
-        { label: 'Urban Flow', href: '/blog/urban-flow' },
-        { label: 'Art & Soul', href: '/blog/art-soul' },
-        { label: 'Tech Explorations', href: '/blog/tech-explorations' }
+        { 
+          label: siteSettings?.footerContent?.contentSection?.blogLink || 'Blog', 
+          href: '/blog' 
+        },
+        { 
+          label: siteSettings?.footerContent?.contentSection?.urbanFlowLink || 'Urban Flow', 
+          href: '/blog/urban-flow' 
+        },
+        { 
+          label: siteSettings?.footerContent?.contentSection?.artSoulLink || 'Art & Soul', 
+          href: '/blog/art-soul' 
+        },
+        { 
+          label: siteSettings?.footerContent?.contentSection?.techExplorationsLink || 'Tech Explorations', 
+          href: '/blog/tech-explorations' 
+        }
       ]
     },
     {
-      title: 'Connect',
+      title: siteSettings?.footerContent?.connectSection?.title || 'Connect',
       links: [
-        { label: 'About', href: '/about' },
-        { label: 'Contact', href: '/contact' },
-        { label: 'Collaborate', href: '/contact?type=collaboration' },
-        { label: 'Speaking', href: '/contact?type=speaking' }
+        { 
+          label: siteSettings?.footerContent?.connectSection?.aboutLink || 'About', 
+          href: '/about' 
+        },
+        { 
+          label: siteSettings?.footerContent?.connectSection?.contactLink || 'Contact', 
+          href: '/contact' 
+        },
+        { 
+          label: siteSettings?.footerContent?.connectSection?.collaborateLink || 'Collaborate', 
+          href: '/contact?type=collaboration' 
+        },
+        { 
+          label: siteSettings?.footerContent?.connectSection?.speakingLink || 'Speaking', 
+          href: '/contact?type=speaking' 
+        }
       ]
     }
   ]
@@ -73,15 +113,18 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-white to-accent-blue rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-sm">GC</span>
+                <span className="text-white font-bold text-sm">
+                  {siteSettings?.globalContent?.brandShort || 'GC'}
+                </span>
               </div>
               <span className="font-heading font-bold text-xl text-white">
-                GhondiClaude
+                {siteSettings?.globalContent?.brandName || 'GhondiClaude'}
               </span>
             </div>
             <p className="text-gray-400 text-sm mb-6 max-w-sm">
-              Where Fine Art, Urban Planning, and Technology converge in a symphony of creativity. 
-              Exploring the intersection of human vision and digital innovation.
+              {siteSettings?.footerContent?.brandDescription || 
+                'Multidisciplinary creator exploring the intersections of art, technology, and urban innovation.'
+              }
             </p>
             
             {/* Contact Info */}
@@ -161,7 +204,8 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-400 text-sm">
-            © {currentYear} GhondiClaude.me. All rights reserved.
+            © {currentYear} {siteSettings?.globalContent?.brandName || 'GhondiClaude'}.me.{' '}
+            {siteSettings?.footerContent?.copyrightText || 'All rights reserved.'}
           </div>
           
           <div className="flex space-x-6 text-sm">

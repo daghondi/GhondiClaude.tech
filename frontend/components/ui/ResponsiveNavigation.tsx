@@ -31,25 +31,65 @@ interface NavigationItem {
   }[]
 }
 
-const navigationItems: NavigationItem[] = [
-  { id: 'home', label: 'Home', href: '/', icon: Home },
-  { id: 'about', label: 'About', href: '/about', icon: User },
-  { 
-    id: 'work', 
-    label: 'Work', 
-    href: '/work', 
-    icon: Briefcase,
-    subItems: [
-      { id: 'fine-art', label: 'Fine Art', href: '/portfolio/fine-art', icon: Palette },
-      { id: 'tech-projects', label: 'Tech Projects', href: '/portfolio/tech-projects', icon: Code },
-      { id: 'smart-city', label: 'Smart City Symphony', href: '/work/smart-city-symphony', icon: Layers }
-    ]
-  },
-  { id: 'blog', label: 'Blog', href: '/blog', icon: BookOpen },
-  { id: 'contact', label: 'Contact', href: '/contact', icon: Mail },
-]
+interface ResponsiveNavigationProps {
+  siteSettings?: any
+}
 
-const ResponsiveNavigation: React.FC = () => {
+const ResponsiveNavigation: React.FC<ResponsiveNavigationProps> = ({ siteSettings }) => {
+  // Create navigation from site settings with fallbacks
+  const navigationItems: NavigationItem[] = [
+    { 
+      id: 'home', 
+      label: siteSettings?.globalContent?.navigation?.homeLabel || 'Home', 
+      href: '/', 
+      icon: Home 
+    },
+    { 
+      id: 'about', 
+      label: siteSettings?.globalContent?.navigation?.aboutLabel || 'About', 
+      href: '/about', 
+      icon: User 
+    },
+    { 
+      id: 'work', 
+      label: siteSettings?.globalContent?.navigation?.workLabel || 'Work', 
+      href: '/work', 
+      icon: Briefcase,
+      subItems: [
+        { 
+          id: 'fine-art', 
+          label: siteSettings?.globalContent?.navigation?.fineArtLabel || 'Fine Art', 
+          href: '/portfolio/fine-art', 
+          icon: Palette 
+        },
+        { 
+          id: 'tech-projects', 
+          label: siteSettings?.globalContent?.navigation?.techLabLabel || 'Tech Projects', 
+          href: '/portfolio/tech-projects', 
+          icon: Code 
+        },
+        { 
+          id: 'smart-city', 
+          label: 'Smart City Symphony', 
+          href: '/work/smart-city-symphony', 
+          icon: Layers 
+        }
+      ]
+    },
+    { 
+      id: 'blog', 
+      label: siteSettings?.globalContent?.navigation?.blogLabel || 'Blog', 
+      href: '/blog', 
+      icon: BookOpen 
+    },
+    { 
+      id: 'contact', 
+      label: siteSettings?.globalContent?.navigation?.contactLabel || 'Contact', 
+      href: '/contact', 
+      icon: Mail 
+    },
+  ]
+
   const [isVisible, setIsVisible] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set())

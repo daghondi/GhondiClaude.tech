@@ -184,6 +184,8 @@ export async function getSiteSettings() {
       socialLinks,
       contactInfo,
       theme,
+      globalContent,
+      footerContent,
       homepageContent,
       aboutPageContent,
       contactPageContent,
