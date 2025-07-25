@@ -1,13 +1,17 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getSiteSettings, urlFor } from '@/sanity/utils'
 
 export const metadata: Metadata = {
   title: 'About | GhondiClaude.me',
   description: 'Learn about Ghondi Claude\'s journey across Fine Art, Urban Planning, and Technology.',
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // Fetch site settings to get the professional headshot
+  const siteSettings = await getSiteSettings()
+  
   return (
     <main className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -34,11 +38,22 @@ export default function AboutPage() {
             </div>
             
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-white/5 to-accent-blue/20 rounded-2xl flex items-center justify-center">
-                <div className="text-center text-gray-400">
-                  <div className="w-32 h-32 bg-gradient-to-br from-white/20 to-accent-blue rounded-full mx-auto mb-4"></div>
-                  <p>Profile Image Placeholder</p>
-                </div>
+              <div className="aspect-square bg-gradient-to-br from-white/5 to-accent-blue/20 rounded-2xl overflow-hidden">
+                {siteSettings?.professionalHeadshot ? (
+                  <img
+                    src={urlFor(siteSettings.professionalHeadshot).url()}
+                    alt={siteSettings.professionalHeadshot.alt || "Ghondi Claude - Professional Profile"}
+                    className="w-full h-full object-cover object-center"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center text-gray-400">
+                      <div className="w-32 h-32 bg-gradient-to-br from-white/20 to-accent-blue rounded-full mx-auto mb-4"></div>
+                      <p>Upload your photo in Sanity CMS</p>
+                      <p className="text-sm text-gray-500 mt-2">Go to Site Settings → Professional Headshot</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
