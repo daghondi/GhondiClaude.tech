@@ -193,6 +193,216 @@ export default {
         }
       ]
     },
+    
+    // Homepage Content
+    {
+      name: 'homepageContent',
+      title: 'Homepage Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: false
+      },
+      fields: [
+        {
+          name: 'heroTitle',
+          title: 'Hero Title',
+          type: 'string',
+          initialValue: 'Ghondi Claude'
+        },
+        {
+          name: 'heroSubtitle',
+          title: 'Hero Subtitle',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Where Fine Art meets Urban Planning, and Technology bridges the creative divide.'
+        },
+        {
+          name: 'roleDescriptions',
+          title: 'Role Descriptions',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'role',
+                  title: 'Role Title',
+                  type: 'string'
+                },
+                {
+                  name: 'description',
+                  title: 'Description',
+                  type: 'text',
+                  rows: 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    // About Page Content
+    {
+      name: 'aboutPageContent',
+      title: 'About Page Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'aboutTitle',
+          title: 'About Title',
+          type: 'string',
+          initialValue: 'About'
+        },
+        {
+          name: 'aboutSubtitle',
+          title: 'About Subtitle',
+          type: 'text',
+          rows: 3,
+          initialValue: 'A creative professional at the intersection of Fine Art, Urban Planning, and Technology'
+        },
+        {
+          name: 'aboutDescription',
+          title: 'About Description',
+          type: 'text',
+          rows: 4,
+          initialValue: 'Welcome to my universe where brushstrokes meet blueprints, where urban dreams are coded into reality, and where technology becomes the canvas for tomorrow\'s cities.'
+        },
+        {
+          name: 'philosophyQuote',
+          title: 'Philosophy Quote',
+          type: 'text',
+          rows: 3,
+          initialValue: 'At the intersection of art, planning, and technology lies the future of human experience. I believe in creating solutions that are not only functional but also beautiful, sustainable, and deeply human.'
+        }
+      ]
+    },
+
+    // Contact Page Content
+    {
+      name: 'contactPageContent',
+      title: 'Contact Page Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'contactTitle',
+          title: 'Contact Title',
+          type: 'string',
+          initialValue: 'Let\'s Create Something Amazing Together'
+        },
+        {
+          name: 'contactSubtitle',
+          title: 'Contact Subtitle',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Whether you\'re looking for artistic collaboration, urban planning consultation, or innovative technology solutions, I\'d love to hear about your vision.'
+        },
+        {
+          name: 'formPlaceholders',
+          title: 'Form Placeholders',
+          type: 'object',
+          fields: [
+            {
+              name: 'namePlaceholder',
+              title: 'Name Placeholder',
+              type: 'string',
+              initialValue: 'Your full name'
+            },
+            {
+              name: 'emailPlaceholder',
+              title: 'Email Placeholder',
+              type: 'string',
+              initialValue: 'your.email@example.com'
+            },
+            {
+              name: 'phonePlaceholder',
+              title: 'Phone Placeholder',
+              type: 'string',
+              initialValue: '+1 (555) 123-4567'
+            },
+            {
+              name: 'companyPlaceholder',
+              title: 'Company Placeholder',
+              type: 'string',
+              initialValue: 'Your company'
+            },
+            {
+              name: 'subjectPlaceholder',
+              title: 'Subject Placeholder',
+              type: 'string',
+              initialValue: 'Brief subject of your inquiry'
+            },
+            {
+              name: 'messagePlaceholder',
+              title: 'Message Placeholder',
+              type: 'string',
+              initialValue: 'Tell me about your project, vision, or how we can collaborate...'
+            }
+          ]
+        }
+      ]
+    },
+
+    // Blog Page Content
+    {
+      name: 'blogPageContent',
+      title: 'Blog Page Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'blogTitle',
+          title: 'Blog Title',
+          type: 'string',
+          initialValue: 'Insights'
+        },
+        {
+          name: 'blogSubtitle',
+          title: 'Blog Subtitle',
+          type: 'text',
+          rows: 2,
+          initialValue: 'Thoughts on art, technology, urban planning, and the beautiful intersections between them'
+        },
+        {
+          name: 'searchPlaceholder',
+          title: 'Search Placeholder',
+          type: 'string',
+          initialValue: 'Search articles...'
+        },
+        {
+          name: 'newsletterTitle',
+          title: 'Newsletter Title',
+          type: 'string',
+          initialValue: 'Stay Updated'
+        },
+        {
+          name: 'newsletterDescription',
+          title: 'Newsletter Description',
+          type: 'text',
+          rows: 2,
+          initialValue: 'Get the latest insights on art, technology, and urban planning delivered to your inbox.'
+        },
+        {
+          name: 'emailPlaceholder',
+          title: 'Email Placeholder',
+          type: 'string',
+          initialValue: 'Enter your email'
+        }
+      ]
+    },
+
     {
       name: 'analytics',
       title: 'Analytics',

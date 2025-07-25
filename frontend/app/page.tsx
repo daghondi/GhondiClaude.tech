@@ -84,7 +84,7 @@ export default function HomePage() {
                 {/* Name - Single Line */}
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight">
                   <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                    I'm Ghondi Claude
+                    {siteSettings?.homepageContent?.heroTitle ? `I'm ${siteSettings.homepageContent.heroTitle}` : "I'm Ghondi Claude"}
                   </span>
                 </h1>
               </div>
@@ -107,11 +107,9 @@ export default function HomePage() {
               {/* Professional Introduction */}
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
-                  I'm a multi-dimensional creative professional who bridges the worlds of 
-                  <span className="text-white font-semibold"> artistic expression</span>, 
-                  <span className="text-white font-semibold"> urban design</span>, and 
-                  <span className="text-accent-blue font-semibold"> technological innovation</span>. 
-                  My unique perspective emerges at the intersection of creativity, spatial planning, and digital exploration.
+                  {siteSettings?.homepageContent?.heroSubtitle || 
+                    "I'm a multi-dimensional creative professional who bridges the worlds of artistic expression, urban design, and technological innovation. My unique perspective emerges at the intersection of creativity, spatial planning, and digital exploration."
+                  }
                 </p>
                 
                 <p className="text-base md:text-lg text-gray-400 leading-relaxed max-w-xl">

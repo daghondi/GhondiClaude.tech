@@ -184,10 +184,21 @@ export async function getSiteSettings() {
       socialLinks,
       contactInfo,
       theme,
+      homepageContent,
+      aboutPageContent,
+      contactPageContent,
+      blogPageContent,
+      workPageContent,
       analytics
     }
   `
   return await client.fetch(query)
+}
+
+// Helper function to get specific page content
+export async function getPageContent(pageName: string) {
+  const settings = await getSiteSettings()
+  return settings?.[`${pageName}PageContent`] || {}
 }
 
 // Search functionality

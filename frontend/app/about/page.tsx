@@ -20,19 +20,20 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-                <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">About</span>
+                <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
+                  {siteSettings?.aboutPageContent?.aboutTitle || "About"}
+                </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8">
-                A creative professional at the intersection of 
-                <span className="text-white"> Fine Art</span>,
-                <span className="text-white"> Urban Planning</span>, and
-                <span className="text-accent-blue"> Technology</span>
+                {siteSettings?.aboutPageContent?.aboutSubtitle || 
+                  "A creative professional at the intersection of Fine Art, Urban Planning, and Technology"
+                }
               </p>
               <div className="space-y-4 text-lg text-gray-400">
                 <p>
-                  Welcome to my universe where brushstrokes meet blueprints, 
-                  where urban dreams are coded into reality, and where technology 
-                  becomes the canvas for tomorrow's cities.
+                  {siteSettings?.aboutPageContent?.aboutDescription || 
+                    "Welcome to my universe where brushstrokes meet blueprints, where urban dreams are coded into reality, and where technology becomes the canvas for tomorrow's cities."
+                  }
                 </p>
               </div>
             </div>
@@ -153,9 +154,9 @@ export default async function AboutPage() {
               <span className="text-gradient">My Philosophy</span>
             </h2>
             <blockquote className="text-2xl font-playfair italic text-gray-300 mb-8">
-              "At the intersection of art, planning, and technology lies the future of human experience. 
-              I believe in creating solutions that are not only functional but also beautiful, 
-              sustainable, and deeply human."
+              "{siteSettings?.aboutPageContent?.philosophyQuote || 
+                "At the intersection of art, planning, and technology lies the future of human experience. I believe in creating solutions that are not only functional but also beautiful, sustainable, and deeply human."
+              }"
             </blockquote>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
               <div className="text-center">

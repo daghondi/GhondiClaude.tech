@@ -1,8 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, Tag, ArrowRight, Search } from 'lucide-react'
-import { getBlogPosts } from '@/sanity/utils'
-import { urlFor } from '@/sanity/utils'
+import { getBlogPosts, getSiteSettings, urlFor } from '@/sanity/utils'
 
 // Get blog posts from Sanity
 async function getBlogData() {
@@ -101,6 +100,7 @@ const categories = ["All", "Fine Art", "Urban Planning", "Technology", "Philosop
 
 export default async function BlogPage() {
   const sanityPosts = await getBlogData()
+  const siteSettings = await getSiteSettings()
   
   // Use Sanity posts if available, otherwise fall back to mock data
   const blogPosts = sanityPosts.length > 0 ? sanityPosts : mockBlogPosts
@@ -115,10 +115,14 @@ export default async function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">Insights</span>
+              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
+                {siteSettings?.blogPageContent?.blogTitle || "Insights"}
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Thoughts on art, technology, urban planning, and the beautiful intersections between them
+              {siteSettings?.blogPageContent?.blogSubtitle || 
+                "Thoughts on art, technology, urban planning, and the beautiful intersections between them"
+              }
             </p>
           </div>
         </div>
@@ -133,7 +137,7 @@ export default async function BlogPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search articles..."
+                placeholder={siteSettings?.blogPageContent?.searchPlaceholder || "Search articles..."}
                 className="input pl-12"
               />
             </div>
