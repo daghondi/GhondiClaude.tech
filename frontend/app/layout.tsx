@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import ClientComponents from '@/components/ClientComponents'
+import SiteSettingsWrapper from '@/components/SiteSettingsWrapper'
 
 export const metadata: Metadata = {
   title: {
@@ -114,12 +115,14 @@ export default function RootLayout({
         </a>
         
         {/* Main application */}
-        <div id="root" className="relative">
-          {children}
-          
-          {/* Interactive UI Components */}
-          <ClientComponents />
-        </div>
+        <SiteSettingsWrapper>
+          <div id="root" className="relative">
+            {children}
+            
+            {/* Interactive UI Components */}
+            <ClientComponents />
+          </div>
+        </SiteSettingsWrapper>
         
         {/* Scripts for analytics and other third-party services */}
         {process.env.NODE_ENV === 'production' && (

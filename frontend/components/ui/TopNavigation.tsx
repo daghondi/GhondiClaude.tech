@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { useSiteSettings } from '@/contexts/SiteSettingsContext'
 import { 
   Home, 
   User, 
@@ -24,11 +25,9 @@ interface TopNavItem {
   }[]
 }
 
-interface TopNavigationProps {
-  siteSettings?: any
-}
-
-const TopNavigation: React.FC<TopNavigationProps> = ({ siteSettings }) => {
+const TopNavigation: React.FC = () => {
+  const siteSettings = useSiteSettings()
+  
   // Create navigation from site settings with fallbacks
   const navItems: TopNavItem[] = [
     { label: siteSettings?.globalContent?.navigation?.homeLabel || 'Home', href: '/' },

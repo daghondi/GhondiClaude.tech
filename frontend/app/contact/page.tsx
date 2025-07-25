@@ -3,8 +3,10 @@
 import React, { useState } from 'react'
 import type { Metadata } from 'next'
 import { Mail, Phone, MapPin, Calendar, Send, CheckCircle } from 'lucide-react'
+import { useSiteSettings } from '@/contexts/SiteSettingsContext'
 
 export default function ContactPage() {
+  const siteSettings = useSiteSettings()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,7 +67,9 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">Contact</span>
+              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
+                {siteSettings?.contactPageContent?.contactTitle || 'Contact'}  
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
               Let's collaborate and create something extraordinary together
@@ -80,7 +84,9 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Information */}
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-heading mb-8">Get in Touch</h2>
+              <h2 className="text-3xl font-heading mb-8">
+                {siteSettings?.globalContent?.commonButtons?.getInTouch || 'Get in Touch'}
+              </h2>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">

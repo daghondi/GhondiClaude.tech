@@ -20,6 +20,7 @@ const nextConfig = {
       'ghondiclaude.me',
       'supabase.co',
       'res.cloudinary.com',
+      'cdn.sanity.io',
     ],
     remotePatterns: [
       {
@@ -29,6 +30,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
       },
     ],
   },

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { useSiteSettings } from '@/contexts/SiteSettingsContext'
 import { 
   Home, 
   User, 
@@ -31,11 +32,9 @@ interface NavigationItem {
   }[]
 }
 
-interface ResponsiveNavigationProps {
-  siteSettings?: any
-}
-
-const ResponsiveNavigation: React.FC<ResponsiveNavigationProps> = ({ siteSettings }) => {
+const ResponsiveNavigation: React.FC = () => {
+  const siteSettings = useSiteSettings()
+  
   // Create navigation from site settings with fallbacks
   const navigationItems: NavigationItem[] = [
     { 

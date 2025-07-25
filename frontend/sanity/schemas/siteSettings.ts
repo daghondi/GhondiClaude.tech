@@ -733,6 +733,290 @@ export default {
       ]
     },
 
+    // Blog Page Content
+    {
+      name: 'blogPageContent',
+      title: 'Blog Page Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'blogTitle',
+          title: 'Blog Title',
+          type: 'string',
+          initialValue: 'Insights'
+        },
+        {
+          name: 'blogSubtitle',
+          title: 'Blog Subtitle',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Thoughts on art, technology, urban planning, and the beautiful intersections between them'
+        },
+        {
+          name: 'searchPlaceholder',
+          title: 'Search Placeholder',
+          type: 'string',
+          initialValue: 'Search articles...'
+        },
+        {
+          name: 'featuredSectionTitle',
+          title: 'Featured Section Title',
+          type: 'string',
+          initialValue: 'Featured Article'
+        },
+        {
+          name: 'latestSectionTitle',
+          title: 'Latest Section Title',
+          type: 'string',
+          initialValue: 'Latest Articles'
+        },
+        {
+          name: 'readingTimeText',
+          title: 'Reading Time Text',
+          type: 'string',
+          initialValue: 'min read'
+        },
+        {
+          name: 'categoriesTitle',
+          title: 'Categories Title',
+          type: 'string',
+          initialValue: 'Categories'
+        },
+        {
+          name: 'noArticlesTitle',
+          title: 'No Articles Title',
+          type: 'string',
+          initialValue: 'Coming Soon'
+        },
+        {
+          name: 'noArticlesDescription',
+          title: 'No Articles Description',
+          type: 'text',
+          rows: 3,
+          initialValue: 'I\'m working on sharing more insights about my creative process, technical discoveries, and urban planning innovations. Check back soon!'
+        }
+      ]
+    },
+
+    // Homepage Additional Content
+    {
+      name: 'homepageExtraContent',
+      title: 'Homepage Additional Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'greetingText',
+          title: 'Greeting Text',
+          type: 'string',
+          initialValue: 'Hello, World!'
+        },
+        {
+          name: 'professionalTags',
+          title: 'Professional Tags',
+          type: 'array',
+          of: [{ type: 'string' }],
+          initialValue: ['Fine Artist', 'Urban Planner (MEng)', 'Tech-Preneur']
+        },
+        {
+          name: 'heroDescription',
+          title: 'Hero Description',
+          type: 'text',
+          rows: 4,
+          initialValue: 'Where Fine Art meets Urban Planning, and Technology bridges the creative divide. I create experiences that inspire, spaces that connect, and solutions that matter.'
+        },
+        {
+          name: 'featuredWorkTitle',
+          title: 'Featured Work Section Title',
+          type: 'string',
+          initialValue: 'Featured Work'
+        },
+        {
+          name: 'featuredWorkSubtitle',
+          title: 'Featured Work Subtitle',
+          type: 'string',
+          initialValue: 'A glimpse into my multidisciplinary practice'
+        },
+        {
+          name: 'journeyTitle',
+          title: 'Journey Section Title',
+          type: 'string',
+          initialValue: 'The Journey'
+        },
+        {
+          name: 'journeySubtitle',
+          title: 'Journey Subtitle',
+          type: 'string',
+          initialValue: 'Where creativity meets innovation'
+        },
+        {
+          name: 'ctaTitle',
+          title: 'Call-to-Action Title',
+          type: 'string',  
+          initialValue: 'Ready to Create Something Amazing?'
+        },
+        {
+          name: 'ctaDescription',
+          title: 'Call-to-Action Description',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Whether you\'re looking for artistic collaboration, urban planning consultation, or innovative technology solutions, let\'s bring your vision to life.'
+        }
+      ]
+    },
+
+    // About Page Journey & Skills Content
+    {
+      name: 'aboutPageExtraContent',
+      title: 'About Page Additional Content',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'journeyTitle',
+          title: 'Journey Section Title',
+          type: 'string',
+          initialValue: 'My Journey'
+        },
+        {
+          name: 'journeyItems',
+          title: 'Journey Timeline Items',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'role',
+                  title: 'Role',
+                  type: 'string'
+                },
+                {
+                  name: 'period',
+                  title: 'Time Period',
+                  type: 'string'
+                },
+                {
+                  name: 'title',
+                  title: 'Section Title',
+                  type: 'string'
+                },
+                {
+                  name: 'description',
+                  title: 'Description',
+                  type: 'text',
+                  rows: 3
+                },
+                {
+                  name: 'emoji',
+                  title: 'Emoji',
+                  type: 'string'
+                },
+                {
+                  name: 'skills',
+                  title: 'Skills',
+                  type: 'array',
+                  of: [{ type: 'string' }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'philosophyTitle',
+          title: 'Philosophy Section Title',
+          type: 'string',
+          initialValue: 'My Philosophy'
+        },
+        {
+          name: 'valuesTitle',
+          title: 'Values Section Title',
+          type: 'string',
+          initialValue: 'Core Values'
+        },
+        {
+          name: 'values',
+          title: 'Core Values',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'title',
+                  title: 'Value Title',
+                  type: 'string'
+                },
+                {
+                  name: 'description',
+                  title: 'Description',
+                  type: 'text',
+                  rows: 2
+                },
+                {
+                  name: 'emoji',
+                  title: 'Emoji',
+                  type: 'string'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'skillsTitle',
+          title: 'Skills Section Title',
+          type: 'string',
+          initialValue: 'Skills & Expertise'
+        },
+        {
+          name: 'skillCategories',
+          title: 'Skill Categories',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  name: 'categoryTitle',
+                  title: 'Category Title',
+                  type: 'string'
+                },
+                {
+                  name: 'skills',
+                  title: 'Skills',
+                  type: 'array',
+                  of: [{ type: 'string' }]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'ctaTitle',
+          title: 'Call-to-Action Title',
+          type: 'string',
+          initialValue: 'Let\'s Create Something Amazing'
+        },
+        {
+          name: 'ctaDescription',
+          title: 'Call-to-Action Description',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Whether you\'re looking for artistic collaboration, urban planning insights, or innovative technology solutions, I\'d love to hear about your vision.'
+        }
+      ]
+    },
+
     {
       name: 'analytics',
       title: 'Analytics',

@@ -165,7 +165,9 @@ export default async function BlogPage() {
       {featuredPost && (
         <section className="section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-heading mb-8">Featured Article</h2>
+            <h2 className="text-3xl font-heading mb-8">
+              {siteSettings?.blogPageContent?.featuredSectionTitle || "Featured Article"}
+            </h2>
             
             <article className="card p-0 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -199,7 +201,7 @@ export default async function BlogPage() {
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="w-4 h-4" />
-                      {featuredPost.readingTime || featuredPost.reading_time} min read
+                      {featuredPost.readingTime || featuredPost.reading_time} {siteSettings?.blogPageContent?.readingTimeText || 'min read'}
                     </div>
                   </div>
                   
@@ -239,7 +241,9 @@ export default async function BlogPage() {
       {/* Articles Grid */}
       <section className="section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-heading mb-8">Latest Articles</h2>
+          <h2 className="text-3xl font-heading mb-8">
+            {siteSettings?.blogPageContent?.latestSectionTitle || "Latest Articles"}
+          </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post: any) => (
