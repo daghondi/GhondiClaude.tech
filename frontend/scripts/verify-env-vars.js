@@ -1,54 +1,101 @@
-// Environment Variables Verification for Vercel
-// Copy these exact values to your Vercel dashboard
-
-console.log('🔧 VERCEL ENVIRONMENT VARIABLES TO SET:')
-console.log('=' .repeat(60))
-console.log('')
-
-console.log('1. NEXT_PUBLIC_SANITY_PROJECT_ID')
-console.log('   Value: tu4k8iw1')
-console.log('')
-
-console.log('2. NEXT_PUBLIC_SANITY_DATASET') 
-console.log('   Value: production')
-console.log('')
-
-console.log('3. SANITY_API_TOKEN')
-console.log('   Value: skTmxORpl3dkbxM8r05doU65J5I1wtsZPtS350cS7Y0bfJb7SRzgXqJUldBgotr3SyieZTfEhbTmF3jbNpoH6KIrPCQ5c8gg7pLgU2CqVbYYCcA8nr7EtFTYFizXODhxZlqOtDpWDi7kHTz4s2Agw7i06A1tJ6kxpn4BEJ8Pvt0J11KBxz5o9')
-console.log('')
-
-console.log('📋 INSTRUCTIONS:')
-console.log('1. Go to https://vercel.com/dashboard')
-console.log('2. Find your "ghondiclaude-tech" project')
-console.log('3. Go to Settings → Environment Variables')
-console.log('4. Add or update these 3 variables with the exact values above')
-console.log('5. Make sure to set them for "Production" environment')
-console.log('6. After saving, trigger a new deployment by pushing to GitHub')
-console.log('')
-
-console.log('✅ These values are confirmed to work locally!')
-
-// Test the connection to verify
+// Script to verify Sanity environment variables and connection
 const { createClient } = require('@sanity/client')
+require('dotenv').config({ path: '.env.local' })
 
-const client = createClient({
-  projectId: 'tu4k8iw1',
-  dataset: 'production',
-  apiVersion: '2024-01-01',
-  token: 'skTmxORpl3dkbxM8r05doU65J5I1wtsZPtS350cS7Y0bfJb7SRzgXqJUldBgotr3SyieZTfEhbTmF3jbNpoH6KIrPCQ5c8gg7pLgU2CqVbYYCcA8nr7EtFTYFizXODhxZlqOtDpWDi7kHTz4s2Agw7i06A1tJ6kxpn4BEJ8Pvt0J11KBxz5o9',
-  useCdn: false,
-})
+async function verifyEnvironmentAndConnection() {
+  console.log('🔍 Verifying Sanity environment variables and connection...\n')
 
-async function verifyConnection() {
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+  const apiToken = process.env.SANITY_API_TOKEN
+
+  console.log('📋 Environment Variables:')
+  console.log(`   NEXT_PUBLIC_SANITY_PROJECT_ID: ${projectId || '[NOT SET]'}`)
+  console.log(`   NEXT_PUBLIC_SANITY_DATASET: ${dataset || '[NOT SET]'}`)
+  console.log(`   SANITY_API_TOKEN: ${apiToken ? '[SET - ' + apiToken.substring(0, 8) + '...]' : '[NOT SET]'}`)
+
+  if (!projectId || !dataset) {
+    console.log('\n❌ Required public environment variables are missing!')
+    console.log('   These MUST be set in your Vercel dashboard for the live site to work:')
+    console.log('   - NEXT_PUBLIC_SANITY_PROJECT_ID')
+    console.log('   - NEXT_PUBLIC_SANITY_DATASET')
+    return
+  }
+
+  console.log('\n✅ All required environment variables are set.')
+  
+  // Test Sanity connection
   try {
-    console.log('🔍 Verifying connection with these values...')
-    const projects = await client.fetch('*[_type == "project" && status == "published"]')
-    console.log(`✅ SUCCESS: Found ${projects.length} published projects`)
-    console.log('   These values are correct for Vercel!')
+    console.log('\n🔌 Testing Sanity connection...')
+    
+    const client = createClient({
+      projectId,
+      dataset,
+      apiVersion: '2024-01-01',
+      token: apiToken,
+      useCdn: false,
+    })
+
+    // Test basic connection
+    const projects = await client.fetch('*[_type == "project"]')
+    console.log(`✅ Connection successful! Found ${projects.length} total projects`)
+
+    // Test published projects (what your live site fetches)
+    const publishedProjects = await client.fetch('*[_type == "project" && status == "published"]')
+    console.log(`✅ Found ${publishedProjects.length} published projects (these should show on live site)`)
+
+    if (publishedProjects.length > 0) {
+      console.log('\n📋 Published Projects:')
+      publishedProjects.forEach((project, index) => {
+        console.log(`   ${index + 1}. ${project.title} (${project.projectType})`)
+      })
+    }
+
+    // Test CDN connection (production-like)
+    console.log('\n🌐 Testing CDN connection (production-like)...')
+    const cdnClient = createClient({
+      projectId,
+      dataset,
+      apiVersion: '2024-01-01',
+      useCdn: true, // This is what production uses
+    })
+
+    const cdnProjects = await cdnClient.fetch('*[_type == "project" && status == "published"]')
+    console.log(`✅ CDN returned ${cdnProjects.length} published projects`)
+
+    if (cdnProjects.length !== publishedProjects.length) {
+      console.log('⚠️  WARNING: CDN results differ from direct results!')
+      console.log('   This suggests CDN caching might be affecting your live site.')
+      console.log('   Try adding ?t=' + Date.now() + ' to your live site URL to bypass cache.')
+    }
+
+    console.log('\n🎯 Verification Summary:')
+    console.log('   ✅ Environment variables are properly set')
+    console.log('   ✅ Sanity connection is working')
+    console.log(`   ✅ ${publishedProjects.length} projects should appear on live site`)
+    
+    console.log('\n💡 Next Steps:')
+    console.log('   1. Ensure these exact values are set in your Vercel dashboard')
+    console.log('   2. If projects still don\'t show, try: https://ghondiclaude.me/work?t=' + Date.now())
+    console.log('   3. Check Vercel deployment logs for any errors')
+
   } catch (error) {
-    console.error('❌ ERROR: Connection failed:', error.message)
-    console.log('   Double-check the values above')
+    console.error('\n❌ Sanity connection failed:', error.message)
+    
+    if (error.message.includes('401') || error.message.includes('Unauthorized')) {
+      console.log('\n💡 Authentication Error:')
+      console.log('   - Check if SANITY_API_TOKEN is correct')
+      console.log('   - Ensure the token has read permissions')
+      console.log('   - Verify the token is set in Vercel dashboard')
+    }
+    
+    if (error.message.includes('404')) {
+      console.log('\n💡 Project Not Found Error:')
+      console.log('   - Check if NEXT_PUBLIC_SANITY_PROJECT_ID is correct')
+      console.log('   - Verify NEXT_PUBLIC_SANITY_DATASET is correct')
+      console.log('   - Ensure these values match your Sanity project')
+    }
   }
 }
 
-verifyConnection()
+verifyEnvironmentAndConnection()
