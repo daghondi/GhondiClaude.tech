@@ -126,18 +126,17 @@ function ProjectCard({ project, featured = false }: { project: any; featured?: b
   }
 
   return (
-    <Link href={`/projects/${project.slug.current}`}>
-      <div className={`group bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-750 transition-all duration-300 ${featured ? 'ring-2 ring-accent-blue' : ''}`}>
-        {/* Image */}
-        <div className="relative aspect-video overflow-hidden">
-          <ImageLightbox
-            src={imageUrl}
-            alt={project.title}
-            fill={true}
-            aspectRatio="aspect-video"
-            className="object-cover"
-          />
-          {featured && (
+    <div className={`group bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-750 transition-all duration-300 ${featured ? 'ring-2 ring-accent-blue' : ''}`}>
+      {/* Image */}
+      <div className="relative aspect-video overflow-hidden">
+        <ImageLightbox
+          src={imageUrl}
+          alt={project.title}
+          fill={true}
+          aspectRatio="aspect-video"
+          className="object-cover"
+        />
+        {featured && (
             <div className="absolute top-4 left-4 bg-accent-blue text-white px-3 py-1 rounded-full text-sm font-medium">
               Featured
             </div>
@@ -153,7 +152,12 @@ function ProjectCard({ project, featured = false }: { project: any; featured?: b
           </div>
 
           <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent-blue transition-colors">
-            {project.title}
+            <Link 
+              href={`/projects/${project.slug.current}`}
+              className="hover:underline"
+            >
+              {project.title}
+            </Link>
           </h3>
 
           {project.subtitle && (
@@ -165,22 +169,31 @@ function ProjectCard({ project, featured = false }: { project: any; featured?: b
           </p>
 
           {/* Metadata */}
-          <div className="flex items-center gap-4 text-sm text-gray-400">
-            {project.publishedAt && (
-              <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                {new Date(project.publishedAt).toLocaleDateString()}
-              </div>
-            )}
-            {project.tags && project.tags.length > 0 && (
-              <div className="flex items-center gap-1">
-                <Tag className="w-4 h-4" />
-                {project.tags.length} tags
-              </div>
-            )}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4 text-sm text-gray-400">
+              {project.publishedAt && (
+                <div className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" />
+                  {new Date(project.publishedAt).toLocaleDateString()}
+                </div>
+              )}
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex items-center gap-1">
+                  <Tag className="w-4 h-4" />
+                  {project.tags.length} tags
+                </div>
+              )}
+            </div>
+            
+            <Link
+              href={`/projects/${project.slug.current}`}
+              className="flex items-center gap-1 text-accent-blue hover:text-white transition-colors text-sm"
+            >
+              View Details
+              <ExternalLink className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </div>
-    </Link>
   )
 }

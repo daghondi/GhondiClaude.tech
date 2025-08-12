@@ -31,11 +31,17 @@ export default function ImageLightbox({
 }: ImageLightboxProps) {
   const [isOpen, setIsOpen] = useState(false)
 
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsOpen(true)
+  }
+
   const imageProps = {
     src,
     alt,
-    className: `${className} cursor-pointer hover:scale-105 transition-transform duration-300`,
-    onClick: () => setIsOpen(true),
+    className: `${className} cursor-pointer transition-transform duration-300`,
+    onClick: handleImageClick,
     priority,
     ...(fill ? { fill: true } : { width: width || 600, height: height || 400 })
   }
@@ -46,7 +52,7 @@ export default function ImageLightbox({
         <Image {...imageProps} />
         
         {showZoomIcon && (
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
             <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
               <Maximize2 className="w-6 h-6 text-white" />
             </div>
@@ -55,8 +61,8 @@ export default function ImageLightbox({
         
         {showZoomIcon && (
           <button 
-            onClick={() => setIsOpen(true)}
-            className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            onClick={handleImageClick}
+            className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
             aria-label="View full size image"
           >
             <ZoomIn className="w-4 h-4 text-white" />
