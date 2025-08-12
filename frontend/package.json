@@ -58,6 +58,7 @@
     "tailwindcss": "^3.4.0",
     "three": "^0.162.0",
     "typescript": "^5.4.0",
+    "yet-another-react-lightbox": "^3.25.0",
     "zod": "^3.23.0"
   },
   "devDependencies": {

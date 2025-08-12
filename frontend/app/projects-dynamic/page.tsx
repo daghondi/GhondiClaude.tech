@@ -3,6 +3,7 @@ import { getProjects, getFeaturedProjects, urlFor } from '../../sanity/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Tag, ExternalLink } from 'lucide-react'
+import ImageLightbox from '../components/ImageLightbox'
 
 export const metadata: Metadata = {
   title: 'Projects | GhondiClaude.me',
@@ -129,11 +130,12 @@ function ProjectCard({ project, featured = false }: { project: any; featured?: b
       <div className={`group bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-750 transition-all duration-300 ${featured ? 'ring-2 ring-accent-blue' : ''}`}>
         {/* Image */}
         <div className="relative aspect-video overflow-hidden">
-          <Image
+          <ImageLightbox
             src={imageUrl}
             alt={project.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            fill={true}
+            aspectRatio="aspect-video"
+            className="object-cover"
           />
           {featured && (
             <div className="absolute top-4 left-4 bg-accent-blue text-white px-3 py-1 rounded-full text-sm font-medium">

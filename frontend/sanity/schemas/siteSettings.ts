@@ -70,7 +70,7 @@ export default {
       name: 'professionalHeadshot',
       title: 'Professional Headshot',
       type: 'image',
-      description: 'Upload your professional headshot (recommended: 800x1000px or higher)',
+      description: 'Upload your professional headshot for homepage and contact sections (recommended: 800x1000px portrait)',
       options: {
         hotspot: true
       },
@@ -80,6 +80,23 @@ export default {
           type: 'string',
           title: 'Alt text',
           initialValue: 'Ghondi Claude - Professional Headshot'
+        }
+      ]
+    },
+    {
+      name: 'aboutPagePhoto',
+      title: 'About Page Photo',
+      type: 'image',
+      description: 'Upload a separate photo for the about page (recommended: 800x800px square)',
+      options: {
+        hotspot: true
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alt text',
+          initialValue: 'Ghondi Claude - About Page Photo'
         }
       ]
     },

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getSiteSettings, urlFor } from '@/sanity/utils'
+import ImageLightbox from '../components/ImageLightbox'
 
 export const metadata: Metadata = {
   title: 'About | GhondiClaude.me',
@@ -103,11 +104,13 @@ export default async function AboutPage() {
             
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-white/5 to-accent-blue/20 rounded-2xl overflow-hidden">
-                {siteSettings?.professionalHeadshot ? (
-                  <img
-                    src={urlFor(siteSettings.professionalHeadshot).url()}
-                    alt={siteSettings.professionalHeadshot.alt || "Ghondi Claude - Professional Profile"}
-                    className="w-full h-full object-cover object-center"
+                {siteSettings?.aboutPagePhoto ? (
+                  <ImageLightbox
+                    src={urlFor(siteSettings.aboutPagePhoto).url()}
+                    alt={siteSettings.aboutPagePhoto.alt || "Ghondi Claude - About Page Photo"}
+                    fill={true}
+                    aspectRatio="aspect-square"
+                    className="rounded-2xl object-cover object-center"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
