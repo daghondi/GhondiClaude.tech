@@ -32,24 +32,24 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
   }, [])
 
   return (
-    <main id="main-content" className="min-h-screen overflow-hidden pt-20">
-      {/* Hero Section - Enhanced */}
+    <main id="main-content" className="min-h-screen overflow-hidden bg-white">
+      {/* Hero Section - Professional Light Theme */}
       <section id="home" className="relative min-h-screen flex items-center justify-center">
-        {/* Dynamic Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary" />
+        {/* Clean Professional Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100" />
         
-        {/* Animated geometric patterns */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-2 h-2 bg-accent-blue rounded-full animate-ping" />
-          <div className="absolute top-40 right-32 w-1 h-1 bg-white rounded-full animate-pulse" />
-          <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-accent-blue rounded-full animate-bounce" />
-          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-white/60 rounded-full animate-pulse delay-1000" />
+        {/* Subtle geometric patterns */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
+          <div className="absolute top-40 right-32 w-1 h-1 bg-gray-600 rounded-full animate-pulse" />
+          <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-blue-600 rounded-full animate-float" />
+          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-gray-400 rounded-full animate-pulse delay-1000" />
         </div>
         
         {/* Floating orbs - minimal and sophisticated */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-blue/5 to-transparent rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-l from-white/3 to-transparent rounded-full blur-3xl animate-float animation-delay-2000" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-100/20 to-transparent rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-l from-gray-100/30 to-transparent rounded-full blur-3xl animate-float animation-delay-2000" />
         </div>
         
         {/* Main Content Container */}
@@ -60,63 +60,62 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
             <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
               {/* Greeting */}
               <div className="space-y-2">
-                <p className="text-lg md:text-xl text-accent-blue font-medium tracking-wide uppercase">
-                  {siteSettings?.homepageExtraContent?.greetingText || "Hello, World!"}
+                <p className="text-lg md:text-xl text-blue-600 font-semibold tracking-wide">
+                  {siteSettings?.homepageExtraContent?.greetingText || "Hello, I'm"}
                 </p>
                 
                 {/* Name - Single Line */}
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight">
-                  <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                    {siteSettings?.homepageContent?.heroTitle ? `I'm ${siteSettings.homepageContent.heroTitle}` : "I'm Ghondi Claude"}
-                  </span>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-gray-900">
+                  {siteSettings?.homepageContent?.heroTitle || "Ghondi Claude"}
                 </h1>
               </div>
               
               {/* Professional Tags */}
               <div className="space-y-4">
-                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-sm md:text-base">
-                  {(siteSettings?.homepageExtraContent?.professionalTags || ['Fine Artist', 'Urban Planner (MEng)', 'Tech-Preneur']).map((tag: string, index: number) => (
-                    <span key={index} className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-accent-blue/20 hover:border-accent-blue/30 hover:text-accent-blue transition-all duration-300">
+                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-3 text-sm md:text-base">
+                  {(siteSettings?.homepageExtraContent?.professionalTags || ['Fine Artist', 'Urban Planner (MEng)', 'Tech Entrepreneur']).map((tag: string, index: number) => (
+                    <span key={index} className="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all duration-300">
                       {tag}
                     </span>
                   ))}
                 </div>
                 
                 {/* Subtitle */}
-                <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0">
+                <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                   {siteSettings?.homepageExtraContent?.heroDescription ||
                     "Where Fine Art meets Urban Planning, and Technology bridges the creative divide. I create experiences that inspire, spaces that connect, and solutions that matter."
                   }
                 </p>
                 
                 {/* Animated Role Display */}
-                <div className="text-2xl md:text-3xl font-heading">
-                  <span className="text-white">Currently: </span>
-                  <span className="text-accent-blue animate-pulse">
+                <div className="text-2xl md:text-3xl font-display font-semibold">
+                  <span className="text-gray-600">Currently: </span>
+                  <span className="text-blue-600 animate-pulse">
                     {roles[currentRole].title}
                   </span>
                 </div>
               </div>
 
               {/* Action Buttons */}
+              {/* Professional CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/work" className="btn-primary group cursor-hover">
+                <Link href="/work" className="bg-blue-600 text-white hover:bg-blue-700 shadow-sm px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center justify-center text-sm font-semibold group">
                   <Sparkles className="w-5 h-5 mr-2 group-hover:animate-spin" />
                   Explore My Work
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/about" className="btn-secondary group cursor-hover">
+                <Link href="/about" className="border border-gray-300 text-gray-700 hover:bg-gray-50 shadow-sm px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center justify-center text-sm font-semibold group">
                   <Play className="w-5 h-5 mr-2" />
                   My Story
                 </Link>
-                <Link href="/contact" className="btn-ghost group cursor-hover">
-                  {siteSettings?.globalContent?.commonButtons?.getInTouch || "Get in Touch"}
+                <Link href="/portfolio/fine-art" className="bg-black text-white hover:bg-gray-800 font-bold tracking-wide px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center justify-center text-sm group">
+                  View Art Collection
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
-              {/* Social Links */}
-              <div className="flex justify-center lg:justify-start space-x-6 pt-8">
+              {/* Social Links - Professional Style */}
+              <div className="flex justify-center lg:justify-start space-x-4 pt-8">
                 {siteSettings?.socialLinks?.linkedin && (
                   <a 
                     href={siteSettings.socialLinks.linkedin}
@@ -125,8 +124,8 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                     className="group"
                     aria-label="LinkedIn Profile"
                   >
-                    <div className="p-3 rounded-full border border-white/20 hover:border-accent-blue/50 transition-all duration-300 hover:bg-accent-blue/10">
-                      <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-accent-blue transition-colors" />
+                    <div className="p-3 rounded-full border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:bg-blue-50">
+                      <Linkedin className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" />
                     </div>
                   </a>
                 )}
@@ -139,8 +138,8 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                     className="group"
                     aria-label="GitHub Profile"
                   >
-                    <div className="p-3 rounded-full border border-white/20 hover:border-accent-blue/50 transition-all duration-300 hover:bg-accent-blue/10">
-                      <Github className="w-5 h-5 text-gray-400 group-hover:text-accent-blue transition-colors" />
+                    <div className="p-3 rounded-full border border-gray-200 hover:border-gray-400 transition-all duration-300 hover:bg-gray-50">
+                      <Github className="w-5 h-5 text-gray-600 group-hover:text-gray-800 transition-colors" />
                     </div>
                   </a>
                 )}
