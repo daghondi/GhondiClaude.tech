@@ -1,5 +1,6 @@
 // LinkedIn Profile Integration Utility
 // This file manages LinkedIn-style professional data
+// UPDATED: August 12, 2025 - Mastercard Cybersecurity Skills Corrected
 
 export interface LinkedInSkill {
   name: string;
