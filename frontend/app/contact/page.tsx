@@ -89,32 +89,9 @@ export default function ContactPage() {
                 {siteSettings?.contactPageContent?.contactTitle || 'Contact'}  
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
               Let's collaborate and create something extraordinary together
             </p>
-            
-            {/* Quick Actions */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href="#contact-form"
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                <Mail className="w-5 h-5" />
-                Send Message
-              </a>
-              
-              {process.env.NEXT_PUBLIC_CALENDLY_URL && (
-                <a 
-                  href={process.env.NEXT_PUBLIC_CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary inline-flex items-center gap-2"
-                >
-                  <Calendar className="w-5 h-5" />
-                  Schedule Call
-                </a>
-              )}
-            </div>
           </div>
         </div>
       </section>
@@ -145,21 +122,10 @@ export default function ContactPage() {
                   <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Calendar className="w-6 h-6 text-accent-blue" />
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <h3 className="font-semibold text-white mb-1">Schedule</h3>
-                    <p className="text-gray-400 mb-2">Book a consultation</p>
-                    <p className="text-gray-400 text-sm mb-3">30-60 minute sessions</p>
-                    {process.env.NEXT_PUBLIC_CALENDLY_URL && (
-                      <a 
-                        href={process.env.NEXT_PUBLIC_CALENDLY_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-accent-blue hover:bg-accent-blue/80 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                      >
-                        <Calendar className="w-4 h-4" />
-                        Book Now
-                      </a>
-                    )}
+                    <p className="text-gray-400">Book a consultation</p>
+                    <p className="text-gray-400">30-60 minute sessions</p>
                   </div>
                 </div>
 
@@ -196,7 +162,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div id="contact-form" className="lg:col-span-2">
+            <div className="lg:col-span-2">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
