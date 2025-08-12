@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getSiteSettings, urlFor } from '@/sanity/utils'
 import ImageLightbox from '../components/ImageLightbox'
+import { formatSkillsForDisplay, getActiveCertifications, linkedInProfile } from '@/lib/linkedinProfile'
 
 export const metadata: Metadata = {
   title: 'About | GhondiClaude.me',
@@ -194,27 +195,98 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Skills & Expertise */}
+      {/* Skills & Expertise - LinkedIn Integration */}
       <section className="section">
         <div className="section-container">
-          <h2 className="text-4xl font-heading text-center mb-16">
-            <span className="text-gradient">
-              {siteSettings?.aboutPageExtraContent?.skillsTitle || "Skills & Expertise"}
-            </span>
-          </h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-heading mb-4">
+              <span className="text-gradient">
+                {siteSettings?.aboutPageExtraContent?.skillsTitle || "Skills & Expertise"}
+              </span>
+            </h2>
+            <p className="text-gray-400 text-sm">
+              Last updated from LinkedIn: {new Date(linkedInProfile.lastUpdated).toLocaleDateString()}
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {(siteSettings?.aboutPageExtraContent?.skillCategories || defaultSkillCategories).map((category: any, index: number) => (
+            {formatSkillsForDisplay().map((category, index) => (
               <div key={index} className="card">
                 <h3 className="text-2xl font-heading mb-6 text-accent-blue">{category.categoryTitle}</h3>
                 <ul className="space-y-3">
-                  {category.skills.map((skill: string, skillIndex: number) => (
-                    <li key={skillIndex} className="flex items-center text-gray-300">
-                      <div className="w-2 h-2 bg-accent-blue rounded-full mr-3"></div>
-                      {skill}
-                    </li>
-                  ))}
+                  {category.skills.map((skill: string, skillIndex: number) => {
+                    const skillData = linkedInProfile.skills.find(s => s.name === skill);
+                    return (
+                      <li key={skillIndex} className="flex items-center justify-between text-gray-300">
+                        <div className="flex items-center">
+                          <div className="w-2 h-2 bg-accent-blue rounded-full mr-3"></div>
+                          <span>{skill}</span>
+                          {skillData?.verified && (
+                            <span className="ml-2 text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+                              ✓ Verified
+                            </span>
+                          )}
+                        </div>
+                        {skillData?.endorsements && (
+                          <span className="text-xs text-gray-500">
+                            {skillData.endorsements} endorsements
+                          </span>
+                        )}
+                      </li>
+                    )
+                  })}
                 </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications - New Section */}
+      <section className="section bg-dark-secondary/50">
+        <div className="section-container">
+          <h2 className="text-4xl font-heading text-center mb-16">
+            <span className="text-gradient">Professional Certifications</span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {getActiveCertifications().map((cert, index) => (
+              <div key={index} className="card hover:shadow-lg hover:shadow-accent-blue/20 transition-all duration-300">
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-white mb-2">{cert.name}</h3>
+                  <p className="text-accent-blue font-medium">{cert.issuer}</p>
+                </div>
+                
+                <div className="space-y-2 text-sm text-gray-400 mb-4">
+                  <p>Issued: {new Date(cert.issueDate).toLocaleDateString()}</p>
+                  {cert.expirationDate && (
+                    <p>Expires: {new Date(cert.expirationDate).toLocaleDateString()}</p>
+                  )}
+                  {cert.credentialId && (
+                    <p>Credential ID: {cert.credentialId}</p>
+                  )}
+                </div>
+                
+                {cert.skills && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {cert.skills.map((skill, skillIndex) => (
+                      <span key={skillIndex} className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                
+                {cert.credentialUrl && (
+                  <a 
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-blue hover:text-white text-sm transition-colors"
+                  >
+                    Verify Credential →
+                  </a>
+                )}
               </div>
             ))}
           </div>
