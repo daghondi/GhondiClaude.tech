@@ -103,6 +103,9 @@ export const linkedInProfile: LinkedInProfile = {
     { name: 'Financial Technology', endorsements: 18, category: 'technical', level: 'intermediate', verified: true },
     { name: 'Digital Payments', endorsements: 15, category: 'technical', level: 'intermediate', verified: true },
     { name: 'Compliance', endorsements: 20, category: 'technical', level: 'advanced', verified: true },
+    { name: 'Financial Consulting', endorsements: 22, category: 'leadership', level: 'intermediate', verified: true },
+    { name: 'Business Advisory', endorsements: 18, category: 'leadership', level: 'intermediate', verified: true },
+    { name: 'International Business', endorsements: 16, category: 'leadership', level: 'intermediate', verified: true },
     
     // Languages
     { name: 'English', endorsements: 50, category: 'language', level: 'expert', verified: true },
@@ -186,12 +189,12 @@ export const linkedInProfile: LinkedInProfile = {
       skills: ['Arts Management', 'Creative Leadership', 'Cultural Administration', 'Arts Marketing', 'Project Management', 'Event Management', 'Creative Strategy', 'Cultural Programming'],
     },
     {
-      name: 'Switzerland Completion Certificate',
-      issuer: 'Switzerland Education Program',
+      name: 'PwC Switzerland Internship Job Completion Certificate',
+      issuer: 'PricewaterhouseCoopers (PwC) Switzerland',
       issueDate: '2024-08-12',
       certificateFile: '/Skills and certificates/f9H4CHchzrKQbnbmK_PwC Switzerland_SEzPghCcJEe4TBwGv_1725963103784_completion_certificate.pdf',
       fileType: 'pdf',
-      skills: ['International Education', 'Cultural Exchange', 'Professional Development'],
+      skills: ['Financial Consulting', 'Business Advisory', 'International Business', 'Professional Services', 'Client Relations', 'Project Management'],
     },
     {
       name: 'edX VSFO01 Certificate',
