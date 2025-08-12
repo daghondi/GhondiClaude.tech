@@ -54,15 +54,17 @@ module.exports = {
       },
       // Typography system
       fontFamily: {
-        // Headings: System fonts for now (to avoid Google Fonts timeout)
+        // Professional fonts like Chris Do's site
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        primary: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        // Legacy fonts (keeping for compatibility)
         heading: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
-        // Body text options - using system fonts
-        playfair: ['Georgia', 'serif'],
+        playfair: ['Playfair Display', 'Georgia', 'serif'],
         lora: ['Georgia', 'serif'],
         raleway: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         // Default sans and serif
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
-        serif: ['Georgia', 'Times New Roman', 'serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Monaco', 'Consolas', 'monospace'],
       },
       // Spacing system
