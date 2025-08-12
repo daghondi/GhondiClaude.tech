@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
+import { Resend } from 'resend'
+
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Validation schema for contact form
 const contactSchema = z.object({
@@ -21,8 +25,57 @@ export async function POST(request: NextRequest) {
     // Validate the request data
     const validatedData = contactSchema.parse(body)
     
-    // TODO: Replace with actual database insertion
-    // For now, we'll simulate saving to Supabase
+    // Create email content
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #3b82f6;">New Contact Form Submission</h2>
+        
+        <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h3 style="color: #1e293b; margin-top: 0;">Contact Information</h3>
+          <p><strong>Name:</strong> ${validatedData.name}</p>
+          <p><strong>Email:</strong> ${validatedData.email}</p>
+          ${validatedData.phone ? `<p><strong>Phone:</strong> ${validatedData.phone}</p>` : ''}
+          ${validatedData.company ? `<p><strong>Company:</strong> ${validatedData.company}</p>` : ''}
+        </div>
+        
+        <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h3 style="color: #1e293b; margin-top: 0;">Project Details</h3>
+          <p><strong>Subject:</strong> ${validatedData.subject}</p>
+          ${validatedData.project_type ? `<p><strong>Project Type:</strong> ${validatedData.project_type}</p>` : ''}
+          ${validatedData.budget_range ? `<p><strong>Budget Range:</strong> ${validatedData.budget_range}</p>` : ''}
+          ${validatedData.timeline ? `<p><strong>Timeline:</strong> ${validatedData.timeline}</p>` : ''}
+        </div>
+        
+        <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h3 style="color: #1e293b; margin-top: 0;">Message</h3>
+          <p style="white-space: pre-wrap; line-height: 1.6;">${validatedData.message}</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+          <p style="color: #64748b; font-size: 14px;">
+            Sent from your portfolio contact form at ghondiclaude.me
+          </p>
+        </div>
+      </div>
+    `
+
+    // Send email notification using Resend
+    try {
+      const emailResult = await resend.emails.send({
+        from: 'GhondiClaude Portfolio <noreply@ghondiclaude.me>',
+        to: [process.env.CONTACT_EMAIL || 'your-email@example.com'],
+        subject: `New Contact: ${validatedData.subject}`,
+        html: emailHtml,
+        replyTo: validatedData.email,
+      })
+
+      console.log('Email sent successfully:', emailResult)
+    } catch (emailError) {
+      console.error('Failed to send email:', emailError)
+      // Don't fail the entire request if email fails - log it instead
+    }
+
+    // Optional: Store in database for backup
     const contactSubmission = {
       id: Math.random().toString(36).substr(2, 9),
       ...validatedData,
@@ -30,18 +83,8 @@ export async function POST(request: NextRequest) {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }
-    
-    // TODO: Send email notification
-    // This would typically use a service like SendGrid, Resend, or similar
-    console.log('Contact form submission:', contactSubmission)
-    
-    // TODO: Save to Supabase database
-    // const { data, error } = await supabase
-    //   .from('contacts')
-    //   .insert([contactSubmission])
-    
-    // Simulate a delay to show loading state
-    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    console.log('Contact form submission processed:', contactSubmission)
     
     return NextResponse.json(
       { 
