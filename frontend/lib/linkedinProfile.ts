@@ -66,6 +66,8 @@ export const linkedInProfile: LinkedInProfile = {
     { name: 'Contemporary Art', endorsements: 18, category: 'creative', level: 'advanced' },
     { name: 'Arts Management', endorsements: 14, category: 'creative', level: 'advanced', verified: true },
     { name: 'Cultural Administration', endorsements: 12, category: 'leadership', level: 'intermediate', verified: true },
+    { name: 'Event Management', endorsements: 16, category: 'leadership', level: 'intermediate', verified: true },
+    { name: 'Creative Strategy', endorsements: 18, category: 'creative', level: 'advanced', verified: true },
 
     // Urban Planning Skills
     { name: 'Urban Planning', endorsements: 42, category: 'technical', level: 'expert', verified: true },
@@ -86,6 +88,10 @@ export const linkedInProfile: LinkedInProfile = {
     { name: 'Node.js', endorsements: 36, category: 'technical', level: 'advanced' },
     { name: 'Artificial Intelligence', endorsements: 33, category: 'technical', level: 'advanced' },
     { name: 'Machine Learning', endorsements: 31, category: 'technical', level: 'advanced' },
+    { name: 'Data Science', endorsements: 28, category: 'technical', level: 'intermediate', verified: true },
+    { name: 'SQL', endorsements: 42, category: 'technical', level: 'advanced', verified: true },
+    { name: 'Linux', endorsements: 35, category: 'technical', level: 'intermediate', verified: true },
+    { name: 'Git', endorsements: 40, category: 'technical', level: 'advanced', verified: true },
     { name: 'Three.js', endorsements: 18, category: 'technical', level: 'intermediate' },
     { name: 'WebGL', endorsements: 15, category: 'technical', level: 'intermediate' },
     { name: 'Cybersecurity', endorsements: 45, category: 'technical', level: 'expert', verified: true },
@@ -121,7 +127,7 @@ export const linkedInProfile: LinkedInProfile = {
       credentialId: 'BLQBFAF6V7YH',
       certificateFile: '/Skills and certificates/Google cybersecurity certificate - Ghondi Claude (BLQBFAF6V7YH).pdf',
       fileType: 'pdf',
-      skills: ['Cybersecurity', 'Network Security', 'Risk Management', 'Security Analysis', 'Incident Response'],
+      skills: ['Cybersecurity', 'Network Security', 'Risk Management', 'Security Analysis', 'Incident Response', 'Threat Detection', 'Security Frameworks', 'Linux', 'Python Programming', 'SQL', 'SIEM Tools'],
     },
     {
       name: 'Foundations of Cybersecurity Certificate',
@@ -137,7 +143,7 @@ export const linkedInProfile: LinkedInProfile = {
       issueDate: '2024-08-12',
       certificateFile: '/Skills and certificates/My Certificate - Azure Fundamentals AZ 900.pdf',
       fileType: 'pdf',
-      skills: ['Cloud Computing', 'Azure Services', 'Cloud Security', 'Azure Architecture'],
+      skills: ['Cloud Computing', 'Azure Services', 'Cloud Security', 'Azure Architecture', 'Virtual Machines', 'Azure Storage', 'Networking', 'Identity Management'],
     },
     {
       name: 'Microsoft Azure AI Fundamentals AI-900',
@@ -145,7 +151,7 @@ export const linkedInProfile: LinkedInProfile = {
       issueDate: '2024-08-12',
       certificateFile: '/Skills and certificates/My Certificate - Azure AI Fundamentals AI 900.pdf',
       fileType: 'pdf',
-      skills: ['Artificial Intelligence', 'Machine Learning', 'Azure AI Services', 'Cognitive Services'],
+      skills: ['Artificial Intelligence', 'Machine Learning', 'Azure AI Services', 'Cognitive Services', 'Natural Language Processing', 'Computer Vision', 'Data Science', 'Python'],
     },
     {
       name: 'Qualys Certified Specialist',
@@ -177,7 +183,7 @@ export const linkedInProfile: LinkedInProfile = {
       issueDate: '2024-08-12',
       certificateFile: '/Skills and certificates/Arts Management Certifaction- University of the Arts London.png',
       fileType: 'image',
-      skills: ['Arts Management', 'Creative Leadership', 'Cultural Administration', 'Arts Marketing', 'Project Management'],
+      skills: ['Arts Management', 'Creative Leadership', 'Cultural Administration', 'Arts Marketing', 'Project Management', 'Event Management', 'Creative Strategy', 'Cultural Programming'],
     },
     {
       name: 'Switzerland Completion Certificate',
@@ -194,47 +200,6 @@ export const linkedInProfile: LinkedInProfile = {
       certificateFile: '/Skills and certificates/edX VSFO01 Certificate _ edX-Ghondi Clause.pdf',
       fileType: 'pdf',
       skills: ['Online Learning', 'Professional Development'],
-    },
-    // Certificate Screenshots - Additional Achievements
-    {
-      name: 'Professional Achievement Certificate',
-      issuer: 'Various Institutions',
-      issueDate: '2024-08-12',
-      certificateFile: '/Skills and certificates/Screenshot_20250812-185012.png',
-      fileType: 'image',
-      skills: ['Professional Development', 'Achievement Recognition'],
-    },
-    {
-      name: 'Skills Assessment Certificate',
-      issuer: 'Professional Development Program',
-      issueDate: '2024-08-12',
-      certificateFile: '/Skills and certificates/Screenshot_20250812-185023.png',
-      fileType: 'image',
-      skills: ['Skill Validation', 'Professional Assessment'],
-    },
-    {
-      name: 'Competency Validation Certificate',
-      issuer: 'Skills Recognition Authority',
-      issueDate: '2024-08-12',
-      certificateFile: '/Skills and certificates/Screenshot_20250812-185033.png',
-      fileType: 'image',
-      skills: ['Competency Assessment', 'Professional Validation'],
-    },
-    {
-      name: 'Technical Proficiency Certificate',
-      issuer: 'Technology Assessment Board',
-      issueDate: '2024-08-12',
-      certificateFile: '/Skills and certificates/Screenshot_20250812-185043.png',
-      fileType: 'image',
-      skills: ['Technical Skills', 'Proficiency Assessment'],
-    },
-    {
-      name: 'Professional Recognition Award',
-      issuer: 'Industry Recognition Board',
-      issueDate: '2024-08-12',
-      certificateFile: '/Skills and certificates/Screenshot_20250812-185052.png',
-      fileType: 'image',
-      skills: ['Professional Excellence', 'Industry Recognition'],
     },
     {
       name: 'AWS Certified Solutions Architect - Associate',
