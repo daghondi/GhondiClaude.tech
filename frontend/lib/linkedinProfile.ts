@@ -203,48 +203,6 @@ export const linkedInProfile: LinkedInProfile = {
       certificateFile: '/Skills and certificates/edX VSFO01 Certificate _ edX-Ghondi Clause.pdf',
       fileType: 'pdf',
       skills: ['Online Learning', 'Professional Development'],
-    },
-    {
-      name: 'AWS Certified Solutions Architect - Associate',
-      issuer: 'Amazon Web Services (AWS)',
-      issueDate: '2024-03-15',
-      expirationDate: '2027-03-15',
-      credentialId: 'AWS-CSA-2024-GC-001',
-      credentialUrl: 'https://aws.amazon.com/verification',
-      skills: ['Cloud Architecture', 'AWS', 'Solutions Design', 'Scalability']
-    },
-    {
-      name: 'American Institute of Certified Planners (AICP)',
-      issuer: 'American Planning Association',
-      issueDate: '2023-06-20',
-      credentialId: 'AICP-2023-GC-789',
-      credentialUrl: 'https://planning.org/certification/verify/',
-      skills: ['Urban Planning', 'Policy Development', 'Community Engagement', 'Land Use Planning']
-    },
-    {
-      name: 'Google Analytics Individual Qualification (IQ)',
-      issuer: 'Google',
-      issueDate: '2024-01-10',
-      expirationDate: '2025-01-10',
-      credentialId: 'GA-IQ-2024-GC-543',
-      credentialUrl: 'https://skillshop.exceedlms.com/student/catalog',
-      skills: ['Analytics', 'Data Analysis', 'Digital Marketing', 'Performance Metrics']
-    },
-    {
-      name: 'React Developer Professional Certificate',
-      issuer: 'Meta',
-      issueDate: '2023-11-22',
-      credentialId: 'META-REACT-2023-GC-456',
-      credentialUrl: 'https://www.coursera.org/professional-certificates/meta-react-developer',
-      skills: ['React', 'JavaScript', 'Frontend Development', 'Component Architecture']
-    },
-    {
-      name: 'Certified Cybersecurity Professional',
-      issuer: 'EC-Council',
-      issueDate: '2024-05-18',
-      expirationDate: '2027-05-18',
-      credentialId: 'ECC-CSP-2024-GC-321',
-      skills: ['Cybersecurity', 'Threat Analysis', 'Security Architecture', 'Risk Assessment']
     }
   ],
   
