@@ -187,6 +187,29 @@ export default {
               }
             },
             {
+              name: 'certificateFile',
+              type: 'url',
+              title: 'Certificate File',
+              description: 'Path to the certificate PDF or image file (e.g., /Skills and certificates/cert.pdf)',
+            },
+            {
+              name: 'thumbnailImage',
+              type: 'url',
+              title: 'Thumbnail Image',
+              description: 'Path to thumbnail/preview image for PDFs (e.g., /Skills and certificates/cert-thumb.jpg)',
+            },
+            {
+              name: 'fileType',
+              type: 'string',
+              title: 'File Type',
+              options: {
+                list: [
+                  { title: 'PDF', value: 'pdf' },
+                  { title: 'Image', value: 'image' },
+                ],
+              },
+            },
+            {
               name: 'displayOrder',
               type: 'number',
               title: 'Display Order',

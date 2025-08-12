@@ -17,6 +17,10 @@ export interface LinkedInCertification {
   credentialId?: string;
   credentialUrl?: string;
   skills?: string[];
+  // New fields for file support
+  certificateFile?: string; // Path to PDF or image file
+  thumbnailImage?: string; // Path to thumbnail/preview image
+  fileType?: 'pdf' | 'image'; // Type of certificate file
 }
 
 export interface LinkedInEducation {
@@ -92,6 +96,16 @@ export const linkedInProfile: LinkedInProfile = {
   
   certifications: [
     {
+      name: 'Master of Engineering (MEng) - Urban Planning',
+      issuer: 'National Advanced School of Public Works (ENSTP), Yaoundé',
+      issueDate: '2023-11-01',
+      skills: ['Urban Development', 'Infrastructure Planning', 'Sustainable Design', 'City Planning'],
+      // When you upload your degree certificate, add:
+      // certificateFile: '/Skills and certificates/MEng-Urban-Planning.pdf',
+      // thumbnailImage: '/Skills and certificates/MEng-Urban-Planning-thumbnail.jpg',
+      // fileType: 'pdf'
+    },
+    {
       name: 'AWS Certified Solutions Architect - Associate',
       issuer: 'Amazon Web Services (AWS)',
       issueDate: '2024-03-15',
@@ -137,12 +151,12 @@ export const linkedInProfile: LinkedInProfile = {
   
   education: [
     {
-      institution: 'University of California, Berkeley',
-      degree: 'Master of City Planning (MCP)',
-      field: 'Urban and Regional Planning',
-      startYear: 2020,
-      endYear: 2022,
-      description: 'Specialized in sustainable urban development, smart city technologies, and community-centered planning approaches'
+      institution: 'National Advanced School of Public Works (ENSTP)',
+      degree: 'Master of Engineering (MEng)',
+      field: 'Urban Planning',
+      startYear: 2021,
+      endYear: 2023,
+      description: 'Specialized in urban development, infrastructure planning, and sustainable city design. Graduated November 2023 from Yaoundé, Cameroon.'
     },
     {
       institution: 'École des Beaux-Arts',
@@ -151,14 +165,6 @@ export const linkedInProfile: LinkedInProfile = {
       startYear: 2016,
       endYear: 2020,
       description: 'Focus on contemporary art practices, mixed media, and digital art integration'
-    },
-    {
-      institution: 'Stanford University',
-      degree: 'Certificate in Computer Science',
-      field: 'Full-Stack Web Development',
-      startYear: 2022,
-      endYear: 2023,
-      description: 'Intensive program covering modern web technologies, AI/ML applications, and software engineering principles'
     }
   ],
   

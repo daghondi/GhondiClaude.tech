@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { getSiteSettings, urlFor } from '@/sanity/utils'
 import ImageLightbox from '../components/ImageLightbox'
 import { formatSkillsForDisplay, getActiveCertifications, linkedInProfile } from '@/lib/linkedinProfile'
+import CertificateViewer from '@/components/CertificateViewer'
 
 export const metadata: Metadata = {
   title: 'About | GhondiClaude.me',
@@ -315,26 +316,57 @@ export default async function AboutPage() {
                   {/* Background pattern */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-accent-blue/10 to-transparent rounded-bl-full" />
                   
-                  {/* Certificate icon */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-blue to-accent-purple rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 2L3 7v11c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7l-7-5zm0 2.41L15.09 8H4.91L10 4.41zm0 11.18c-2.07 0-3.75-1.68-3.75-3.75S7.93 5.09 10 5.09s3.75 1.68 3.75 3.75-1.68 3.75-3.75 3.75zm0-6c-1.24 0-2.25 1.01-2.25 2.25S8.76 12.09 10 12.09s2.25-1.01 2.25-2.25S11.24 7.84 10 7.84z" clipRule="evenodd" />
-                      </svg>
+                  {/* Certificate Preview/Viewer */}
+                  {(cert.certificateFile || cert.thumbnailImage) && (
+                    <div className="mb-4 h-48 rounded-lg overflow-hidden">
+                      <CertificateViewer
+                        certificateFile={cert.certificateFile}
+                        thumbnailImage={cert.thumbnailImage}
+                        fileType={cert.fileType}
+                        certificateName={cert.name}
+                        className="h-full"
+                      />
                     </div>
-                    
-                    {/* Status indicator */}
-                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      isExpiring 
-                        ? 'bg-yellow-500/20 text-yellow-300' 
-                        : 'bg-green-500/20 text-green-300'
-                    }`}>
-                      {cert.expirationDate 
-                        ? (isExpiring ? 'Expiring Soon' : 'Active')
-                        : 'No Expiration'
-                      }
+                  )}
+                  
+                  {/* Certificate icon - only show if no file */}
+                  {!cert.certificateFile && !cert.thumbnailImage && (
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-accent-blue to-accent-purple rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 2L3 7v11c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7l-7-5zm0 2.41L15.09 8H4.91L10 4.41zm0 11.18c-2.07 0-3.75-1.68-3.75-3.75S7.93 5.09 10 5.09s3.75 1.68 3.75 3.75-1.68 3.75-3.75 3.75zm0-6c-1.24 0-2.25 1.01-2.25 2.25S8.76 12.09 10 12.09s2.25-1.01 2.25-2.25S11.24 7.84 10 7.84z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      
+                      {/* Status indicator */}
+                      <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        isExpiring 
+                          ? 'bg-yellow-500/20 text-yellow-300' 
+                          : 'bg-green-500/20 text-green-300'
+                      }`}>
+                        {cert.expirationDate 
+                          ? (isExpiring ? 'Expiring Soon' : 'Active')
+                          : 'No Expiration'
+                        }
+                      </div>
                     </div>
-                  </div>
+                  )}
+                  
+                  {/* Status indicator - positioned differently when there's a file */}
+                  {(cert.certificateFile || cert.thumbnailImage) && (
+                    <div className="flex justify-end mb-4">
+                      <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        isExpiring 
+                          ? 'bg-yellow-500/20 text-yellow-300' 
+                          : 'bg-green-500/20 text-green-300'
+                      }`}>
+                        {cert.expirationDate 
+                          ? (isExpiring ? 'Expiring Soon' : 'Active')
+                          : 'No Expiration'
+                        }
+                      </div>
+                    </div>
+                  )}
                   
                   <div className="mb-4">
                     <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-accent-blue transition-colors">
@@ -385,20 +417,36 @@ export default async function AboutPage() {
                     </div>
                   )}
                   
-                  {cert.credentialUrl && (
-                    <a
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-accent-blue hover:text-white text-sm font-medium transition-colors group"
-                    >
-                      <svg className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-1a1 1 0 10-2 0v1H5V7h1a1 1 0 000-2H5z" />
-                      </svg>
-                      Verify Certificate
-                    </a>
-                  )}
+                  <div className="flex gap-2">
+                    {cert.credentialUrl && (
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-accent-blue hover:text-white text-sm font-medium transition-colors group flex-1"
+                      >
+                        <svg className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-1a1 1 0 10-2 0v1H5V7h1a1 1 0 000-2H5z" />
+                        </svg>
+                        Verify
+                      </a>
+                    )}
+                    
+                    {cert.certificateFile && (
+                      <a
+                        href={cert.certificateFile}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-gray-400 hover:text-accent-blue text-sm font-medium transition-colors group"
+                      >
+                        <svg className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                        Download
+                      </a>
+                    )}
+                  </div>
                 </div>
               )
             })}
