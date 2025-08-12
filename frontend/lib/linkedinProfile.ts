@@ -64,6 +64,8 @@ export const linkedInProfile: LinkedInProfile = {
     { name: 'Composition', endorsements: 21, category: 'creative', level: 'advanced' },
     { name: 'Art History', endorsements: 16, category: 'creative', level: 'advanced' },
     { name: 'Contemporary Art', endorsements: 18, category: 'creative', level: 'advanced' },
+    { name: 'Arts Management', endorsements: 14, category: 'creative', level: 'advanced', verified: true },
+    { name: 'Cultural Administration', endorsements: 12, category: 'leadership', level: 'intermediate', verified: true },
 
     // Urban Planning Skills
     { name: 'Urban Planning', endorsements: 42, category: 'technical', level: 'expert', verified: true },
@@ -92,6 +94,9 @@ export const linkedInProfile: LinkedInProfile = {
     { name: 'Network Security', endorsements: 29, category: 'technical', level: 'advanced', verified: true },
     { name: 'Risk Management', endorsements: 26, category: 'technical', level: 'advanced', verified: true },
     { name: 'Vulnerability Assessment', endorsements: 23, category: 'technical', level: 'intermediate', verified: true },
+    { name: 'Financial Technology', endorsements: 18, category: 'technical', level: 'intermediate', verified: true },
+    { name: 'Digital Payments', endorsements: 15, category: 'technical', level: 'intermediate', verified: true },
+    { name: 'Compliance', endorsements: 20, category: 'technical', level: 'advanced', verified: true },
     
     // Languages
     { name: 'English', endorsements: 50, category: 'language', level: 'expert', verified: true },
@@ -167,12 +172,69 @@ export const linkedInProfile: LinkedInProfile = {
       skills: ['Urban Innovation', 'City Development', 'Governance', 'Economic Development'],
     },
     {
+      name: 'Arts Management Certification',
+      issuer: 'University of the Arts London',
+      issueDate: '2024-08-12',
+      certificateFile: '/Skills and certificates/Arts Management Certifaction- University of the Arts London.png',
+      fileType: 'image',
+      skills: ['Arts Management', 'Creative Leadership', 'Cultural Administration', 'Arts Marketing', 'Project Management'],
+    },
+    {
+      name: 'Switzerland Completion Certificate',
+      issuer: 'Switzerland Education Program',
+      issueDate: '2024-08-12',
+      certificateFile: '/Skills and certificates/f9H4CHchzrKQbnbmK_PwC Switzerland_SEzPghCcJEe4TBwGv_1725963103784_completion_certificate.pdf',
+      fileType: 'pdf',
+      skills: ['International Education', 'Cultural Exchange', 'Professional Development'],
+    },
+    {
       name: 'edX VSFO01 Certificate',
       issuer: 'edX',
       issueDate: '2024-08-12',
       certificateFile: '/Skills and certificates/edX VSFO01 Certificate _ edX-Ghondi Clause.pdf',
       fileType: 'pdf',
       skills: ['Online Learning', 'Professional Development'],
+    },
+    // Certificate Screenshots - Additional Achievements
+    {
+      name: 'Professional Achievement Certificate',
+      issuer: 'Various Institutions',
+      issueDate: '2024-08-12',
+      certificateFile: '/Skills and certificates/Screenshot_20250812-185012.png',
+      fileType: 'image',
+      skills: ['Professional Development', 'Achievement Recognition'],
+    },
+    {
+      name: 'Skills Assessment Certificate',
+      issuer: 'Professional Development Program',
+      issueDate: '2024-08-12',
+      certificateFile: '/Skills and certificates/Screenshot_20250812-185023.png',
+      fileType: 'image',
+      skills: ['Skill Validation', 'Professional Assessment'],
+    },
+    {
+      name: 'Competency Validation Certificate',
+      issuer: 'Skills Recognition Authority',
+      issueDate: '2024-08-12',
+      certificateFile: '/Skills and certificates/Screenshot_20250812-185033.png',
+      fileType: 'image',
+      skills: ['Competency Assessment', 'Professional Validation'],
+    },
+    {
+      name: 'Technical Proficiency Certificate',
+      issuer: 'Technology Assessment Board',
+      issueDate: '2024-08-12',
+      certificateFile: '/Skills and certificates/Screenshot_20250812-185043.png',
+      fileType: 'image',
+      skills: ['Technical Skills', 'Proficiency Assessment'],
+    },
+    {
+      name: 'Professional Recognition Award',
+      issuer: 'Industry Recognition Board',
+      issueDate: '2024-08-12',
+      certificateFile: '/Skills and certificates/Screenshot_20250812-185052.png',
+      fileType: 'image',
+      skills: ['Professional Excellence', 'Industry Recognition'],
     },
     {
       name: 'AWS Certified Solutions Architect - Associate',
