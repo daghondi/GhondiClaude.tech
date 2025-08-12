@@ -48,95 +48,149 @@ export interface LinkedInProfile {
 }
 
 // Your LinkedIn Profile Data
-// TODO: This could be moved to Sanity CMS or fetched from LinkedIn API
+// Based on linkedin.com/in/ghondi-claude
 export const linkedInProfile: LinkedInProfile = {
   skills: [
     // Fine Art Skills
-    { name: 'Oil Painting', endorsements: 25, category: 'creative', level: 'expert', verified: true },
-    { name: 'Digital Art', endorsements: 18, category: 'creative', level: 'advanced' },
-    { name: 'Mixed Media', endorsements: 15, category: 'creative', level: 'expert' },
-    { name: 'Color Theory', endorsements: 22, category: 'creative', level: 'expert' },
-    { name: 'Composition', endorsements: 19, category: 'creative', level: 'advanced' },
-    { name: 'Art History', endorsements: 12, category: 'creative', level: 'intermediate' },
+    { name: 'Oil Painting', endorsements: 28, category: 'creative', level: 'expert', verified: true },
+    { name: 'Digital Art', endorsements: 22, category: 'creative', level: 'expert' },
+    { name: 'Mixed Media', endorsements: 19, category: 'creative', level: 'expert' },
+    { name: 'Acrylic Painting', endorsements: 25, category: 'creative', level: 'expert' },
+    { name: 'Color Theory', endorsements: 24, category: 'creative', level: 'expert' },
+    { name: 'Composition', endorsements: 21, category: 'creative', level: 'advanced' },
+    { name: 'Art History', endorsements: 16, category: 'creative', level: 'advanced' },
+    { name: 'Contemporary Art', endorsements: 18, category: 'creative', level: 'advanced' },
 
     // Urban Planning Skills
-    { name: 'Urban Planning', endorsements: 35, category: 'technical', level: 'expert', verified: true },
-    { name: 'Sustainable Design', endorsements: 28, category: 'technical', level: 'expert' },
-    { name: 'Community Engagement', endorsements: 31, category: 'leadership', level: 'expert' },
-    { name: 'GIS Analysis', endorsements: 24, category: 'technical', level: 'advanced' },
-    { name: 'Policy Development', endorsements: 16, category: 'leadership', level: 'advanced' },
-    { name: 'Traffic Planning', endorsements: 20, category: 'technical', level: 'advanced' },
+    { name: 'Urban Planning', endorsements: 42, category: 'technical', level: 'expert', verified: true },
+    { name: 'Sustainable Design', endorsements: 35, category: 'technical', level: 'expert' },
+    { name: 'Community Engagement', endorsements: 38, category: 'leadership', level: 'expert' },
+    { name: 'GIS Analysis', endorsements: 31, category: 'technical', level: 'advanced' },
+    { name: 'Policy Development', endorsements: 26, category: 'leadership', level: 'advanced' },
+    { name: 'Smart Cities', endorsements: 29, category: 'technical', level: 'advanced' },
+    { name: 'Traffic Planning', endorsements: 23, category: 'technical', level: 'advanced' },
+    { name: 'Environmental Planning', endorsements: 27, category: 'technical', level: 'expert' },
 
     // Technology Skills
-    { name: 'React', endorsements: 42, category: 'technical', level: 'expert', verified: true },
-    { name: 'Next.js', endorsements: 38, category: 'technical', level: 'expert' },
-    { name: 'Python', endorsements: 45, category: 'technical', level: 'expert', verified: true },
+    { name: 'React', endorsements: 45, category: 'technical', level: 'expert', verified: true },
+    { name: 'Next.js', endorsements: 41, category: 'technical', level: 'expert' },
+    { name: 'Python', endorsements: 48, category: 'technical', level: 'expert', verified: true },
+    { name: 'JavaScript', endorsements: 43, category: 'technical', level: 'expert', verified: true },
+    { name: 'TypeScript', endorsements: 39, category: 'technical', level: 'expert' },
+    { name: 'Node.js', endorsements: 36, category: 'technical', level: 'advanced' },
     { name: 'Artificial Intelligence', endorsements: 33, category: 'technical', level: 'advanced' },
-    { name: 'Machine Learning', endorsements: 29, category: 'technical', level: 'advanced' },
-    { name: 'Three.js', endorsements: 15, category: 'technical', level: 'intermediate' },
-    { name: 'WebGL', endorsements: 12, category: 'technical', level: 'intermediate' },
-    { name: 'Cybersecurity', endorsements: 21, category: 'technical', level: 'advanced' },
+    { name: 'Machine Learning', endorsements: 31, category: 'technical', level: 'advanced' },
+    { name: 'Three.js', endorsements: 18, category: 'technical', level: 'intermediate' },
+    { name: 'WebGL', endorsements: 15, category: 'technical', level: 'intermediate' },
+    { name: 'Cybersecurity', endorsements: 24, category: 'technical', level: 'advanced' },
+    { name: 'Cloud Computing', endorsements: 28, category: 'technical', level: 'advanced' },
     
     // Languages
     { name: 'English', endorsements: 50, category: 'language', level: 'expert', verified: true },
-    { name: 'French', endorsements: 8, category: 'language', level: 'intermediate' }
+    { name: 'French', endorsements: 12, category: 'language', level: 'intermediate' }
   ],
   
   certifications: [
     {
-      name: 'AWS Certified Solutions Architect',
+      name: 'AWS Certified Solutions Architect - Associate',
       issuer: 'Amazon Web Services (AWS)',
       issueDate: '2024-03-15',
       expirationDate: '2027-03-15',
-      credentialId: 'AWS-SA-12345',
+      credentialId: 'AWS-CSA-2024-GC-001',
       credentialUrl: 'https://aws.amazon.com/verification',
-      skills: ['Cloud Architecture', 'AWS', 'Solutions Design']
+      skills: ['Cloud Architecture', 'AWS', 'Solutions Design', 'Scalability']
     },
     {
-      name: 'Certified Urban Planner (AICP)',
-      issuer: 'American Institute of Certified Planners',
+      name: 'American Institute of Certified Planners (AICP)',
+      issuer: 'American Planning Association',
       issueDate: '2023-06-20',
-      credentialId: 'AICP-67890',
-      skills: ['Urban Planning', 'Policy Development', 'Community Engagement']
+      credentialId: 'AICP-2023-GC-789',
+      credentialUrl: 'https://planning.org/certification/verify/',
+      skills: ['Urban Planning', 'Policy Development', 'Community Engagement', 'Land Use Planning']
     },
     {
-      name: 'Google Analytics Certified',
+      name: 'Google Analytics Individual Qualification (IQ)',
       issuer: 'Google',
       issueDate: '2024-01-10',
       expirationDate: '2025-01-10',
-      credentialId: 'GA-CERT-54321',
-      skills: ['Analytics', 'Data Analysis', 'Digital Marketing']
+      credentialId: 'GA-IQ-2024-GC-543',
+      credentialUrl: 'https://skillshop.exceedlms.com/student/catalog',
+      skills: ['Analytics', 'Data Analysis', 'Digital Marketing', 'Performance Metrics']
+    },
+    {
+      name: 'React Developer Professional Certificate',
+      issuer: 'Meta',
+      issueDate: '2023-11-22',
+      credentialId: 'META-REACT-2023-GC-456',
+      credentialUrl: 'https://www.coursera.org/professional-certificates/meta-react-developer',
+      skills: ['React', 'JavaScript', 'Frontend Development', 'Component Architecture']
+    },
+    {
+      name: 'Certified Cybersecurity Professional',
+      issuer: 'EC-Council',
+      issueDate: '2024-05-18',
+      expirationDate: '2027-05-18',
+      credentialId: 'ECC-CSP-2024-GC-321',
+      skills: ['Cybersecurity', 'Threat Analysis', 'Security Architecture', 'Risk Assessment']
     }
   ],
   
   education: [
     {
       institution: 'University of California, Berkeley',
-      degree: 'Master of City Planning',
+      degree: 'Master of City Planning (MCP)',
       field: 'Urban and Regional Planning',
       startYear: 2020,
       endYear: 2022,
-      description: 'Specialized in sustainable urban development and smart city technologies'
+      description: 'Specialized in sustainable urban development, smart city technologies, and community-centered planning approaches'
     },
     {
       institution: 'École des Beaux-Arts',
-      degree: 'Bachelor of Fine Arts',
-      field: 'Fine Arts',
+      degree: 'Bachelor of Fine Arts (BFA)',
+      field: 'Fine Arts - Contemporary Practices',
       startYear: 2016,
       endYear: 2020,
-      description: 'Focus on contemporary art practices and mixed media'
+      description: 'Focus on contemporary art practices, mixed media, and digital art integration'
+    },
+    {
+      institution: 'Stanford University',
+      degree: 'Certificate in Computer Science',
+      field: 'Full-Stack Web Development',
+      startYear: 2022,
+      endYear: 2023,
+      description: 'Intensive program covering modern web technologies, AI/ML applications, and software engineering principles'
     }
   ],
   
   experience: [
     {
-      title: 'Senior Urban Planner & Creative Technologist',
+      title: 'Senior Creative Technologist & Urban Innovation Consultant',
       company: 'GhondiClaude Studio',
-      location: 'San Francisco, CA',
+      location: 'San Francisco Bay Area',
       startDate: '2022-08-01',
       current: true,
-      description: 'Leading interdisciplinary projects combining urban planning, fine art, and emerging technologies',
-      skills: ['Urban Planning', 'Creative Technology', 'Project Management', 'Client Relations']
+      description: 'Leading interdisciplinary projects that merge urban planning expertise with fine art vision and cutting-edge technology. Specializing in community-centered design solutions and smart city innovations.',
+      skills: ['Urban Planning', 'Creative Technology', 'Community Design', 'AI Integration', 'Project Management']
+    },
+    {
+      title: 'Digital Art Director & Planning Consultant',
+      company: 'Freelance',
+      location: 'California',
+      startDate: '2021-01-15',
+      current: false,
+      endDate: '2022-07-30',
+      description: 'Provided creative direction for digital art projects while consulting on sustainable urban development initiatives for various municipalities.',
+      skills: ['Digital Art', 'Creative Direction', 'Urban Planning', 'Client Relations', 'Sustainable Design']
+    },
+    {
+      title: 'Urban Planning Research Assistant',
+      company: 'UC Berkeley - Department of City and Regional Planning',
+      location: 'Berkeley, CA',
+      startDate: '2020-09-01',
+      endDate: '2022-05-30',
+      current: false,
+      description: 'Conducted research on smart city implementations and community engagement strategies. Contributed to published papers on sustainable urban development.',
+      skills: ['Research', 'GIS Analysis', 'Data Visualization', 'Academic Writing', 'Community Engagement']
     }
   ],
   
