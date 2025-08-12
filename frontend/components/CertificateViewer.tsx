@@ -1,13 +1,25 @@
 'use client';
 
 import { useState } from 'react';
-import { Document, Page } from 'react-pdf';
-import 'react-pdf/dist/Page/AnnotationLayer.css';
-import 'react-pdf/dist/Page/TextLayer.css';
+import dynamic from 'next/dynamic';
 
-// Configure PDF.js worker
-import { pdfjs } from 'react-pdf';
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+// Dynamically import PDF components to prevent SSR issues
+const Document = dynamic(
+  () => import('react-pdf').then((mod) => mod.Document),
+  { ssr: false }
+);
+
+const Page = dynamic(
+  () => import('react-pdf').then((mod) => mod.Page),
+  { ssr: false }
+);
+
+// Configure PDF.js worker only on client side
+if (typeof window !== 'undefined') {
+  import('react-pdf').then((module) => {
+    module.pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${module.pdfjs.version}/build/pdf.worker.min.js`;
+  });
+}
 
 interface CertificateViewerProps {
   certificateFile?: string;
@@ -67,23 +79,36 @@ export default function CertificateViewer({
     } else if (fileType === 'pdf') {
       return (
         <div className="relative cursor-pointer" onClick={() => setShowFullView(true)}>
-          <Document
-            file={certificateFile}
-            onLoadSuccess={onDocumentLoadSuccess}
-            onLoadError={onDocumentLoadError}
-            loading={
-              <div className="flex items-center justify-center h-full">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue"></div>
+          {typeof window !== 'undefined' && Document ? (
+            <Document
+              file={certificateFile}
+              onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={onDocumentLoadError}
+              loading={
+                <div className="flex items-center justify-center h-full">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue"></div>
+                </div>
+              }
+            >
+              {Page && (
+                <Page
+                  pageNumber={1}
+                  width={300}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                />
+              )}
+            </Document>
+          ) : (
+            <div className="flex items-center justify-center h-full bg-gray-800 rounded-lg">
+              <div className="text-center text-gray-400">
+                <svg className="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm3 5a1 1 0 000 2h6a1 1 0 100-2H7zm0 4a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                </svg>
+                <p className="text-sm">PDF Preview</p>
               </div>
-            }
-          >
-            <Page
-              pageNumber={1}
-              width={300}
-              renderTextLayer={false}
-              renderAnnotationLayer={false}
-            />
-          </Document>
+            </div>
+          )}
           {numPages > 1 && (
             <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
               {numPages} pages
@@ -123,7 +148,7 @@ export default function CertificateViewer({
               alt={`${certificateName} certificate`}
               className="max-w-full max-h-full"
             />
-          ) : fileType === 'pdf' ? (
+          ) : fileType === 'pdf' && typeof window !== 'undefined' && Document ? (
             <div className="text-center">
               {pdfError ? (
                 <div className="p-8 text-red-500">
@@ -142,7 +167,7 @@ export default function CertificateViewer({
                     onLoadSuccess={onDocumentLoadSuccess}
                     onLoadError={onDocumentLoadError}
                   >
-                    <Page pageNumber={pageNumber} width={800} />
+                    {Page && <Page pageNumber={pageNumber} width={800} />}
                   </Document>
                   
                   {numPages > 1 && (
@@ -168,6 +193,16 @@ export default function CertificateViewer({
                   )}
                 </>
               )}
+            </div>
+          ) : fileType === 'pdf' ? (
+            <div className="p-8 text-center">
+              <p className="mb-4 text-gray-600">PDF viewer is loading...</p>
+              <button
+                onClick={() => window.open(certificateFile, '_blank')}
+                className="px-4 py-2 bg-accent-blue text-white rounded hover:bg-accent-blue/80 transition-colors"
+              >
+                Open PDF in new tab
+              </button>
             </div>
           ) : null}
         </div>
