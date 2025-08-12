@@ -154,16 +154,16 @@ export const linkedInProfile: LinkedInProfile = {
       institution: 'National Advanced School of Public Works (ENSTP)',
       degree: 'Master of Engineering (MEng)',
       field: 'Urban Planning',
-      startYear: 2021,
+      startYear: 2013,
       endYear: 2023,
       description: 'Specialized in urban development, infrastructure planning, and sustainable city design. Graduated November 2023 from Yaoundé, Cameroon.'
     },
     {
-      institution: 'École des Beaux-Arts',
-      degree: 'Bachelor of Fine Arts (BFA)',
-      field: 'Fine Arts - Contemporary Practices',
-      startYear: 2016,
-      endYear: 2020,
+      institution: 'University of the Arts London',
+      degree: 'Online Course Certification',
+      field: 'Arts Management',
+      startYear: 2025,
+      endYear: 2025,
       description: 'Focus on contemporary art practices, mixed media, and digital art integration'
     }
   ],
@@ -171,8 +171,8 @@ export const linkedInProfile: LinkedInProfile = {
   experience: [
     {
       title: 'Senior Creative Technologist & Urban Innovation Consultant',
-      company: 'GhondiClaude Studio',
-      location: 'San Francisco Bay Area',
+      company: 'Agnos Dei Consulting LLC',
+      location: 'Yaounde-Cameroon / Delaware-USA',
       startDate: '2022-08-01',
       current: true,
       description: 'Leading interdisciplinary projects that merge urban planning expertise with fine art vision and cutting-edge technology. Specializing in community-centered design solutions and smart city innovations.',
@@ -181,19 +181,19 @@ export const linkedInProfile: LinkedInProfile = {
     {
       title: 'Digital Art Director & Planning Consultant',
       company: 'Freelance',
-      location: 'California',
-      startDate: '2021-01-15',
-      current: false,
-      endDate: '2022-07-30',
+      location: 'Yaounde & Open to travel',
+      startDate: '2023-01-15',
+      current: true,
+      endDate: null,
       description: 'Provided creative direction for digital art projects while consulting on sustainable urban development initiatives for various municipalities.',
       skills: ['Digital Art', 'Creative Direction', 'Urban Planning', 'Client Relations', 'Sustainable Design']
     },
     {
       title: 'Urban Planning Research Assistant',
-      company: 'UC Berkeley - Department of City and Regional Planning',
-      location: 'Berkeley, CA',
-      startDate: '2020-09-01',
-      endDate: '2022-05-30',
+      company: 'Yaounde III Urban Council ',
+      location: 'Yaounde, Cameroon',
+      startDate: '2020-06-01',
+      endDate: '2020-09-01',
       current: false,
       description: 'Conducted research on smart city implementations and community engagement strategies. Contributed to published papers on sustainable urban development.',
       skills: ['Research', 'GIS Analysis', 'Data Visualization', 'Academic Writing', 'Community Engagement']
