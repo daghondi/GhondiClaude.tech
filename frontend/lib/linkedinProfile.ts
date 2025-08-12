@@ -103,7 +103,8 @@ export const linkedInProfile: LinkedInProfile = {
     { name: 'Integrated Information Defense', endorsements: 18, category: 'technical', level: 'intermediate', verified: true },
     { name: 'IT System Security Baseline', endorsements: 15, category: 'technical', level: 'intermediate', verified: true },
     { name: 'Network Segmentation', endorsements: 20, category: 'technical', level: 'advanced', verified: true },
-    { name: 'Financial Technology', endorsements: 18, category: 'technical', level: 'intermediate', verified: true },
+    { name: 'Phishing Email Simulation Design', endorsements: 12, category: 'technical', level: 'intermediate', verified: true },
+    { name: 'Phishing Simulation Analysis', endorsements: 10, category: 'technical', level: 'intermediate', verified: true },
     { name: 'Digital Payments', endorsements: 15, category: 'technical', level: 'intermediate', verified: true },
     { name: 'Compliance', endorsements: 20, category: 'technical', level: 'advanced', verified: true },
     
@@ -165,12 +166,12 @@ export const linkedInProfile: LinkedInProfile = {
       skills: ['Vulnerability Management', 'Security Assessment', 'Cloud Security', 'Compliance'],
     },
     {
-      name: 'Mastercard Completion Certificate',
+      name: 'Mastercard Cybersecurity Internship Certification',
       issuer: 'Mastercard',
       issueDate: '2024-08-12',
       certificateFile: '/Skills and certificates/Mastercard Completion Certificate.pdf',
       fileType: 'pdf',
-      skills: ['Financial Technology', 'Digital Payments', 'Payment Security'],
+      skills: ['Phishing Email Simulation Design', 'Phishing Simulation Analysis', 'Cybersecurity'],
     },
     {
       name: 'Free Cities Summit - Attendance Certificate',
