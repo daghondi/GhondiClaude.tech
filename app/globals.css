@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  :root {
+    /* Light theme core colors - inspired by Chris Do's clean aesthetic */
+    --color-light-primary: #ffffff;
+    --color-light-secondary: #fafafa;
+    --color-light-tertiary: #f5f5f5;
+    --color-light-quaternary: #eeeeee;
+    
+    /* Professional color palette */
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #4a4a4a;
+    --color-text-tertiary: #7a7a7a;
+    
+    /* Accent colors - more professional */
+    --color-accent-primary: #2563eb;    /* Professional blue */
+    --color-accent-secondary: #dc2626;  /* Strategic red */
+    --color-accent-gold: #f59e0b;       /* Premium gold */
+    --color-accent-success: #059669;    /* Success green */
+    
+    /* Typography - similar to Chris Do's site */
+    --font-primary: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Playfair Display', serif;
+    --font-mono: 'Fira Code', monospace;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased;
+    font-family: var(--font-primary);
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    line-height: 1.6;
+  }
+
+  /* Heading styles - professional and clean */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold text-gray-900;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-6xl xl:text-7xl leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-5xl xl:text-6xl leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-4xl xl:text-5xl leading-tight;
+  }
+
+  h4 {
+    @apply text-xl lg:text-3xl xl:text-4xl leading-tight;
+  }
+
+  h5 {
+    @apply text-lg lg:text-2xl xl:text-3xl leading-tight;
+  }
+
+  h6 {
+    @apply text-base lg:text-xl xl:text-2xl leading-tight;
+  }
+
+  /* Paragraph styles - cleaner for professional look */
+  p {
+    @apply text-base lg:text-lg leading-relaxed text-gray-700;
+  }
+
+  /* Link styles */
+  a {
+    @apply transition-colors duration-200 text-blue-600 hover:text-blue-800;
+  }
+
+  /* Selection styles */
+  ::selection {
+    @apply bg-blue-100 text-blue-900;
+  }
+
+  /* Clean scrollbar styles */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}
+
+/* Component styles - Professional theme inspired by Chris Do */
+@layer components {
+  /* Professional button variants */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-blue-600 text-white hover:bg-blue-700 shadow-sm px-6 py-3;
+  }
+
+  .btn-secondary {
+    @apply btn border border-gray-300 text-gray-700 hover:bg-gray-50 shadow-sm px-6 py-3;
+  }
+
+  .btn-accent {
+    @apply btn bg-red-600 text-white hover:bg-red-700 shadow-sm px-6 py-3;
+  }
+
+  /* Buy now button - Chris Do style */
+  .btn-buy {
+    @apply btn bg-black text-white hover:bg-gray-800 font-bold tracking-wide px-8 py-4 text-base;
+  }
+
+  .btn-ghost {
+    @apply btn hover:bg-gray-100 text-gray-700 px-6 py-3;
+  }
+
+  /* Button sizes */
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  .btn-xl {
+    @apply px-10 py-5 text-xl;
+  }
+
+  /* Professional card styles */
+  .card {
+    @apply bg-white border border-gray-200 rounded-xl p-6 shadow-sm;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:shadow-lg hover:border-gray-300;
+  }
+
+  .card-product {
+    @apply card-hover overflow-hidden;
+  }
+
+  /* Professional input styles */
+  .input {
+    @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors;
+  }
+
+  .textarea {
+    @apply input min-h-[120px] resize-y;
+  }
+
+  /* Professional navigation styles */
+  .nav-link {
+    @apply relative text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium;
+  }
+
+  .nav-link-active {
+    @apply nav-link text-gray-900 font-semibold;
+  }
+
+  /* Professional section styles */
+  .section {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Typography utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-gray-900 via-blue-600 to-gray-900 bg-clip-text text-transparent;
+  }
+
+  .text-accent {
+    @apply text-blue-600 font-semibold;
+  }
+
+  /* Professional layout utilities */
+  .grid-portfolio {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8;
+  }
+
+  .grid-products {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+
+  .grid-blog {
+    @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8;
+  }
+
+  /* Professional animation utilities - maintaining your animations */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  /* Professional backdrop effects */
+  .backdrop-glass {
+    @apply bg-white/80 backdrop-blur-md border border-gray-200;
+  }
+
+  .backdrop-hero {
+    @apply bg-gradient-to-b from-gray-50 to-white;
+  }
+
+  /* Price styling */
+  .price-display {
+    @apply text-3xl font-bold text-gray-900;
+  }
+
+  .price-currency {
+    @apply text-lg font-medium text-gray-600;
+  }
+}
+
+/* Utility styles - Professional theme */
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Professional focus styles */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl;
+  }
+
+  /* Aspect ratio utilities */
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-landscape {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Professional animations - keeping your style but cleaner */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Professional hover effects for artwork */
+.artwork-hover {
+  transition: all 0.3s ease;
+}
+
+.artwork-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Price tag styling */
+.price-tag {
+  @apply bg-gray-900 text-white px-3 py-1 rounded-full text-sm font-semibold;
+}
+
+.sale-badge {
+  @apply bg-red-500 text-white px-2 py-1 rounded text-xs font-bold uppercase;
+}
+
+/* Professional loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
