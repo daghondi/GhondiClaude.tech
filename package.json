@@ -1,0 +1,10 @@
+{
+  "name": "ghondiclaude-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Building from root - redirecting to frontend' && cd frontend && npm run build",
+    "start": "cd frontend && npm start",
+    "dev": "cd frontend && npm run dev"
+  }
+}
