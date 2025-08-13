@@ -1,0 +1,8 @@
+{
+  "name": "ghondi-claude-portfolio-v2",
+  "repository": "daghondi/GhondiClaude.tech",
+  "branch": "main",
+  "lastDeployment": "2025-08-13T00:00:00Z",
+  "deploymentTrigger": "manual-hook-activation",
+  "status": "ready-for-deployment"
+}
