@@ -75,7 +75,7 @@ export async function getSkillsByCategory(category: string) {
   const profile = await getLinkedInProfile()
   if (!profile) {
     // Fallback to static data
-    const { getSkillsByCategory: staticGetSkillsByCategory } = await import('../lib/linkedinProfile')
+    const { getSkillsByCategory: staticGetSkillsByCategory } = await import('../../lib/linkedinProfile')
     return staticGetSkillsByCategory(category as any)
   }
   
@@ -87,7 +87,7 @@ export async function getActiveCertifications() {
   const profile = await getLinkedInProfile()
   if (!profile) {
     // Fallback to static data
-    const { getActiveCertifications: staticGetActiveCertifications } = await import('../lib/linkedinProfile')
+    const { getActiveCertifications: staticGetActiveCertifications } = await import('../../lib/linkedinProfile')
     return staticGetActiveCertifications()
   }
   
@@ -103,7 +103,7 @@ export async function formatSkillsForDisplay() {
   const profile = await getLinkedInProfile()
   if (!profile) {
     // Fallback to static data
-    const { formatSkillsForDisplay: staticFormatSkillsForDisplay } = await import('../lib/linkedinProfile')
+    const { formatSkillsForDisplay: staticFormatSkillsForDisplay } = await import('../../lib/linkedinProfile')
     return staticFormatSkillsForDisplay()
   }
   
@@ -127,7 +127,7 @@ export async function getTopSkills(limit: number = 10) {
   const profile = await getLinkedInProfile()
   if (!profile) {
     // Fallback to static data
-    const { getTopSkills: staticGetTopSkills } = await import('../lib/linkedinProfile')
+    const { getTopSkills: staticGetTopSkills } = await import('../../lib/linkedinProfile')
     return staticGetTopSkills(limit)
   }
   
