@@ -64,6 +64,11 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                   {siteSettings?.homepageExtraContent?.greetingText || "Hello, I'm"}
                 </p>
                 
+                {/* Deployment Indicator */}
+                <div className="text-xs text-green-600 font-medium bg-green-100 border border-green-200 px-3 py-1 rounded-full inline-block">
+                  🚀 ghondi-claude-portfolio-v2 DEPLOYMENT • {new Date().toLocaleString()}
+                </div>
+                
                 {/* Name - Single Line */}
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-gray-900">
                   {siteSettings?.homepageContent?.heroTitle || "Ghondi Claude"}
