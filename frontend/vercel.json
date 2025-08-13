@@ -1,14 +1,13 @@
 {
-  "version": 2,
+  "functions": {
+    "app/api/**/*.js": {
+      "maxDuration": 30
+    }
+  },
   "routes": [
     {
       "src": "/admin/(.*)",
       "dest": "/admin/$1"
     }
-  ],
-  "functions": {
-    "app/api/**/*.js": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
