@@ -50,6 +50,7 @@ const TopNavigation: React.FC = () => {
         }
       ]
     },
+    { label: 'Shop', href: '/shop' },
     { label: siteSettings?.globalContent?.navigation?.blogLabel || 'Blog', href: '/blog' },
     { label: siteSettings?.globalContent?.navigation?.contactLabel || 'Contact', href: '/contact' },
   ]

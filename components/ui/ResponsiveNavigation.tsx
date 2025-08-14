@@ -16,7 +16,8 @@ import {
   Code,
   Layers,
   Menu,
-  X
+  X,
+  ShoppingBag
 } from 'lucide-react'
 
 interface NavigationItem {
@@ -74,6 +75,12 @@ const ResponsiveNavigation: React.FC = () => {
           icon: Layers 
         }
       ]
+    },
+    { 
+      id: 'shop', 
+      label: 'Shop', 
+      href: '/shop', 
+      icon: ShoppingBag 
     },
     { 
       id: 'blog', 
