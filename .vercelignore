@@ -1,4 +1,0 @@
-# Ignore any remaining frontend references
-frontend/
-*.log
-.env.local
