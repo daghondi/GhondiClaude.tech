@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Super simple Vercel workaround
- * Symlink both .next and node_modules to where Vercel expects them
+ * Complete Vercel workaround
+ * Symlink .next, node_modules, and package.json to where Vercel expects them
  */
 
 const fs = require('fs');
@@ -11,11 +11,13 @@ const sourceNextDir = path.join(process.cwd(), '.next');
 const targetNextDir = path.join(process.cwd(), 'frontend', '.next');
 const sourceNodeModules = path.join(process.cwd(), 'node_modules');
 const targetNodeModules = path.join(process.cwd(), 'frontend', 'node_modules');
+const sourcePackageJson = path.join(process.cwd(), 'package.json');
+const targetPackageJson = path.join(process.cwd(), 'frontend', 'package.json');
 
 // Remove targets if they exist
-[targetNextDir, targetNodeModules].forEach(dir => {
-  if (fs.existsSync(dir)) {
-    fs.rmSync(dir, { recursive: true, force: true });
+[targetNextDir, targetNodeModules, targetPackageJson].forEach(target => {
+  if (fs.existsSync(target)) {
+    fs.rmSync(target, { recursive: true, force: true });
   }
 });
 
@@ -38,11 +40,17 @@ try {
     console.log('✅ Symlinked node_modules to frontend/node_modules');
   }
   
+  // Symlink package.json file
+  if (fs.existsSync(sourcePackageJson)) {
+    fs.symlinkSync(sourcePackageJson, targetPackageJson, 'file');
+    console.log('✅ Symlinked package.json to frontend/package.json');
+  }
+  
   console.log('🎯 Vercel should now find all expected files');
 } catch (error) {
   console.error('❌ Symlink failed, trying copy fallback...');
   
-  // Fallback: copy directories (slower but more compatible)
+  // Fallback: copy directories and files
   function copyRecursive(src, dest) {
     if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
     const entries = fs.readdirSync(src, { withFileTypes: true });
@@ -61,6 +69,12 @@ try {
     if (fs.existsSync(sourceNextDir)) {
       copyRecursive(sourceNextDir, targetNextDir);
       console.log('✅ Copied .next to frontend/.next');
+    }
+    
+    // Copy package.json file
+    if (fs.existsSync(sourcePackageJson)) {
+      fs.copyFileSync(sourcePackageJson, targetPackageJson);
+      console.log('✅ Copied package.json to frontend/package.json');
     }
     
     // For node_modules, only copy essential modules to avoid huge copy
