@@ -21,32 +21,20 @@ export default async function WorkPage() {
   }
 
   return (
-    <main className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-2 h-2 bg-accent-blue rounded-full animate-ping" />
-          <div className="absolute top-40 right-32 w-1 h-1 bg-white rounded-full animate-pulse" />
-          <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-accent-blue rounded-full animate-bounce" />
-          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-white/60 rounded-full animate-pulse delay-1000" />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <main className="min-h-screen pt-20 bg-white">
+      {/* Hero Section - Chris Do Style */}
+      <section className="relative py-24">        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-r from-white to-accent-blue rounded-full flex items-center justify-center">
-                <Palette className="w-4 h-4 text-dark-primary" />
-              </div>
-              <span className="text-accent-blue font-medium tracking-wider uppercase text-sm">Portfolio</span>
-            </div>
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-8">
+              Professional Portfolio
+            </h6>
             
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                {siteSettings?.workPageContent?.workTitle || "My Work"}
-              </span>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-none text-gray-900 mb-12">
+              {siteSettings?.workPageContent?.workTitle || "My Work"}
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg lg:text-xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
               {siteSettings?.workPageContent?.workSubtitle || 
                 "A curated collection of projects spanning Fine Art, Urban Planning, and Technology"
               }
@@ -55,18 +43,18 @@ export default async function WorkPage() {
         </div>
       </section>
 
-      {/* Projects Overview Stats */}
-      <section className="section border-b border-white/10">
+      {/* Projects Overview Stats - Chris Do Style */}
+      <section className="py-16 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Palette className="w-8 h-8 text-accent-blue" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div>
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Palette className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-heading font-bold mb-2">{projectsByType['fine-art'].length}</h3>
-              <p className="text-gray-400">Fine Art Projects</p>
+              <h3 className="text-3xl font-display font-bold text-gray-900 mb-2">{projectsByType['fine-art'].length}</h3>
+              <p className="text-sm uppercase tracking-widest text-gray-500">Fine Art Projects</p>
             </div>
-            <div className="text-center">
+            <div>
               <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Code className="w-8 h-8 text-accent-blue" />
               </div>

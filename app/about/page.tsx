@@ -79,24 +79,31 @@ export default async function AboutPage() {
   ]
 
   return (
-    <main className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary">
+    <main className="min-h-screen pt-20 bg-white">
+      {/* Hero Section - Chris Do Style */}
+      <section className="relative py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-                <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                  {siteSettings?.aboutPageContent?.aboutTitle || "About"}
-                </span>
+              {/* Small label */}
+              <h6 className="text-xs md:text-sm uppercase tracking-widest text-gray-500 font-medium mb-6">
+                Get to know me
+              </h6>
+              
+              {/* Massive title */}
+              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-none text-gray-900 mb-8">
+                {siteSettings?.aboutPageContent?.aboutTitle || "About"}
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-8">
+              
+              {/* Clean subtitle */}
+              <p className="text-lg lg:text-xl leading-relaxed text-gray-600 font-light mb-8 max-w-2xl">
                 {siteSettings?.aboutPageContent?.aboutSubtitle || 
                   "A creative professional at the intersection of Fine Art, Urban Planning, and Technology"
                 }
               </p>
-              <div className="space-y-4 text-lg text-gray-400">
-                <p>
+              
+              <div className="space-y-6 text-base text-gray-700 max-w-2xl">
+                <p className="leading-relaxed">
                   {siteSettings?.aboutPageContent?.aboutDescription || 
                     "Welcome to my universe where brushstrokes meet blueprints, where urban dreams are coded into reality, and where technology becomes the canvas for tomorrow's cities."
                   }
@@ -105,7 +112,7 @@ export default async function AboutPage() {
             </div>
             
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-white/5 to-accent-blue/20 rounded-2xl overflow-hidden">
+              <div className="aspect-square bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border border-gray-200">
                 {siteSettings?.aboutPagePhoto ? (
                   <ImageLightbox
                     src={urlFor(siteSettings.aboutPagePhoto).url()}
@@ -116,10 +123,10 @@ export default async function AboutPage() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center text-gray-400">
-                      <div className="w-32 h-32 bg-gradient-to-br from-white/20 to-accent-blue rounded-full mx-auto mb-4"></div>
-                      <p>Upload your photo in Sanity CMS</p>
-                      <p className="text-sm text-gray-500 mt-2">Go to Site Settings → Professional Headshot</p>
+                    <div className="text-center text-gray-500">
+                      <div className="w-32 h-32 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full mx-auto mb-4"></div>
+                      <p className="text-sm">Upload your photo in Sanity CMS</p>
+                      <p className="text-xs text-gray-400 mt-2">Go to Site Settings → Professional Headshot</p>
                     </div>
                   </div>
                 )}
@@ -129,33 +136,38 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Journey Timeline */}
-      <section className="section">
-        <div className="section-container">
-          <h2 className="text-4xl font-heading text-center mb-16">
-            <span className="text-gradient">
+      {/* Journey Timeline - Chris Do Style */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section header */}
+          <div className="text-center mb-20">
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-4">
+              Professional Journey
+            </h6>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900">
               {siteSettings?.aboutPageExtraContent?.journeyTitle || "My Journey"}
-            </span>
-          </h2>
+            </h2>
+          </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="space-y-12">
+            <div className="space-y-16">
               {(siteSettings?.aboutPageExtraContent?.journeyItems || defaultJourneyItems).map((item: any, index: number) => (
-                <div key={index} className="flex flex-col md:flex-row gap-8 items-start">
+                <div key={index} className="flex flex-col md:flex-row gap-12 items-start">
                   <div className="md:w-1/4 flex-shrink-0">
-                    <div className="w-16 h-16 bg-accent-blue rounded-full flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6">
                       <span className="text-white font-bold text-xl">{item.emoji}</span>
                     </div>
-                    <div className="text-accent-blue font-semibold">{item.role}</div>
-                    <div className="text-gray-500 text-sm">{item.period}</div>
+                    <h6 className="text-xs uppercase tracking-widest text-gray-500 mb-2">{item.period}</h6>
+                    <div className="text-lg font-semibold text-gray-900">{item.role}</div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="text-2xl font-heading mb-4">{item.title}</h3>
-                    <p className="text-gray-400 mb-4">{item.description}</p>
+                    <h3 className="text-2xl lg:text-3xl font-display font-bold text-gray-900 mb-4">{item.title}</h3>
+                    <p className="text-base text-gray-600 leading-relaxed mb-6">{item.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {item.skills.map((skill: string, skillIndex: number) => (
-                        <span key={skillIndex} className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm">
+                        <span key={skillIndex} className="px-3 py-1 text-xs uppercase tracking-wide text-gray-500 font-medium">
                           {skill}
+                          {skillIndex < item.skills.length - 1 && <span className="ml-2 text-gray-300">•</span>}
                         </span>
                       ))}
                     </div>
@@ -167,28 +179,29 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section className="section bg-dark-secondary/50">
-        <div className="section-container">
+      {/* Philosophy - Chris Do Style */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-heading mb-8">
-              <span className="text-gradient">
-                {siteSettings?.aboutPageExtraContent?.philosophyTitle || "My Philosophy"}
-              </span>
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-4">
+              Core Beliefs
+            </h6>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-12">
+              {siteSettings?.aboutPageExtraContent?.philosophyTitle || "My Philosophy"}
             </h2>
-            <blockquote className="text-2xl font-playfair italic text-gray-300 mb-8">
+            <blockquote className="text-xl lg:text-2xl font-light text-gray-700 leading-relaxed mb-16 max-w-3xl mx-auto">
               "{siteSettings?.aboutPageContent?.philosophyQuote || 
                 "At the intersection of art, planning, and technology lies the future of human experience. I believe in creating solutions that are not only functional but also beautiful, sustainable, and deeply human."
               }"
             </blockquote>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20">
               {(siteSettings?.aboutPageExtraContent?.values || defaultValues).map((value: any, index: number) => (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-accent-blue text-2xl">{value.emoji}</span>
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-blue-600 text-2xl">{value.emoji}</span>
                   </div>
-                  <h3 className="text-xl font-heading mb-3">{value.title}</h3>
-                  <p className="text-gray-400">{value.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{value.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
                 </div>
               ))}
             </div>
@@ -196,14 +209,15 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Skills & Expertise - LinkedIn Integration */}
-      <section className="section">
-        <div className="section-container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading mb-4">
-              <span className="text-gradient">
-                {siteSettings?.aboutPageExtraContent?.skillsTitle || "Skills & Expertise"}
-              </span>
+      {/* Skills & Expertise - Chris Do Style */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-4">
+              What I Do Best
+            </h6>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4">
+              {siteSettings?.aboutPageExtraContent?.skillsTitle || "Skills & Expertise"}
             </h2>
             <p className="text-gray-400 text-sm">
               Last updated from LinkedIn: {new Date(linkedInProfile.lastUpdated).toLocaleDateString()}
