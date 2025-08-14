@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Custom output directory for Vercel workaround
+  distDir: 'frontend/.next',
+  
   // Disable TypeScript checking during build for deployment
   typescript: {
     ignoreBuildErrors: true,
