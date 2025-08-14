@@ -160,7 +160,7 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
             
             {/* Right Column - Visual Content */}
             <div className="relative order-1 lg:order-2">
-              <div className="relative aspect-square max-w-lg mx-auto">
+              <div className="relative aspect-[4/5] max-w-lg mx-auto">
                 {/* Floating role indicators */}
                 <div className="absolute inset-0">
                   {roles.map((role, index) => {
@@ -190,7 +190,7 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                     <img
                       src={urlFor(siteSettings.professionalHeadshot).url()}
                       alt={siteSettings.professionalHeadshot.alt || "Ghondi Claude"}
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover object-top"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
