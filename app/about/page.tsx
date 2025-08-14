@@ -210,6 +210,34 @@ export default async function AboutPage() {
         </div>
       </section>
 
+      {/* Skills & Expertise - Chris Do Style with Show More */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-4">
+              What I Do Best
+            </h6>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4">
+              {siteSettings?.aboutPageExtraContent?.skillsTitle || "Skills & Expertise"}
+            </h2>
+            <p className="text-sm text-gray-500 uppercase tracking-wide">
+              Last updated from LinkedIn: {new Date(linkedInProfile.lastUpdated).toLocaleDateString()}
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {formatSkillsForDisplay().map((category, index) => (
+              <SkillsCategory
+                key={index}
+                category={category}
+                linkedInSkills={linkedInProfile.skills}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Professional Certifications - Chris Do Style */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -323,34 +351,6 @@ export default async function AboutPage() {
                 </div>
               )
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills & Expertise - Chris Do Style with Show More */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-4">
-              What I Do Best
-            </h6>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4">
-              {siteSettings?.aboutPageExtraContent?.skillsTitle || "Skills & Expertise"}
-            </h2>
-            <p className="text-sm text-gray-500 uppercase tracking-wide">
-              Last updated from LinkedIn: {new Date(linkedInProfile.lastUpdated).toLocaleDateString()}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {formatSkillsForDisplay().map((category, index) => (
-              <SkillsCategory
-                key={index}
-                category={category}
-                linkedInSkills={linkedInProfile.skills}
-                index={index}
-              />
-            ))}
           </div>
         </div>
       </section>

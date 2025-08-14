@@ -47,27 +47,36 @@ export default async function WorkPage() {
       <section className="py-16 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div>
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Palette className="w-8 h-8 text-blue-600" />
+            <Link href="/portfolio/fine-art" className="group cursor-pointer">
+              <div className="card-hover transition-all duration-300 group-hover:scale-105">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
+                  <Palette className="w-8 h-8 text-blue-600 group-hover:text-blue-700" />
+                </div>
+                <h3 className="text-3xl font-display font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{projectsByType['fine-art'].length}</h3>
+                <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium group-hover:text-blue-600 transition-colors">Fine Art Projects</h6>
+                <p className="text-sm text-gray-400 mt-2 group-hover:text-blue-500 transition-colors">View Collection →</p>
               </div>
-              <h3 className="text-3xl font-display font-bold text-gray-900 mb-2">{projectsByType['fine-art'].length}</h3>
-              <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium">Fine Art Projects</h6>
-            </div>
-            <div>
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Code className="w-8 h-8 text-blue-600" />
+            </Link>
+            <Link href="/portfolio/tech-projects" className="group cursor-pointer">
+              <div className="card-hover transition-all duration-300 group-hover:scale-105">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
+                  <Code className="w-8 h-8 text-blue-600 group-hover:text-blue-700" />
+                </div>
+                <h3 className="text-3xl font-display font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{projectsByType['technology'].length}</h3>
+                <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium group-hover:text-blue-600 transition-colors">Tech Projects</h6>
+                <p className="text-sm text-gray-400 mt-2 group-hover:text-blue-500 transition-colors">View Projects →</p>
               </div>
-              <h3 className="text-3xl font-display font-bold text-gray-900 mb-2">{projectsByType['technology'].length}</h3>
-              <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium">Tech Projects</h6>
-            </div>
-            <div>
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Layers className="w-8 h-8 text-blue-600" />
+            </Link>
+            <Link href="/work?category=urban" className="group cursor-pointer">
+              <div className="card-hover transition-all duration-300 group-hover:scale-105">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
+                  <Layers className="w-8 h-8 text-blue-600 group-hover:text-blue-700" />
+                </div>
+                <h3 className="text-3xl font-display font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{projectsByType['urban-planning'].length}</h3>
+                <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium group-hover:text-blue-600 transition-colors">Urban Planning Projects</h6>
+                <p className="text-sm text-gray-400 mt-2 group-hover:text-blue-500 transition-colors">View Plans →</p>
               </div>
-              <h3 className="text-3xl font-display font-bold text-gray-900 mb-2">{projectsByType['urban-planning'].length}</h3>
-              <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium">Urban Planning Projects</h6>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
