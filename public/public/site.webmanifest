@@ -1,0 +1,21 @@
+{
+  "name": "Ghondi Claude Portfolio",
+  "short_name": "GhondiC",
+  "description": "Fine Artist, Urban Planner (MEng), and Tech Enthusiast portfolio showcasing the intersection of creativity, urban vision, and technological exploration.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1E1E1E",
+  "theme_color": "#1E90FF",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

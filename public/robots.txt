@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+Sitemap: https://ghondiclaude.me/sitemap.xml
+
+# Specific paths
+Allow: /work
+Allow: /blog
+Allow: /about
+Allow: /contact
+
+# Disallow admin and API routes
+Disallow: /admin
+Disallow: /api/admin/
+Disallow: /_next/
+Disallow: /.next/
+
+# Crawl delay (in seconds)
+Crawl-delay: 1
+
+# Host specification
+Host: ghondiclaude.me
