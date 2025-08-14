@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { getSiteSettings } from '@/sanity/utils'
 import ShopClient from './components/ShopClient'
+import NewsletterForm from '@/components/newsletter/NewsletterForm'
 
 export const metadata = {
   title: 'Art Shop | GhondiClaude.tech',
@@ -228,15 +229,14 @@ export default async function ShopPage() {
             Be the first to know when new artworks become available and receive exclusive insights into my creative process
           </p>
           
-          <form className="max-w-md mx-auto flex gap-4">
-            <input
-              type="email"
+          <form className="max-w-md mx-auto">
+            <NewsletterForm 
+              source="shop" 
               placeholder="Enter your email"
-              className="input flex-1"
+              buttonText="Subscribe"
+              showName={false}
+              className="w-full"
             />
-            <button type="submit" className="btn-primary">
-              Subscribe
-            </button>
           </form>
           
           <p className="text-sm text-gray-400 mt-4">

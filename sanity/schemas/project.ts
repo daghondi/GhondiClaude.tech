@@ -72,7 +72,7 @@ export default {
         list: [
           { title: 'Fine Art', value: 'fine-art' },
           { title: 'Urban Planning', value: 'urban-planning' },
-          { title: 'Tech Lab', value: 'tech-lab' }
+          { title: 'Technology', value: 'technology' }
         ]
       },
       validation: (Rule: any) => Rule.required()

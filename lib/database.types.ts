@@ -664,6 +664,158 @@ export interface Database {
         }
         Relationships: []
       }
+      newsletter_subscribers: {
+        Row: {
+          id: string
+          email: string
+          name: string | null
+          subscription_date: string
+          is_active: boolean
+          subscription_source: string | null
+          verification_token: string | null
+          verified_at: string | null
+          unsubscribe_token: string | null
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          email: string
+          name?: string | null
+          subscription_date?: string
+          is_active?: boolean
+          subscription_source?: string | null
+          verification_token?: string | null
+          verified_at?: string | null
+          unsubscribe_token?: string | null
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string
+          name?: string | null
+          subscription_date?: string
+          is_active?: boolean
+          subscription_source?: string | null
+          verification_token?: string | null
+          verified_at?: string | null
+          unsubscribe_token?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      newsletter_campaigns: {
+        Row: {
+          id: string
+          title: string
+          subject: string
+          content: string
+          html_content: string | null
+          status: string
+          scheduled_at: string | null
+          sent_at: string | null
+          recipient_count: number
+          delivered_count: number
+          opened_count: number
+          clicked_count: number
+          created_by: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          subject: string
+          content: string
+          html_content?: string | null
+          status?: string
+          scheduled_at?: string | null
+          sent_at?: string | null
+          recipient_count?: number
+          delivered_count?: number
+          opened_count?: number
+          clicked_count?: number
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          subject?: string
+          content?: string
+          html_content?: string | null
+          status?: string
+          scheduled_at?: string | null
+          sent_at?: string | null
+          recipient_count?: number
+          delivered_count?: number
+          opened_count?: number
+          clicked_count?: number
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "newsletter_campaigns_created_by_fkey"
+            columns: ["created_by"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      newsletter_campaign_sends: {
+        Row: {
+          id: string
+          campaign_id: string
+          subscriber_id: string
+          sent_at: string
+          delivered_at: string | null
+          opened_at: string | null
+          clicked_at: string | null
+          bounced_at: string | null
+          unsubscribed_at: string | null
+          error_message: string | null
+        }
+        Insert: {
+          id?: string
+          campaign_id: string
+          subscriber_id: string
+          sent_at?: string
+          delivered_at?: string | null
+          opened_at?: string | null
+          clicked_at?: string | null
+          bounced_at?: string | null
+          unsubscribed_at?: string | null
+          error_message?: string | null
+        }
+        Update: {
+          id?: string
+          campaign_id?: string
+          subscriber_id?: string
+          sent_at?: string
+          delivered_at?: string | null
+          opened_at?: string | null
+          clicked_at?: string | null
+          bounced_at?: string | null
+          unsubscribed_at?: string | null
+          error_message?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "newsletter_campaign_sends_campaign_id_fkey"
+            columns: ["campaign_id"]
+            referencedRelation: "newsletter_campaigns"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "newsletter_campaign_sends_subscriber_id_fkey"
+            columns: ["subscriber_id"]
+            referencedRelation: "newsletter_subscribers"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       tags: {
         Row: {
           color: string | null

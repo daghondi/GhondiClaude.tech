@@ -37,12 +37,16 @@ const TopNavigation: React.FC = () => {
       href: '/work',
       subItems: [
         { 
-          label: siteSettings?.globalContent?.navigation?.fineArtLabel || 'Fine Art Portfolio', 
+          label: siteSettings?.globalContent?.navigation?.fineArtLabel || 'Fine Art', 
           href: '/portfolio/fine-art' 
         },
         { 
           label: siteSettings?.globalContent?.navigation?.techLabLabel || 'Tech Projects', 
           href: '/portfolio/tech-projects' 
+        },
+        { 
+          label: siteSettings?.globalContent?.navigation?.urbanPlanningLabel || 'Urban Planning', 
+          href: '/portfolio/urban-planning' 
         }
       ]
     },

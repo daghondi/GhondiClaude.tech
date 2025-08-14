@@ -240,6 +240,45 @@ export interface ContactFormData {
 export interface NewsletterFormData {
   email: string
   name?: string
+  source?: 'footer' | 'blog' | 'shop' | 'contact'
+}
+
+export interface NewsletterSubscriber {
+  id: string
+  email: string
+  name?: string
+  subscription_date: string
+  is_active: boolean
+  subscription_source?: string
+  verification_token?: string
+  verified_at?: string
+  unsubscribe_token?: string
+  updated_at: string
+}
+
+export interface NewsletterCampaign {
+  id: string
+  title: string
+  subject: string
+  content: string
+  html_content?: string
+  status: 'draft' | 'scheduled' | 'sending' | 'sent' | 'cancelled'
+  scheduled_at?: string
+  sent_at?: string
+  recipient_count: number
+  delivered_count: number
+  opened_count: number
+  clicked_count: number
+  created_by?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface NewsletterStats {
+  total: number
+  active: number
+  inactive: number
+  bySource: Record<string, number>
 }
 
 export interface CommentFormData {

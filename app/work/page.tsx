@@ -67,7 +67,7 @@ export default async function WorkPage() {
                 <p className="text-sm text-gray-400 mt-2 group-hover:text-blue-500 transition-colors">View Projects →</p>
               </div>
             </Link>
-            <Link href="/work?category=urban" className="group cursor-pointer">
+            <Link href="/portfolio/urban-planning" className="group cursor-pointer">
               <div className="card-hover transition-all duration-300 group-hover:scale-105">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
                   <Layers className="w-8 h-8 text-blue-600 group-hover:text-blue-700" />
@@ -225,7 +225,7 @@ export default async function WorkPage() {
             </Link>
 
             {/* Urban Planning Category */}
-            <Link href="/work?category=urban" className="group">
+            <Link href="/portfolio/urban-planning" className="group">
               <article className="card-hover group overflow-hidden h-full">
                 {/* Category Image */}
                 <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden relative">

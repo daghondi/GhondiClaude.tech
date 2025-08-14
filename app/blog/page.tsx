@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, Tag, ArrowRight, Search } from 'lucide-react'
 import { getBlogPosts, getSiteSettings, urlFor } from '@/sanity/utils'
+import NewsletterForm from '@/components/newsletter/NewsletterForm'
 
 // Get blog posts from Sanity
 async function getBlogData() {
@@ -333,15 +334,14 @@ export default async function BlogPage() {
             Get the latest insights on art, technology, and urban planning delivered to your inbox.
           </p>
           
-          <form className="max-w-md mx-auto flex gap-4">
-            <input
-              type="email"
+          <form className="max-w-md mx-auto">
+            <NewsletterForm 
+              source="blog" 
               placeholder="Enter your email"
-              className="input flex-1"
+              buttonText="Subscribe"
+              showName={false}
+              className="w-full"
             />
-            <button type="submit" className="btn-primary">
-              Subscribe
-            </button>
           </form>
           
           <p className="text-sm text-gray-400 mt-4">

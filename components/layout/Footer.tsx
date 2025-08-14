@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Github, Linkedin, Twitter, Mail, MapPin, Calendar } from 'lucide-react'
+import NewsletterForm from '@/components/newsletter/NewsletterForm'
 
 interface FooterProps {
   siteSettings?: any
@@ -187,16 +188,13 @@ const Footer: React.FC<FooterProps> = ({ siteSettings }) => {
             {/* Newsletter Signup */}
             <div className="flex items-center space-x-4">
               <span className="text-gray-400 text-sm">Stay updated:</span>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="px-3 py-2 bg-dark-tertiary border border-white/20 rounded-l-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:border-transparent text-sm w-48"
-                />
-                <button className="px-4 py-2 bg-accent-blue text-white rounded-r-md hover:bg-accent-blue/90 transition-colors duration-200 text-sm">
-                  Subscribe
-                </button>
-              </div>
+              <NewsletterForm 
+                source="footer" 
+                placeholder="Enter your email"
+                buttonText="Subscribe"
+                compact={true}
+                className="flex"
+              />
             </div>
           </div>
         </div>
