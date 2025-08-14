@@ -9,26 +9,26 @@ interface Product {
   _id: string
   title: string
   slug: { current: string }
-  images: any[]
-  pricing: {
-    originalPrice: number | null
-    printPrice: number
+  images?: any[]
+  pricing?: {
+    originalPrice?: number | null
+    printPrice?: number
   }
-  availability: {
-    original: boolean
-    print: boolean
+  availability?: {
+    original?: boolean
+    print?: boolean
   }
-  specifications: {
-    dimensions: {
-      original: string | null
-      print: string
+  specifications?: {
+    dimensions?: {
+      original?: string | null
+      print?: string
     }
-    medium: string
-    year: number
+    medium?: string
+    year?: number
   }
-  category: string
-  featured: boolean
-  tags: string[]
+  category?: string
+  featured?: boolean
+  tags?: string[]
 }
 
 interface ShopClientProps {
@@ -81,9 +81,11 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
     if (currentPriceRange !== 'all') {
       const [min, max] = currentPriceRange.split('-').map(p => p === '' ? Infinity : parseInt(p))
       filtered = filtered.filter(product => {
-        const price = product.availability.original && product.pricing.originalPrice 
+        const originalPrice = product.availability?.original && product.pricing?.originalPrice 
           ? product.pricing.originalPrice 
-          : product.pricing.printPrice
+          : null
+        const printPrice = product.pricing?.printPrice || 0
+        const price = originalPrice || printPrice
         return price >= min && (max === Infinity ? true : price <= max)
       })
     }
@@ -95,20 +97,20 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
         break
       case 'price-low':
         filtered.sort((a, b) => {
-          const priceA = a.availability.original && a.pricing.originalPrice ? a.pricing.originalPrice : a.pricing.printPrice
-          const priceB = b.availability.original && b.pricing.originalPrice ? b.pricing.originalPrice : b.pricing.printPrice
+          const priceA = (a.availability?.original && a.pricing?.originalPrice) ? a.pricing.originalPrice : (a.pricing?.printPrice || 0)
+          const priceB = (b.availability?.original && b.pricing?.originalPrice) ? b.pricing.originalPrice : (b.pricing?.printPrice || 0)
           return priceA - priceB
         })
         break
       case 'price-high':
         filtered.sort((a, b) => {
-          const priceA = a.availability.original && a.pricing.originalPrice ? a.pricing.originalPrice : a.pricing.printPrice
-          const priceB = b.availability.original && b.pricing.originalPrice ? b.pricing.originalPrice : b.pricing.printPrice
+          const priceA = (a.availability?.original && a.pricing?.originalPrice) ? a.pricing.originalPrice : (a.pricing?.printPrice || 0)
+          const priceB = (b.availability?.original && b.pricing?.originalPrice) ? b.pricing.originalPrice : (b.pricing?.printPrice || 0)
           return priceB - priceA
         })
         break
       case 'newest':
-        filtered.sort((a, b) => b.specifications.year - a.specifications.year)
+        filtered.sort((a, b) => (b.specifications?.year || 0) - (a.specifications?.year || 0))
         break
     }
 
@@ -145,7 +147,7 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
                       ? urlFor(product.images[hoveredImageIndex[product._id] || 0]).width(600).height(600).url()
                       : '/api/placeholder/600/600'
                     }
-                    alt={product.title}
+                    alt={product.title || 'Artwork'}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   
@@ -194,10 +196,10 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
                       <p className="text-sm text-gray-600">{product.specifications?.medium} • {product.specifications?.year}</p>
                     </div>
                     <div className="text-right">
-                      {product.availability.original && product.pricing.originalPrice && (
+                      {product.availability?.original && product.pricing?.originalPrice && (
                         <p className="text-lg font-semibold text-gray-900">${product.pricing.originalPrice.toLocaleString()}</p>
                       )}
-                      {product.availability.print && (
+                      {product.availability?.print && product.pricing?.printPrice && (
                         <p className="text-sm text-gray-600">Prints from ${product.pricing.printPrice}</p>
                       )}
                     </div>
@@ -205,12 +207,12 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
 
                   {/* Availability */}
                   <div className="flex items-center space-x-4 mb-4">
-                    {product.availability.original && (
+                    {product.availability?.original && (
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                         Original Available
                       </span>
                     )}
-                    {product.availability.print && (
+                    {product.availability?.print && (
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                         Prints Available
                       </span>
@@ -357,7 +359,7 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
                       ? urlFor(product.images[hoveredImageIndex[product._id] || 0]).width(400).height(400).url()
                       : '/api/placeholder/400/400'
                     }
-                    alt={product.title}
+                    alt={product.title || 'Artwork'}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   
@@ -401,10 +403,10 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
                       <p className="text-sm text-gray-600">{product.specifications?.medium} • {product.specifications?.year}</p>
                     </div>
                     <div className="text-right">
-                      {product.availability.original && product.pricing.originalPrice && (
+                      {product.availability?.original && product.pricing?.originalPrice && (
                         <p className="text-lg font-semibold text-gray-900">${product.pricing.originalPrice.toLocaleString()}</p>
                       )}
-                      {product.availability.print && (
+                      {product.availability?.print && product.pricing?.printPrice && (
                         <p className="text-sm text-gray-600">Prints from ${product.pricing.printPrice}</p>
                       )}
                     </div>
@@ -412,12 +414,12 @@ export default function ShopClient({ products, siteSettings }: ShopClientProps) 
 
                   {/* Availability */}
                   <div className="flex items-center space-x-2 mb-4">
-                    {product.availability.original && (
+                    {product.availability?.original && (
                       <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                         Original
                       </span>
                     )}
-                    {product.availability.print && (
+                    {product.availability?.print && (
                       <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                         Prints
                       </span>
