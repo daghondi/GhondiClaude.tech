@@ -18,10 +18,20 @@ export interface LinkedInCertification {
   credentialId?: string;
   credentialUrl?: string;
   skills?: string[];
-  // New fields for file support
+  description?: string;
+  // File support fields
   certificateFile?: string; // Path to PDF or image file
   thumbnailImage?: string; // Path to thumbnail/preview image
   fileType?: 'pdf' | 'image'; // Type of certificate file
+  // Additional images from CMS
+  additionalImages?: Array<{
+    _key: string;
+    asset: {
+      _ref: string;
+    };
+    alt?: string;
+    caption?: string;
+  }>;
 }
 
 export interface LinkedInEducation {
@@ -140,7 +150,23 @@ export const linkedInProfile: LinkedInProfile = {
       issueDate: '2024-08-05',
       certificateFile: '/Skills and certificates/Foundations of Cybersecurity Certificate - Ghondi Claude.pdf',
       fileType: 'pdf',
+      description: 'Comprehensive foundation in cybersecurity principles, frameworks, and best practices. Covers threat analysis, security controls, and incident response fundamentals.',
       skills: ['Security Fundamentals', 'Threat Analysis', 'Security Frameworks'],
+      // Example additional images - these would come from your CMS
+      additionalImages: [
+        {
+          _key: 'cert-progress-1',
+          asset: { _ref: 'image-placeholder-1' },
+          alt: 'Cybersecurity course completion progress',
+          caption: 'Course completion and practical exercises'
+        },
+        {
+          _key: 'cert-project-1', 
+          asset: { _ref: 'image-placeholder-2' },
+          alt: 'Security framework analysis project',
+          caption: 'Risk assessment and security framework implementation project'
+        }
+      ]
     },
     {
       name: 'Microsoft Azure Fundamentals AZ-900',

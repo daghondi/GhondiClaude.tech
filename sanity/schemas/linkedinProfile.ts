@@ -210,6 +210,41 @@ export default {
               },
             },
             {
+              name: 'additionalImages',
+              type: 'array',
+              title: 'Additional Images',
+              description: 'Extra images to display with this certificate (project work, achievements, etc.)',
+              of: [
+                {
+                  type: 'image',
+                  options: {
+                    hotspot: true
+                  },
+                  fields: [
+                    {
+                      name: 'alt',
+                      type: 'string',
+                      title: 'Alt Text',
+                      description: 'Describe the image for accessibility'
+                    },
+                    {
+                      name: 'caption',
+                      type: 'string',
+                      title: 'Caption',
+                      description: 'Optional caption for the image'
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'description',
+              type: 'text',
+              title: 'Certificate Description',
+              description: 'Detailed description of what this certificate covers',
+              rows: 3
+            },
+            {
               name: 'displayOrder',
               type: 'number',
               title: 'Display Order',

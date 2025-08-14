@@ -265,6 +265,8 @@ export default async function AboutPage() {
                         thumbnailImage={cert.thumbnailImage}
                         fileType={cert.fileType}
                         certificateName={cert.name}
+                        description={cert.description}
+                        additionalImages={cert.additionalImages}
                         className="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </div>
