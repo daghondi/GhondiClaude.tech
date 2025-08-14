@@ -109,17 +109,18 @@ export default async function BlogPage() {
   const regularPosts = blogPosts.filter((post: any) => !(post.featured || post.is_featured))
 
   return (
-    <main className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary">
+    <main className="min-h-screen pt-20 bg-white">
+      {/* Hero Section - Chris Do Style */}
+      <section className="relative py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                {siteSettings?.blogPageContent?.blogTitle || "Insights"}
-              </span>
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-8">
+              Thoughts & Insights
+            </h6>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-none text-gray-900 mb-12">
+              {siteSettings?.blogPageContent?.blogTitle || "Insights"}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg lg:text-xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
               {siteSettings?.blogPageContent?.blogSubtitle || 
                 "Thoughts on art, technology, urban planning, and the beautiful intersections between them"
               }
@@ -129,7 +130,7 @@ export default async function BlogPage() {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="section border-b border-white/10">
+      <section className="py-16 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             {/* Search */}
@@ -149,8 +150,8 @@ export default async function BlogPage() {
                   key={category}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     category === "All"
-                      ? "bg-accent-blue text-white"
-                      : "bg-dark-tertiary text-gray-300 hover:bg-white/10"
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   {category}
@@ -163,13 +164,13 @@ export default async function BlogPage() {
 
       {/* Featured Article */}
       {featuredPost && (
-        <section className="section">
+        <section className="py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-heading mb-8">
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-8">
               {siteSettings?.blogPageContent?.featuredSectionTitle || "Featured Article"}
-            </h2>
+            </h6>
             
-            <article className="card p-0 overflow-hidden">
+            <article className="card-hover p-0 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="aspect-video lg:aspect-square relative overflow-hidden">
                   {featuredPost.featuredImage || featuredPost.featured_image ? (
@@ -179,20 +180,20 @@ export default async function BlogPage() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-white/10 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                       <div className="text-center">
-                        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <Tag className="w-8 h-8 text-accent-blue" />
+                        <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Tag className="w-8 h-8 text-gray-600" />
                         </div>
-                        <p className="text-gray-400">Featured Image</p>
+                        <p className="text-gray-500">Featured Image</p>
                       </div>
                     </div>
                   )}
                 </div>
                 
                 <div className="p-8 lg:p-12">
-                  <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                    <span className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full">
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                    <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full">
                       {featuredPost.category?.name || featuredPost.category}
                     </span>
                     <div className="flex items-center gap-1">
@@ -205,11 +206,11 @@ export default async function BlogPage() {
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-4">
+                  <h3 className="text-2xl lg:text-3xl font-display font-bold text-gray-900 mb-4">
                     {featuredPost.title}
                   </h3>
                   
-                  <p className="text-gray-300 mb-6 text-lg">
+                  <p className="text-gray-600 mb-6 text-lg">
                     {featuredPost.excerpt}
                   </p>
                   
@@ -217,7 +218,7 @@ export default async function BlogPage() {
                     {(featuredPost.tags || []).map((tag: any) => (
                       <span
                         key={typeof tag === 'string' ? tag : tag.name}
-                        className="px-3 py-1 bg-dark-tertiary text-gray-300 rounded-full text-sm"
+                        className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
                       >
                         #{typeof tag === 'string' ? tag : tag.name}
                       </span>
@@ -239,15 +240,15 @@ export default async function BlogPage() {
       )}
 
       {/* Articles Grid */}
-      <section className="section">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-heading mb-8">
+          <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-8">
             {siteSettings?.blogPageContent?.latestSectionTitle || "Latest Articles"}
-          </h2>
+          </h6>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post: any) => (
-              <article key={post._id || post.id} className="card group">
+              <article key={post._id || post.id} className="card-hover group">
                 {/* Image */}
                 <div className="aspect-video rounded-lg mb-6 overflow-hidden">
                   {post.featuredImage || post.featured_image ? (
@@ -257,20 +258,20 @@ export default async function BlogPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-accent-blue/20 to-white/10 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                          <Tag className="w-6 h-6 text-accent-blue" />
+                        <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2">
+                          <Tag className="w-6 h-6 text-gray-600" />
                         </div>
-                        <p className="text-gray-400 text-sm">Article Image</p>
+                        <p className="text-gray-500 text-sm">Article Image</p>
                       </div>
                     </div>
                   )}
                 </div>
                 
                 {/* Meta Information */}
-                <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
-                  <span className="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                  <span className="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">
                     {post.category?.name || post.category}
                   </span>
                   <div className="flex items-center gap-1">
@@ -284,12 +285,12 @@ export default async function BlogPage() {
                 </div>
                 
                 {/* Title */}
-                <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-accent-blue transition-colors">
+                <h3 className="text-xl font-display font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                   {post.title}
                 </h3>
                 
                 {/* Excerpt */}
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                   {post.excerpt}
                 </p>
                 
@@ -298,7 +299,7 @@ export default async function BlogPage() {
                   {(post.tags || []).slice(0, 3).map((tag: any) => (
                     <span
                       key={typeof tag === 'string' ? tag : tag.name}
-                      className="px-2 py-1 bg-dark-tertiary text-gray-400 rounded text-xs"
+                      className="px-2 py-1 bg-gray-100 text-gray-500 rounded text-xs"
                     >
                       #{typeof tag === 'string' ? tag : tag.name}
                     </span>
@@ -308,7 +309,7 @@ export default async function BlogPage() {
                 {/* Read More Link */}
                 <Link
                   href={`/blog/${post.slug?.current || post.slug}`}
-                  className="text-accent-blue hover:text-white transition-colors inline-flex items-center gap-1 text-sm font-medium"
+                  className="text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center gap-1 text-sm font-medium"
                 >
                   Read More
                   <ArrowRight className="w-4 h-4" />
@@ -320,12 +321,15 @@ export default async function BlogPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="section bg-dark-secondary/50">
-        <div className="section-container text-center">
-          <h2 className="text-4xl font-heading mb-6">
-            <span className="text-gradient">Stay Updated</span>
+      <section className="py-24 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h6 className="text-xs uppercase tracking-widest text-gray-400 font-medium mb-4">
+            Stay Updated
+          </h6>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-8">
+            Never Miss <span className="text-blue-400">An Insight</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
             Get the latest insights on art, technology, and urban planning delivered to your inbox.
           </p>
           
