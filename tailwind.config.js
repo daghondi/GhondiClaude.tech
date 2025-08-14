@@ -5,25 +5,32 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './sanity/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: 'class',
   theme: {
     extend: {
-      // Color system based on the PRD
+      // Professional light theme - Chris Do inspired
       colors: {
-        // Core dark theme colors
-        dark: {
-          primary: '#1E1E1E',
-          secondary: '#121212',
-          tertiary: '#2A2A2A',
-          quaternary: '#3A3A3A',
+        // Light theme colors
+        light: {
+          primary: '#ffffff',
+          secondary: '#fafafa', 
+          tertiary: '#f5f5f5',
+          quaternary: '#eeeeee',
         },
-        // Accent colors
+        // Professional accent colors
         accent: {
-          blue: '#1E90FF',    // Neon blue
-          magenta: '#FF00FF', // Magenta
-          gold: '#FFD700',    // Gold
-          indigo: '#4B0082',  // Indigo
+          blue: '#2563eb',    // Professional blue
+          red: '#dc2626',     // Strategic red  
+          gold: '#f59e0b',    // Premium gold
+          success: '#059669', // Success green
+        },
+        // Text colors
+        text: {
+          primary: '#1a1a1a',
+          secondary: '#4a4a4a', 
+          tertiary: '#7a7a7a',
         },
         // Semantic colors
         primary: {
