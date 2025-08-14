@@ -161,6 +161,76 @@ export default {
         layout: 'tags'
       }
     },
+    // Commerce fields for fine art projects
+    {
+      name: 'pricing',
+      title: 'Pricing & Availability',
+      type: 'object',
+      hidden: ({ document }: any) => document?.projectType !== 'fine-art',
+      fields: [
+        {
+          name: 'originalPrice',
+          title: 'Original Artwork Price ($)',
+          type: 'number',
+          description: 'Price for the original artwork'
+        },
+        {
+          name: 'printPrice',
+          title: 'Print Price ($)',
+          type: 'number',
+          description: 'Price for high-quality prints'
+        },
+        {
+          name: 'originalAvailable',
+          title: 'Original Available',
+          type: 'boolean',
+          description: 'Is the original artwork available for purchase?'
+        },
+        {
+          name: 'printAvailable',
+          title: 'Prints Available',
+          type: 'boolean',
+          description: 'Are prints available for purchase?'
+        },
+        {
+          name: 'dimensions',
+          title: 'Dimensions',
+          type: 'object',
+          fields: [
+            {
+              name: 'width',
+              title: 'Width (inches)',
+              type: 'number'
+            },
+            {
+              name: 'height',
+              title: 'Height (inches)',
+              type: 'number'
+            }
+          ]
+        },
+        {
+          name: 'medium',
+          title: 'Medium',
+          type: 'string',
+          description: 'e.g., Oil on Canvas, Digital Art, Mixed Media'
+        },
+        {
+          name: 'availability',
+          title: 'Availability Status',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Available', value: 'available' },
+              { title: 'Sold', value: 'sold' },
+              { title: 'On Hold', value: 'on-hold' },
+              { title: 'Not for Sale', value: 'not-for-sale' }
+            ]
+          },
+          initialValue: 'available'
+        }
+      ]
+    },
     {
       name: 'externalLinks',
       title: 'External Links',
