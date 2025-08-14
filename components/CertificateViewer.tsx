@@ -44,13 +44,13 @@ export default function CertificateViewer({
   // If no certificate file, show placeholder
   if (!certificateFile) {
     return (
-      <div className={`bg-dark-card/50 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center ${className}`}>
-        <div className="w-16 h-16 bg-gradient-to-r from-accent-blue/20 to-accent-purple/20 rounded-lg mx-auto mb-4 flex items-center justify-center">
+      <div className={`bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center ${className}`}>
+        <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
           <svg className="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v1.586l8.707 8.707a1 1 0 001.414 0L20.828 6.5a1 1 0 000-1.414L12.707.379a1 1 0 00-1.414 0L2.586 9.086A2 2 0 002 10.586V17a2 2 0 002 2h11a2 2 0 002-2v-5a1 1 0 10-2 0v5H4v-6.414l7-7 7.707 7.707-7 7H9a1 1 0 100 2h8a2 2 0 002-2V5a2 2 0 00-2-2H4z" clipRule="evenodd" />
           </svg>
         </div>
-        <p className="text-gray-400 text-sm">Certificate file will be displayed here</p>
+        <p className="text-gray-600 text-sm">Certificate file will be displayed here</p>
         <p className="text-gray-500 text-xs mt-1">Upload your certificate to the Skills and certificates folder</p>
       </div>
     );
@@ -86,7 +86,7 @@ export default function CertificateViewer({
               onLoadError={onDocumentLoadError}
               loading={
                 <div className="flex items-center justify-center h-full">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue"></div>
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
                 </div>
               }
             >
@@ -100,8 +100,8 @@ export default function CertificateViewer({
               )}
             </Document>
           ) : (
-            <div className="flex items-center justify-center h-full bg-gray-800 rounded-lg">
-              <div className="text-center text-gray-400">
+            <div className="flex items-center justify-center h-full bg-gray-100 rounded-lg">
+              <div className="text-center text-gray-500">
                 <svg className="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm3 5a1 1 0 000 2h6a1 1 0 100-2H7zm0 4a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                 </svg>
@@ -115,9 +115,10 @@ export default function CertificateViewer({
             </div>
           )}
           <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center">
-            <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h3a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h3a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L12.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15.586 13H14a1 1 0 01-1-1z" clipRule="evenodd" />
+            <div className="bg-white/90 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </div>
           </div>
@@ -155,7 +156,7 @@ export default function CertificateViewer({
                   <p>{pdfError}</p>
                   <button
                     onClick={() => window.open(certificateFile, '_blank')}
-                    className="mt-4 px-4 py-2 bg-accent-blue text-white rounded hover:bg-accent-blue/80 transition-colors"
+                    className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
                   >
                     Open PDF in new tab
                   </button>
@@ -175,17 +176,17 @@ export default function CertificateViewer({
                       <button
                         onClick={() => setPageNumber(prev => Math.max(prev - 1, 1))}
                         disabled={pageNumber <= 1}
-                        className="px-4 py-2 bg-gray-600 text-white rounded disabled:opacity-50 hover:bg-gray-700 transition-colors"
+                        className="px-4 py-2 bg-gray-900 text-white rounded disabled:opacity-50 hover:bg-gray-800 transition-colors"
                       >
                         Previous
                       </button>
-                      <span className="text-gray-700">
+                      <span className="text-gray-900 font-medium">
                         Page {pageNumber} of {numPages}
                       </span>
                       <button
                         onClick={() => setPageNumber(prev => Math.min(prev + 1, numPages))}
                         disabled={pageNumber >= numPages}
-                        className="px-4 py-2 bg-gray-600 text-white rounded disabled:opacity-50 hover:bg-gray-700 transition-colors"
+                        className="px-4 py-2 bg-gray-900 text-white rounded disabled:opacity-50 hover:bg-gray-800 transition-colors"
                       >
                         Next
                       </button>
@@ -199,7 +200,7 @@ export default function CertificateViewer({
               <p className="mb-4 text-gray-600">PDF viewer is loading...</p>
               <button
                 onClick={() => window.open(certificateFile, '_blank')}
-                className="px-4 py-2 bg-accent-blue text-white rounded hover:bg-accent-blue/80 transition-colors"
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
               >
                 Open PDF in new tab
               </button>
@@ -214,18 +215,19 @@ export default function CertificateViewer({
     <div className={`group relative overflow-hidden rounded-lg ${className}`}>
       {renderPreview()}
       
-      {/* Download/View button */}
+      {/* View button */}
       <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
         <button
           onClick={(e) => {
             e.stopPropagation();
-            window.open(certificateFile, '_blank');
+            setShowFullView(true);
           }}
-          className="bg-accent-blue/90 hover:bg-accent-blue text-white p-2 rounded-lg transition-colors"
-          title="Download/View Certificate"
+          className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors shadow-lg"
+          title="View Certificate"
         >
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
           </svg>
         </button>
       </div>
