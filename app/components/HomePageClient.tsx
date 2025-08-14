@@ -64,11 +64,6 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                   {siteSettings?.homepageExtraContent?.greetingText || "Hello, I'm"}
                 </p>
                 
-                {/* Deployment Indicator */}
-                <div className="text-xs text-green-600 font-medium bg-green-100 border border-green-200 px-3 py-1 rounded-full inline-block">
-                  🚀 ghondi-claude-portfolio-v2 DEPLOYMENT • {new Date().toLocaleString()}
-                </div>
-                
                 {/* Name - Single Line */}
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-gray-900">
                   {siteSettings?.homepageContent?.heroTitle || "Ghondi Claude"}
@@ -161,24 +156,24 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                     return (
                       <div
                         key={index}
-                        className={`absolute w-16 h-16 bg-gradient-to-br from-white/10 to-accent-blue/20 rounded-full flex items-center justify-center transition-all duration-1000 ${
+                        className={`absolute w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center transition-all duration-1000 border-2 border-blue-300 ${
                           currentRole === index 
-                            ? 'scale-125 bg-accent-blue/30 shadow-2xl shadow-accent-blue/25' 
-                            : 'scale-100 opacity-60'
+                            ? 'scale-125 bg-gradient-to-br from-blue-200 to-blue-300 shadow-xl shadow-blue-300/25' 
+                            : 'scale-100 opacity-80'
                         } ${
                           index === 0 ? 'top-8 right-8' : 
                           index === 1 ? 'bottom-8 left-8' : 
                           'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
                         }`}
                       >
-                        <IconComponent className="w-8 h-8 text-white" />
+                        <IconComponent className="w-8 h-8 text-blue-600" />
                       </div>
                     )
                   })}
                 </div>
                 
                 {/* Central Avatar/Visual */}
-                <div className="absolute inset-4 bg-gradient-to-br from-white/5 to-accent-blue/10 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
+                <div className="absolute inset-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
                   {siteSettings?.professionalHeadshot ? (
                     <img
                       src={urlFor(siteSettings.professionalHeadshot).url()}
@@ -188,10 +183,10 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <div className="text-center">
-                        <div className="w-32 h-32 bg-gradient-to-br from-white/20 to-accent-blue rounded-full mx-auto mb-4 flex items-center justify-center">
-                          <Code className="w-16 h-16 text-accent-blue" />
+                        <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-blue-300">
+                          <Code className="w-16 h-16 text-blue-600" />
                         </div>
-                        <p className="text-gray-400 text-sm">Portfolio Avatar</p>
+                        <p className="text-gray-600 text-sm">Portfolio Avatar</p>
                       </div>
                     </div>
                   )}

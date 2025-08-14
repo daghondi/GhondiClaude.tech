@@ -98,7 +98,7 @@ const TopNavigation: React.FC = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-dark-primary/95 backdrop-blur-xl border-b border-white/10 shadow-xl'
+          ? 'bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-sm'
           : 'bg-transparent'
       )}
     >
@@ -107,10 +107,10 @@ const TopNavigation: React.FC = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center space-x-2 text-xl font-heading font-bold text-white hover:text-accent-blue transition-colors"
+            className="flex items-center space-x-2 text-xl font-heading font-bold text-gray-900 hover:text-blue-600 transition-colors"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-white to-accent-blue rounded-lg flex items-center justify-center">
-              <span className="text-dark-primary font-bold text-sm">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">
                 {siteSettings?.globalContent?.brandShort || 'GC'}
               </span>
             </div>
@@ -131,8 +131,8 @@ const TopNavigation: React.FC = () => {
                     className={cn(
                       'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center',
                       isActive
-                        ? 'text-accent-blue bg-accent-blue/10'
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
+                        ? 'text-blue-600 bg-blue-50'
+                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                     )}
                   >
                     {item.label}
@@ -143,7 +143,7 @@ const TopNavigation: React.FC = () => {
 
                   {/* Dropdown Menu */}
                   {item.subItems && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-dark-secondary/95 backdrop-blur-xl rounded-lg border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="absolute top-full left-0 mt-1 w-56 bg-white/95 backdrop-blur-xl rounded-lg border border-gray-200 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       <div className="py-2">
                         {item.subItems.map((subItem) => (
                           <Link
@@ -152,8 +152,8 @@ const TopNavigation: React.FC = () => {
                             className={cn(
                               'block px-4 py-2 text-sm transition-colors duration-200',
                               isActiveRoute(subItem.href)
-                                ? 'text-accent-blue bg-accent-blue/10'
-                                : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                ? 'text-blue-600 bg-blue-50'
+                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                             )}
                           >
                             {subItem.label}
@@ -170,13 +170,13 @@ const TopNavigation: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors duration-200"
+            className="md:hidden w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-5 w-5 text-white" />
+              <X className="h-5 w-5 text-gray-700" />
             ) : (
-              <Menu className="h-5 w-5 text-white" />
+              <Menu className="h-5 w-5 text-gray-700" />
             )}
           </button>
         </div>
@@ -188,7 +188,7 @@ const TopNavigation: React.FC = () => {
             isMobileMenuOpen ? 'max-h-screen pb-4' : 'max-h-0'
           )}
         >
-          <div className="space-y-1 pt-4 border-t border-white/10">
+          <div className="space-y-1 pt-4 border-t border-gray-200">
             {navItems.map((item) => {
               const isActive = isActiveRoute(item.href) || hasActiveSubItem(item)
               const isExpanded = expandedDropdowns.has(item.label)
@@ -201,8 +201,8 @@ const TopNavigation: React.FC = () => {
                       className={cn(
                         'flex-1 px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200',
                         isActive
-                          ? 'text-accent-blue bg-accent-blue/10'
-                          : 'text-gray-300 hover:text-white hover:bg-white/5'
+                          ? 'text-blue-600 bg-blue-50'
+                          : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                       )}
                     >
                       {item.label}
@@ -211,12 +211,12 @@ const TopNavigation: React.FC = () => {
                     {item.subItems && (
                       <button
                         onClick={() => toggleDropdown(item.label)}
-                        className="mr-2 w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-200"
+                        className="mr-2 w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-200"
                         aria-label={`Toggle ${item.label} submenu`}
                       >
                         <ChevronDown 
                           className={cn(
-                            "h-4 w-4 text-gray-400 transition-transform duration-200",
+                            "h-4 w-4 text-gray-600 transition-transform duration-200",
                             isExpanded && "rotate-180"
                           )} 
                         />
@@ -226,7 +226,7 @@ const TopNavigation: React.FC = () => {
 
                   {/* Mobile Submenus */}
                   {item.subItems && isExpanded && (
-                    <div className="ml-4 space-y-1 border-l-2 border-white/10 pl-4">
+                    <div className="ml-4 space-y-1 border-l-2 border-gray-200 pl-4">
                       {item.subItems.map((subItem) => (
                         <Link
                           key={subItem.label}
@@ -234,8 +234,8 @@ const TopNavigation: React.FC = () => {
                           className={cn(
                             'block px-3 py-2 rounded-lg text-sm transition-colors duration-200',
                             isActiveRoute(subItem.href)
-                              ? 'text-accent-blue bg-accent-blue/10'
-                              : 'text-gray-300 hover:text-white hover:bg-white/5'
+                              ? 'text-blue-600 bg-blue-50'
+                              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                           )}
                         >
                           {subItem.label}
