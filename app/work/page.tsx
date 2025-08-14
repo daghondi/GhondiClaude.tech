@@ -98,94 +98,197 @@ export default async function WorkPage() {
             </p>
           </div>
 
-          {allProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {allProjects.map((project: any) => (
-                <article key={project._id} className="card-hover group overflow-hidden">
-                  {/* Project Image */}
-                  <div className="aspect-video rounded-lg mb-6 overflow-hidden relative">
-                    {project.featuredImage ? (
-                      <img
-                        src={urlFor(project.featuredImage).url()}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                        <div className="text-center">
-                          <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-2">
-                            {project.projectType === 'fine-art' && <Palette className="w-6 h-6 text-gray-600" />}
-                            {project.projectType === 'technology' && <Code className="w-6 h-6 text-gray-600" />}
-                            {project.projectType === 'urban-planning' && <Layers className="w-6 h-6 text-gray-600" />}
-                          </div>
-                          <p className="text-gray-500 text-sm">Project Image</p>
+          {/* Featured Categories */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Fine Art Category */}
+            <Link href="/portfolio/fine-art" className="group">
+              <article className="card-hover group overflow-hidden h-full">
+                {/* Category Image */}
+                <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden relative">
+                  {projectsByType['fine-art'][0]?.featuredImage ? (
+                    <img
+                      src={urlFor(projectsByType['fine-art'][0].featuredImage).url()}
+                      alt="Fine Art Portfolio"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 bg-blue-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Palette className="w-10 h-10 text-blue-600" />
                         </div>
+                        <p className="text-blue-600 font-medium">Fine Art Portfolio</p>
                       </div>
-                    )}
-                    
-                    {/* Project Type Badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-900 rounded-full text-sm font-medium capitalize">
-                        {project.projectType?.replace('-', ' ')}
-                      </span>
                     </div>
+                  )}
+                  
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-900 rounded-full text-sm font-medium">
+                      Fine Art
+                    </span>
                   </div>
                   
-                  {/* Project Info */}
-                  <div className="space-y-4">
-                    {/* Meta Information */}
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {new Date(project.publishedAt).getFullYear()}
-                      </div>
-                      {project.technologies && project.technologies.length > 0 && (
-                        <div className="flex items-center gap-1">
-                          <Tag className="w-3 h-3" />
-                          {project.technologies[0]}
-                          {project.technologies.length > 1 && ` +${project.technologies.length - 1}`}
-                        </div>
-                      )}
-                    </div>
+                  {/* Project Count */}
+                  <div className="absolute bottom-4 right-4">
+                    <span className="px-3 py-1 bg-black/70 text-white rounded-full text-sm font-medium">
+                      {projectsByType['fine-art'].length} projects
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Category Info */}
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    Fine Art Collection
+                  </h3>
+                  
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Original artworks, prints, and creative explorations that bridge traditional and contemporary artistic practices.
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-4">
+                    <span className="text-blue-600 font-medium inline-flex items-center gap-1 text-sm">
+                      Explore Collection
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
                     
-                    {/* Title */}
-                    <h3 className="text-xl font-display font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    
-                    {/* Excerpt */}
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {project.excerpt}
-                    </p>
-                    
-                    {/* Actions */}
-                    <div className="flex items-center justify-between pt-4">
-                      <Link
-                        href={`/projects/${project.slug.current}`}
-                        className="text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center gap-1 text-sm font-medium"
-                      >
-                        View Project
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                      
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-gray-700 transition-colors"
-                          title="View Live Project"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      )}
+                    <div className="flex items-center gap-1 text-xs text-gray-500">
+                      <Palette className="w-3 h-3" />
+                      Visual Arts
                     </div>
                   </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            /* No Projects Fallback */
+                </div>
+              </article>
+            </Link>
+
+            {/* Tech Projects Category */}
+            <Link href="/portfolio/tech-projects" className="group">
+              <article className="card-hover group overflow-hidden h-full">
+                {/* Category Image */}
+                <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden relative">
+                  {projectsByType['technology'][0]?.featuredImage ? (
+                    <img
+                      src={urlFor(projectsByType['technology'][0].featuredImage).url()}
+                      alt="Technology Portfolio"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Code className="w-10 h-10 text-green-600" />
+                        </div>
+                        <p className="text-green-600 font-medium">Tech Portfolio</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-900 rounded-full text-sm font-medium">
+                      Tech
+                    </span>
+                  </div>
+                  
+                  {/* Project Count */}
+                  <div className="absolute bottom-4 right-4">
+                    <span className="px-3 py-1 bg-black/70 text-white rounded-full text-sm font-medium">
+                      {projectsByType['technology'].length} projects
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Category Info */}
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-green-600 transition-colors">
+                    Tech Projects
+                  </h3>
+                  
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Innovative software solutions, AI experiments, and web applications that solve real-world challenges.
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-4">
+                    <span className="text-green-600 font-medium inline-flex items-center gap-1 text-sm">
+                      View Projects
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    
+                    <div className="flex items-center gap-1 text-xs text-gray-500">
+                      <Code className="w-3 h-3" />
+                      Development
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </Link>
+
+            {/* Urban Planning Category */}
+            <Link href="/work?category=urban" className="group">
+              <article className="card-hover group overflow-hidden h-full">
+                {/* Category Image */}
+                <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden relative">
+                  {projectsByType['urban-planning'][0]?.featuredImage ? (
+                    <img
+                      src={urlFor(projectsByType['urban-planning'][0].featuredImage).url()}
+                      alt="Urban Planning Portfolio"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Layers className="w-10 h-10 text-purple-600" />
+                        </div>
+                        <p className="text-purple-600 font-medium">Urban Planning</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-900 rounded-full text-sm font-medium">
+                      Urban Planning
+                    </span>
+                  </div>
+                  
+                  {/* Project Count */}
+                  <div className="absolute bottom-4 right-4">
+                    <span className="px-3 py-1 bg-black/70 text-white rounded-full text-sm font-medium">
+                      {projectsByType['urban-planning'].length} projects
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Category Info */}
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-display font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
+                    Urban Planning
+                  </h3>
+                  
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Strategic city planning, sustainable development solutions, and community-focused design initiatives.
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-4">
+                    <span className="text-purple-600 font-medium inline-flex items-center gap-1 text-sm">
+                      View Plans
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    
+                    <div className="flex items-center gap-1 text-xs text-gray-500">
+                      <Layers className="w-3 h-3" />
+                      Planning
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </Link>
+          </div>
+
+          {/* Fallback message if no projects */}
+          {allProjects.length === 0 && (
             <div className="text-center py-16">
               <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Palette className="w-12 h-12 text-gray-400" />

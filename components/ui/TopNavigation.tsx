@@ -43,10 +43,6 @@ const TopNavigation: React.FC = () => {
         { 
           label: siteSettings?.globalContent?.navigation?.techLabLabel || 'Tech Projects', 
           href: '/portfolio/tech-projects' 
-        },
-        { 
-          label: 'Smart City Symphony', 
-          href: '/work/smart-city-symphony' 
         }
       ]
     },

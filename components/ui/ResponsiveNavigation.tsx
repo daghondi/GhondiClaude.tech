@@ -67,12 +67,6 @@ const ResponsiveNavigation: React.FC = () => {
           label: siteSettings?.globalContent?.navigation?.techLabLabel || 'Tech Projects', 
           href: '/portfolio/tech-projects', 
           icon: Code 
-        },
-        { 
-          id: 'smart-city', 
-          label: 'Smart City Symphony', 
-          href: '/work/smart-city-symphony', 
-          icon: Layers 
         }
       ]
     },
