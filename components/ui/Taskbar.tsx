@@ -120,7 +120,7 @@ const Taskbar: React.FC = () => {
 
                 {/* Tooltip */}
                 <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                  <div className="bg-dark-tertiary/95 backdrop-blur-md text-white text-sm px-3 py-2 rounded-lg border border-white/10 whitespace-nowrap shadow-xl">
+                  <div className="bg-gray-900/95 backdrop-blur-md text-white text-sm px-3 py-2 rounded-lg border border-gray-700/50 whitespace-nowrap shadow-xl">
                     {item.label}
                     <ChevronRight className="inline-block ml-1 h-3 w-3" />
                   </div>

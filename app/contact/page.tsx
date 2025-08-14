@@ -60,11 +60,11 @@ export default function ContactPage() {
 
   if (submitted) {
     return (
-      <main className="min-h-screen pt-20 flex items-center justify-center">
+      <main className="min-h-screen pt-20 flex items-center justify-center bg-white">
         <div className="text-center">
-          <CheckCircle className="w-16 h-16 text-accent-blue mx-auto mb-6" />
-          <h1 className="text-4xl font-heading mb-4">Thank You!</h1>
-          <p className="text-xl text-gray-400 mb-8">
+          <CheckCircle className="w-16 h-16 text-blue-600 mx-auto mb-6" />
+          <h1 className="text-4xl font-display font-bold text-gray-900 mb-4">Thank You!</h1>
+          <p className="text-xl text-gray-600 mb-8">
             Your message has been sent successfully. I'll get back to you within 24 hours.
           </p>
           <button 
@@ -79,17 +79,18 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-tertiary">
+    <main className="min-h-screen pt-20 bg-white">
+      {/* Hero Section - Chris Do Style */}
+      <section className="relative py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-accent-blue bg-clip-text text-transparent">
-                {siteSettings?.contactPageContent?.contactTitle || 'Contact'}  
-              </span>
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-8">
+              Let's connect
+            </h6>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-none text-gray-900 mb-12">
+              {siteSettings?.contactPageContent?.contactTitle || 'Contact'}  
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg lg:text-xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
               Let's collaborate and create something extraordinary together
             </p>
           </div>
@@ -97,65 +98,65 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="section">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Information */}
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-heading mb-8">
+              <h2 className="text-3xl font-display font-bold text-gray-900 mb-8">
                 {siteSettings?.globalContent?.commonButtons?.getInTouch || 'Get in Touch'}
               </h2>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-accent-blue" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">Email</h3>
-                    <p className="text-gray-400">contact@ghondiclaude.me</p>
-                    <p className="text-gray-400">Available 24/7</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                    <p className="text-gray-600">contact@ghondiclaude.me</p>
+                    <p className="text-gray-600">Available 24/7</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-accent-blue" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">Schedule</h3>
-                    <p className="text-gray-400">Book a consultation</p>
-                    <p className="text-gray-400">30-60 minute sessions</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Schedule</h3>
+                    <p className="text-gray-600">Book a consultation</p>
+                    <p className="text-gray-600">30-60 minute sessions</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-accent-blue" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">Location</h3>
-                    <p className="text-gray-400">Remote & Global</p>
-                    <p className="text-gray-400">Open to travel</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Location</h3>
+                    <p className="text-gray-600">Remote & Global</p>
+                    <p className="text-gray-600">Open to travel</p>
                   </div>
                 </div>
               </div>
 
               {/* Response Time */}
-              <div className="mt-8 p-6 bg-dark-tertiary/50 rounded-lg border border-white/10">
-                <h3 className="font-semibold text-white mb-4">Response Time</h3>
+              <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                <h3 className="font-semibold text-gray-900 mb-4">Response Time</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">General Inquiries:</span>
-                    <span className="text-accent-blue">24 hours</span>
+                    <span className="text-gray-600">General Inquiries:</span>
+                    <span className="text-blue-600">24 hours</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Project Proposals:</span>
-                    <span className="text-accent-blue">48 hours</span>
+                    <span className="text-gray-600">Project Proposals:</span>
+                    <span className="text-blue-600">48 hours</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Collaborations:</span>
-                    <span className="text-white">72 hours</span>
+                    <span className="text-gray-600">Collaborations:</span>
+                    <span className="text-gray-900">72 hours</span>
                   </div>
                 </div>
               </div>
@@ -166,7 +167,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Name *
                     </label>
                     <input
@@ -181,7 +182,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email *
                     </label>
                     <input
@@ -199,7 +200,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                       Phone
                     </label>
                     <input
@@ -213,7 +214,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
                       Company/Organization
                     </label>
                     <input
@@ -229,7 +230,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                     Subject *
                   </label>
                   <input
@@ -246,7 +247,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="project_type" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="project_type" className="block text-sm font-medium text-gray-700 mb-2">
                       Project Type
                     </label>
                     <select
@@ -266,7 +267,7 @@ export default function ContactPage() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-2">
                       Timeline
                     </label>
                     <select
@@ -287,7 +288,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="budget_range" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="budget_range" className="block text-sm font-medium text-gray-700 mb-2">
                     Budget Range
                   </label>
                   <select
@@ -307,7 +308,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message *
                   </label>
                   <textarea
@@ -349,11 +350,16 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="section bg-dark-secondary/50">
-        <div className="section-container">
-          <h2 className="text-4xl font-heading text-center mb-16">
-            <span className="text-gradient">Frequently Asked Questions</span>
-          </h2>
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h6 className="text-xs uppercase tracking-widest text-gray-500 font-medium mb-6">
+              Questions & Answers
+            </h6>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900">
+              Frequently Asked Questions
+            </h2>
+          </div>
           
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
@@ -375,9 +381,9 @@ export default function ContactPage() {
                   answer: "Absolutely! I work remotely with clients worldwide and am open to travel for significant projects. Time zone differences are never a barrier to great collaboration."
                 }
               ].map((faq, index) => (
-                <div key={index} className="border-b border-white/10 pb-6">
-                  <h3 className="text-xl font-semibold text-white mb-3">{faq.question}</h3>
-                  <p className="text-gray-400">{faq.answer}</p>
+                <div key={index} className="border-b border-gray-200 pb-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
                 </div>
               ))}
             </div>

@@ -61,12 +61,12 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
               {/* Greeting - Small label like Chris Do */}
               <div className="space-y-6">
                 <h6 className="text-xs md:text-sm uppercase tracking-widest text-gray-500 font-medium">
-                  {siteSettings?.homepageExtraContent?.greetingText || "Hello, I'm"}
+                  {siteSettings?.homepageExtraContent?.greetingText || "Hello World, I'm"}
                 </h6>
                 
                 {/* Name - MASSIVE Chris Do style */}
                 <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-none text-gray-900">
-                  {siteSettings?.homepageContent?.heroTitle || "Ghondi Claude"}
+                  {siteSettings?.homepageContent?.heroTitle || "Ghondi Claude B."}
                 </h1>
               </div>
               
@@ -120,7 +120,7 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
                     </div>
                     <div>
                       <h6 className="text-xs uppercase tracking-widest text-gray-500">View</h6>
-                      <span className="text-base font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">Art Collection</span>
+                      <span className="text-base font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">Fine Art Projects</span>
                     </div>
                   </div>
                 </Link>
