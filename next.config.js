@@ -98,16 +98,6 @@ const nextConfig = {
     return config;
   },
 
-  // TypeScript configuration
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-
-  // ESLint configuration
-  eslint: {
-    ignoreDuringBuilds: false,
-  },
-
   // Output configuration for static export (if needed)
   // trailingSlash: true,
   // output: 'export',
