@@ -45,39 +45,78 @@
     line-height: 1.6;
   }
 
-  /* Heading styles - professional and clean */
+  /* Heading styles - Chris Do inspired dramatic contrasts */
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold text-gray-900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Hero/Display text - Extra dramatic like Chris Do */
+  h1 {
+    @apply text-5xl lg:text-7xl xl:text-8xl leading-none;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  /* Large section headers */
+  h2 {
+    @apply text-4xl lg:text-6xl xl:text-7xl leading-tight;
+    font-weight: 700;
     letter-spacing: -0.025em;
   }
 
-  h1 {
-    @apply text-4xl lg:text-6xl xl:text-7xl leading-tight;
-  }
-
-  h2 {
-    @apply text-3xl lg:text-5xl xl:text-6xl leading-tight;
-  }
-
+  /* Medium headers with strong contrast */
   h3 {
     @apply text-2xl lg:text-4xl xl:text-5xl leading-tight;
+    font-weight: 600;
   }
 
+  /* Small headers - clean and minimal */
   h4 {
-    @apply text-xl lg:text-3xl xl:text-4xl leading-tight;
+    @apply text-lg lg:text-2xl xl:text-3xl leading-snug;
+    font-weight: 600;
   }
 
+  /* Labels and categories - Chris Do style */
   h5 {
-    @apply text-lg lg:text-2xl xl:text-3xl leading-tight;
+    @apply text-sm lg:text-base xl:text-lg leading-snug uppercase tracking-widest;
+    font-weight: 500;
+    font-family: var(--font-primary);
   }
 
+  /* Small caps for subtle hierarchy */
   h6 {
-    @apply text-base lg:text-xl xl:text-2xl leading-tight;
+    @apply text-xs lg:text-sm xl:text-base leading-snug uppercase tracking-wide;
+    font-weight: 400;
+    font-family: var(--font-primary);
+    color: rgb(107 114 128); /* gray-500 */
   }
 
-  /* Paragraph styles - cleaner for professional look */
+  /* Paragraph styles - Chris Do inspired clean reading */
   p {
     @apply text-base lg:text-lg leading-relaxed text-gray-700;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Large introductory text */
+  .text-intro {
+    @apply text-lg lg:text-xl xl:text-2xl leading-relaxed text-gray-600;
+    font-weight: 400;
+  }
+
+  /* Small supporting text - Chris Do style */
+  .text-small {
+    @apply text-sm lg:text-base leading-normal text-gray-600;
+    font-weight: 400;
+  }
+
+  /* Category/Label text */
+  .text-label {
+    @apply text-xs lg:text-sm uppercase tracking-widest text-gray-500;
+    font-weight: 500;
+    font-family: var(--font-primary);
   }
 
   /* Link styles */

@@ -58,59 +58,71 @@ export default function HomePageClient({ siteSettings }: HomePageClientProps) {
             
             {/* Left Column - Text Content */}
             <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
-              {/* Greeting */}
-              <div className="space-y-2">
-                <p className="text-lg md:text-xl text-blue-600 font-semibold tracking-wide">
+              {/* Greeting - Small label like Chris Do */}
+              <div className="space-y-6">
+                <h6 className="text-xs md:text-sm uppercase tracking-widest text-gray-500 font-medium">
                   {siteSettings?.homepageExtraContent?.greetingText || "Hello, I'm"}
-                </p>
+                </h6>
                 
-                {/* Name - Single Line */}
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-gray-900">
+                {/* Name - MASSIVE Chris Do style */}
+                <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tight leading-none text-gray-900">
                   {siteSettings?.homepageContent?.heroTitle || "Ghondi Claude"}
                 </h1>
               </div>
               
-              {/* Professional Tags */}
-              <div className="space-y-4">
-                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-3 text-sm md:text-base">
+              {/* Professional Tags - Chris Do inspired minimal style */}
+              <div className="space-y-6">
+                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-2 text-xs md:text-sm">
                   {(siteSettings?.homepageExtraContent?.professionalTags || ['Fine Artist', 'Urban Planner (MEng)', 'Tech Entrepreneur']).map((tag: string, index: number) => (
-                    <span key={index} className="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full text-gray-700 font-medium hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all duration-300">
+                    <span key={index} className="px-3 py-1 text-gray-600 font-medium uppercase tracking-wider">
                       {tag}
+                      {index < 2 && <span className="ml-2 text-gray-300">•</span>}
                     </span>
                   ))}
                 </div>
                 
-                {/* Subtitle */}
-                <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                  {siteSettings?.homepageExtraContent?.heroDescription ||
-                    "Where Fine Art meets Urban Planning, and Technology bridges the creative divide. I create experiences that inspire, spaces that connect, and solutions that matter."
-                  }
-                </p>
-                
-                {/* Animated Role Display */}
-                <div className="text-2xl md:text-3xl font-display font-semibold">
-                  <span className="text-gray-600">Currently: </span>
-                  <span className="text-blue-600 animate-pulse">
-                    {roles[currentRole].title}
-                  </span>
+                {/* Bio - Chris Do inspired intro text */}
+                <div className="space-y-4 max-w-2xl mx-auto lg:mx-0">
+                  <p className="text-lg lg:text-xl leading-relaxed text-gray-600 font-light">
+                    {siteSettings?.homepageExtraContent?.heroDescription ||
+                      "Where Fine Art meets Urban Planning, and Technology bridges the creative divide."
+                    }
+                  </p>
+                  
+                  {/* Currently label - small and clean */}
+                  <div className="flex items-center space-x-4">
+                    <h6 className="text-xs uppercase tracking-widest text-gray-500">Currently</h6>
+                    <span className="text-base text-gray-800 font-medium">
+                      {roles[currentRole].title}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              {/* Professional CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/work" className="bg-blue-600 text-white hover:bg-blue-700 shadow-sm px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center justify-center text-sm font-semibold group">
-                  <Sparkles className="w-5 h-5 mr-2 group-hover:animate-spin" />
-                  Explore My Work
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              {/* Action Buttons - Chris Do minimal style */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start pt-4">
+                <Link href="/work" className="group">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-blue-700">
+                      <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                    <div>
+                      <h6 className="text-xs uppercase tracking-widest text-gray-500">Explore</h6>
+                      <span className="text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">My Work</span>
+                    </div>
+                  </div>
                 </Link>
-                <Link href="/about" className="border border-gray-300 text-gray-700 hover:bg-gray-50 shadow-sm px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center justify-center text-sm font-semibold group">
-                  <Play className="w-5 h-5 mr-2" />
-                  My Story
-                </Link>
-                <Link href="/portfolio/fine-art" className="bg-black text-white hover:bg-gray-800 font-bold tracking-wide px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center justify-center text-sm group">
-                  View Art Collection
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                
+                <Link href="/portfolio/fine-art" className="group">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-gray-700">
+                      <Sparkles className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h6 className="text-xs uppercase tracking-widest text-gray-500">View</h6>
+                      <span className="text-base font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">Art Collection</span>
+                    </div>
+                  </div>
                 </Link>
               </div>
 
