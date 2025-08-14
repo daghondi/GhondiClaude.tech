@@ -4,15 +4,6 @@ import { z } from 'zod'
 import { Resend } from 'resend'
 import { Database } from '@/lib/database.types'
 
-// Initialize Supabase client
-const supabase = createClient<Database>(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
-
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 // Validation schema
 const unsubscribeSchema = z.object({
   email: z.string().email('Invalid email address').optional(),
@@ -23,6 +14,14 @@ const unsubscribeSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Initialize clients inside function
+    const supabase = createClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+    
+    const resend = new Resend(process.env.RESEND_API_KEY)
+    
     const body = await request.json()
     const validatedData = unsubscribeSchema.parse(body)
     
@@ -96,7 +95,7 @@ export async function POST(request: NextRequest) {
     
     // Send farewell email
     try {
-      await sendFarewellEmail(subscriber.email)
+      await sendFarewellEmail(subscriber.email, resend)
     } catch (emailError) {
       console.error('Failed to send farewell email:', emailError)
       // Don't fail the unsubscription if email fails
@@ -125,6 +124,14 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
+    // Initialize Supabase client inside function
+    const supabase = createClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+    
+    const resend = new Resend(process.env.RESEND_API_KEY)
+    
     const { searchParams } = new URL(request.url)
     const email = searchParams.get('email')
     const token = searchParams.get('token')
@@ -187,7 +194,7 @@ export async function GET(request: NextRequest) {
     
     // Send farewell email
     try {
-      await sendFarewellEmail(subscriber.email)
+      await sendFarewellEmail(subscriber.email, resend)
     } catch (emailError) {
       console.error('Failed to send farewell email:', emailError)
     }
@@ -200,7 +207,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function sendFarewellEmail(email: string) {
+async function sendFarewellEmail(email: string, resend: Resend) {
   const emailHtml = `
     <!DOCTYPE html>
     <html>

@@ -4,15 +4,6 @@ import { z } from 'zod'
 import { Resend } from 'resend'
 import { Database } from '@/lib/database.types'
 
-// Initialize Supabase client
-const supabase = createClient<Database>(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
-
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 // Validation schema
 const subscribeSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -28,6 +19,14 @@ function generateToken(): string {
 
 export async function POST(request: NextRequest) {
   try {
+    // Initialize clients inside the function to avoid build-time issues
+    const supabase = createClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+    
+    const resend = new Resend(process.env.RESEND_API_KEY)
+    
     const body = await request.json()
     
     // Validate input
@@ -83,7 +82,7 @@ export async function POST(request: NextRequest) {
         }
         
         // Send welcome email
-        await sendWelcomeEmail(validatedData.email, validatedData.name, verificationToken)
+        await sendWelcomeEmail(validatedData.email, resend, validatedData.name, verificationToken)
         
         return NextResponse.json(
           { 
@@ -121,7 +120,7 @@ export async function POST(request: NextRequest) {
     
     // Send welcome email
     try {
-      await sendWelcomeEmail(validatedData.email, validatedData.name, verificationToken)
+      await sendWelcomeEmail(validatedData.email, resend, validatedData.name, verificationToken)
     } catch (emailError) {
       console.error('Failed to send welcome email:', emailError)
       // Don't fail the subscription if email fails
@@ -159,7 +158,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function sendWelcomeEmail(email: string, name?: string, verificationToken?: string) {
+async function sendWelcomeEmail(email: string, resend: Resend, name?: string, verificationToken?: string) {
   const displayName = name || 'Friend'
   const verificationUrl = verificationToken 
     ? `${process.env.NEXT_PUBLIC_SITE_URL}/newsletter/verify?token=${verificationToken}`
@@ -238,6 +237,12 @@ async function sendWelcomeEmail(email: string, name?: string, verificationToken?
 // GET endpoint for subscription stats (admin only)
 export async function GET(request: NextRequest) {
   try {
+    // Initialize Supabase client inside function
+    const supabase = createClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+    
     const { searchParams } = new URL(request.url)
     const action = searchParams.get('action')
     
