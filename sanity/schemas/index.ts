@@ -5,6 +5,7 @@ import tag from './tag'
 import author from './author'
 import siteSettings from './siteSettings'
 import linkedinProfile from './linkedinProfile'
+import product from './product'
 
 export const schemaTypes = [
   project,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   author,
   siteSettings,
   linkedinProfile,
+  product,
 ]

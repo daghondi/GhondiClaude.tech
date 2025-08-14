@@ -237,3 +237,67 @@ export async function searchContent(searchTerm: string) {
   `
   return await client.fetch(query, { searchTerm })
 }
+
+// Product queries
+export async function getProducts() {
+  const query = `
+    *[_type == "product" && status == "published"] | order(featured desc, publishedAt desc) {
+      _id,
+      title,
+      slug,
+      images,
+      pricing,
+      availability,
+      specifications,
+      category,
+      featured,
+      tags,
+      publishedAt
+    }
+  `
+  return await client.fetch(query)
+}
+
+export async function getProduct(slug: string) {
+  const query = `
+    *[_type == "product" && slug.current == $slug][0] {
+      _id,
+      title,
+      slug,
+      description,
+      images,
+      pricing,
+      availability,
+      specifications,
+      category,
+      featured,
+      tags,
+      publishedAt,
+      relatedProjects[]->{
+        _id,
+        title,
+        slug,
+        featuredImage
+      }
+    }
+  `
+  return await client.fetch(query, { slug })
+}
+
+export async function getFeaturedProducts() {
+  const query = `
+    *[_type == "product" && status == "published" && featured == true] | order(publishedAt desc) [0...3] {
+      _id,
+      title,
+      slug,
+      images,
+      pricing,
+      availability,
+      specifications,
+      category,
+      featured,
+      tags
+    }
+  `
+  return await client.fetch(query)
+}

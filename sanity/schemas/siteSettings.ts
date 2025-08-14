@@ -1034,6 +1034,66 @@ export default {
       ]
     },
 
+    // Shop Page Content
+    {
+      name: 'shopPageContent',
+      title: 'Shop Page Content',
+      type: 'object',
+      fields: [
+        {
+          name: 'heroTitle',
+          title: 'Shop Hero Title',
+          type: 'string',
+          initialValue: 'Art Shop'
+        },
+        {
+          name: 'heroSubtitle',
+          title: 'Shop Hero Subtitle',
+          type: 'string',
+          initialValue: 'Original artworks and premium prints'
+        },
+        {
+          name: 'heroDescription',
+          title: 'Shop Hero Description',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Discover and purchase original artworks and high-quality prints from my collection. Each piece tells a story at the intersection of art, technology, and urban planning.'
+        },
+        {
+          name: 'featuredSectionTitle',
+          title: 'Featured Section Title',
+          type: 'string',
+          initialValue: 'Featured Artworks'
+        },
+        {
+          name: 'allProductsTitle',
+          title: 'All Products Section Title',
+          type: 'string',
+          initialValue: 'All Artworks'
+        },
+        {
+          name: 'aboutArtworkTitle',
+          title: 'About Artwork Section Title',
+          type: 'string',
+          initialValue: 'About My Artwork'
+        },
+        {
+          name: 'aboutArtworkDescription',
+          title: 'About Artwork Description',
+          type: 'text',
+          rows: 4,
+          initialValue: 'Each artwork in my collection represents a unique exploration of the intersection between traditional fine art and contemporary digital expression. My pieces often draw inspiration from urban landscapes, technological innovation, and the human experience within modern cities.'
+        },
+        {
+          name: 'purchaseNotice',
+          title: 'Purchase Notice',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Original artworks include certificate of authenticity and professional packaging. Prints are produced using archival-quality materials and processes.'
+        }
+      ]
+    },
+
     {
       name: 'analytics',
       title: 'Analytics',
